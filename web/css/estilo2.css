@@ -1,0 +1,188 @@
+
+body {
+    background-image: url('./Imagenes/fondo1.jpg');
+}
+
+#wrapper {
+    font: 12pt sans-serif;
+    color:#ffffff;
+}
+
+#wrapper header {
+    background-color: #006666;
+    border-radius: 8px;
+    border-color: #660066;
+    border: 2px solid;
+    color: white;
+    padding: 8px 8px 8px 8px;
+}
+
+#wrapper header h1 {
+    font-size: 25pt;
+    margin: 4px;
+    margin-left: 16px;
+    text-align: center;
+}
+
+#wrapper h2 {
+    color: red;
+    font-size: 14pt;
+    margin: 4px;
+    margin-left: 16px;
+}
+
+#wrapper #contents {
+
+    background-position: top right;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+#wrapper #contents form input,
+#wrapper #contents form button {
+    font: inherit;
+    
+}
+
+#wrapper #contents .e-deposito {
+    border: 2px solid white;
+    border-radius: 16px; 
+    margin: 30px 8px 8px 24px;
+    padding: 8px 16px 16px 16px;
+    width: 600px;
+    position: relative;
+    float: left;
+    height: 70%;
+}
+
+#wrapper #contents .e-deposito2 {
+    border: 2px solid white;
+    border-radius: 16px; 
+    margin: 30px 8px 8px 24px;
+    padding: 8px 16px 16px 16px;
+    width: 600px;
+    position: relative;
+    float: left;
+    height: 70%;
+    top: 10%;
+}
+
+
+#wrapper #contents .campo{
+    
+    position: relative;
+    left:  15%;
+    margin: 8px 8px 8px 8px;
+    padding: 10px 10px 10px 10px;
+}
+
+#wrapper #contents .textarea{
+    position: relative;
+    left:  45%;
+    margin: 8px 8px 8px 8px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+#wrapper #contents .texto{
+    position: relative;
+    left: 10%;
+    font-size: 22px;
+    margin: 8px 8px 8px 8px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+#wrapper #contents .select{
+    position: relative;
+    left: 15%;
+    width: 37%;
+    margin: 8px 8px 8px 8px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+#wrapper #contents .boton{
+    background-image: url('./Imagenes/fondo5.jpg');
+    color: #ffffff;
+    margin: 8px 8px 8px 8px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid deepskyblue;
+    position: relative;
+    right: 30%;
+    font-size: 20px;
+}
+
+
+#wrapper #contents .tablaDatos {
+    border: none;
+    width: 360px;
+}
+
+.col1 {
+    padding-right: 24px;
+    text-align: right;
+}
+
+.col2 {
+    background-color: #e5e5e5;
+    font-weight: bold;
+    padding: 4px 16px 4px 16px;
+}
+
+#wrapper #contents .mensajeError {
+    color: #fff;
+    position: fixed;
+    float: left;
+    top: 350px;
+    left: 40px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 50px 10px 10px 10px;
+    border: 2px #ffffff ridge;
+    background-color: #990000;
+    width: 33%;
+}
+#wrapper #contents .mensajeError2 {
+    color: #fff;
+    position: fixed;
+    float: left;
+    top: 430px;
+    left: 40px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 50px 10px 10px 10px;
+    border: 2px #ffffff ridge;
+    background-color: #003366;
+    width: 33%;
+}
+
+
+#wrapper #contents .mensajeDeposito {
+    color: #fff;
+    position: fixed;
+    float: left;
+    top: 350px;
+    left: 40px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 50px 10px 10px 10px;
+    border: 2px #ffffff ridge;
+    background-color: #990000;
+    width: 33%;
+}
+#wrapper #contents .mensajeDeposito2 {
+    color: #fff;
+    position: fixed;
+    float: left;
+    top: 430px;
+    left: 40px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 50px 10px 10px 10px;
+    border: 2px #ffffff ridge;
+    background-color: #003366;
+    width: 33%;
+}

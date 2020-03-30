@@ -1,0 +1,91 @@
+
+body {
+    background-image: url('./Imagenes/fondo1.jpg');
+}
+
+#wrapper {
+    font: 12pt sans-serif;
+    color:#ffffff;
+}
+
+#wrapper header {
+    background-color: #003366;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 8px 8px 8px;
+}
+
+#wrapper header h1 {
+    font-size: 16pt;
+    margin: 4px;
+    margin-left: 16px;
+}
+
+#wrapper h2 {
+    color: red;
+    font-size: 14pt;
+    margin: 4px;
+    margin-left: 16px;
+}
+
+#wrapper #contents {
+/*    background-image: url('./Imagenes/fondo1.jpg');*/
+    background-position: top right;
+    background-repeat: no-repeat;
+    height: 480px;
+}
+
+#wrapper #contents form input,
+#wrapper #contents form button {
+    font: inherit;
+}
+
+#wrapper #contents .info {
+    border: 2px solid white;
+    border-radius: 16px; 
+    margin: 8px 8px 8px 24px;
+    padding: 8px 16px 8px 16px;
+    width: 40%;
+}
+
+#wrapper #contents .boton{
+/*    background-color: #ffffff;*/
+    background-image: url('./Imagenes/fondo5.jpg');
+    color: #ff6600;
+    margin: 4px 4px 4px 4px;
+    border: 2px solid darkcyan;
+}
+
+
+
+#wrapper #contents .tablaDatos {
+    border: none;
+    width: 360px;
+}
+
+.col1 {
+    padding-right: 24px;
+    text-align: right;
+}
+
+.col2 {
+    background-color: #e5e5e5;
+    font-weight: bold;
+    padding: 4px 16px 4px 16px;
+}
+
+
+#wrapper #contents .mensajeError {
+    color: #fff;
+    position: fixed;
+    top: 300px;
+    left: 50px;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: 10px 10px 10px 10px;
+    border: 2px #ffffff ridge;
+    background-color: #006666;
+    width: 30%;
+}
+
+

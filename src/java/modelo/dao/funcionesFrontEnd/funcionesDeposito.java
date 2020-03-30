@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 import model.cuenta;
 import model.movimiento;
 import modelo.dao.servicioCuenta;
@@ -40,7 +39,7 @@ public class funcionesDeposito {
      */
     public boolean realizarDepositoACuentaRefact(movimiento mov) throws Exception
     {
-        mov.setDetalle("Deposito "+mov.getDetalle());//añadimos la palabra deposito...
+        mov.setDetalle(""+mov.getDetalle());//añadimos la palabra deposito...
         if(mov.getMonto()>0)
             return this.realizarDepositoACuenta(mov);
         else
@@ -197,28 +196,28 @@ public class funcionesDeposito {
      * @param args
      */
     public static void main(String[] args) {
+    
         
-        
-        funcionesDeposito fd=new funcionesDeposito();
-        List<cuenta> lis;
-        Scanner input = new Scanner(System.in);
-//        System.out.print("Ingrese el numero de CEDULA: ");
-        String number = "117230117";//input.next();
-        System.out.println("Ingresó " + number);
-        try {
-            // mostramos las cuentas con este numero de cuenta.
-            lis = fd.listarCuentasCliente(number);
-            for (cuenta li : lis) {
-                System.out.println(li.toString());
-            }
-            // realizamos un deposito a una cuenta
-            movimiento m=new movimiento();
-            m.setCuenta_num_cuenta(1);
-             System.out.print("Ingrese el Monto a Transferir");
-         double number1 = input.nextDouble();
-         System.out.println("Ingresó " + number1);
-            m.setMonto(number1);
-            fd.realizarDepositoACuenta(m);
+//        funcionesDeposito fd=new funcionesDeposito();
+//        List<cuenta> lis;
+//        Scanner input = new Scanner(System.in);
+////        System.out.print("Ingrese el numero de CEDULA: ");
+//        String number = "117230117";//input.next();
+//        System.out.println("Ingresó " + number);
+//        try {
+//            // mostramos las cuentas con este numero de cuenta.
+//            lis = fd.listarCuentasCliente(number);
+//            for (cuenta li : lis) {
+//                System.out.println(li.toString());
+//            }
+//            // realizamos un deposito a una cuenta
+//            movimiento m=new movimiento();
+//            m.setCuenta_num_cuenta(1);
+//             System.out.print("Ingrese el Monto a Transferir");
+//         double number1 = input.nextDouble();
+//         System.out.println("Ingresó " + number1);
+//            m.setMonto(number1);
+//            fd.realizarDepositoACuenta(m);
 //            System.out.print("------------------------------------\n\n");
 //            System.out.println("----Movimientos de Cuenta----");
 //            List<movimiento> list;
@@ -232,11 +231,11 @@ public class funcionesDeposito {
 //            for (cuenta li : lis) {
 //                System.out.println(li.toString());
 //            }
-        } catch (Exception ex) {
-            System.out.println("Error : "+ex.getMessage());
-        }
-        
+//        } catch (Exception ex) {
+//            System.out.println("Error : "+ex.getMessage());
+//        }
+//        
+//    }
+    
     }
-    
-    
 }

@@ -177,7 +177,6 @@ public class BeanDeposito implements Serializable {
     private String eCedulaDet;
     private String eNumCuenta;
     private String eNombreUs;
-    private String eApellidosUs;
     private String eMontoDeposito;
     private String eMonedaDeposito;
     private String eDetalleDeposito;

@@ -80,9 +80,7 @@
                 
                 
                 <p class="mensajeErrorDep">
-                    ESTA REQUERIMIENTO NO ESTA DESARROLLADO.... SE RETRASO POR 
-                    CAMBIOS DE IMPLEMENTACION DE R3 (REDISEÑADO) Y APARTIR DE ESTE
-                    SE DESARROLLARA R4 YA QUE ES SIMILAR EN UN 85%!
+                    ESTO ES UNA PRUEBA SE SINCRONIZACIÓN
                 </p>
                 
                 

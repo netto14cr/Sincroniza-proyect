@@ -552,13 +552,95 @@ return datosCorrectos;
 }
 
 
-
-
-
-
-
-
-
 //----------------- FIN VALIDACION DEPOSITOS BANCARIOS -----------------------------
 
+
+
+//-----------------  VALIDACION RETIROS DE EFECTIVO CAJERO  -------------------------
+
+// Funcion que valida los campos del formulario numero 2 - deposito de efectivo
+function validarForumlarioRetiro2() {
+var datosCorrectos5;
+        datosCorrectos5 = true;
+        var error5 = "";
+        var cd = document.getElementById('detalleNumId').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/;
+
+         // Valida si el campo de identificacion va vacio
+        if (document.getElementById('detalleNumId').value == "") {
+            error5 = "\n El campo de numero de identificacion de depositante está en blanco";
+            datosCorrectos5 = false;
+            
+        }
+        // Valida si el formato ingresado en la cedula es correcto
+        else if (!cedulaFormato.test(cd)) {
+            error5 = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
+            1-0000-0000";
+            datosCorrectos5 = false;
+        }
+
+// Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+if (!datosCorrectos5) {
+alert('ERROR: ' + error5);
+        }
+return datosCorrectos5;
+}
+
+// Funcion que valida el monto ingresado por el usuario para realizar el retiro
+
+// Funcion que valida los campos del formulario numero 2 - deposito de efectivo
+function validarForumlarioRetiro3() {
+var datosCorrectos5;
+        datosCorrectos5 = true;
+        var error5 = "";
+        var cd = document.getElementById('detalleNumId').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/;
+        var detMonto=document.getElementById('montoDeposito').value;
+        
+        // Si el campo de monto del deposito esta vacio , se valida que debe ingresar 
+        // informacion en este espacio
+        if (document.getElementById('montoDeposito').value == "") {
+error5 = "\n El campo monto de deposito no puede estár en blanco";
+        datosCorrectos5 = false;
+        }
+
+
+// Falso si el monto digitado es menor o igual a 0 se  valida su error
+else if (document.getElementById('montoDeposito').value <= 0){
+error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
+        datosCorrectos5 = false;
+        }
+        
+         // Valida que el campo ingresado en monto sea una expresion numerica
+        else if (isNaN(detMonto) ) {
+            error5 = "\n El valor ingresado en el campo monto de deposito no es una experesion numerica! ";
+            datosCorrectos = false;
+        }
+        
+         // Valida que el monto ingresado para deposito sea una expresion numerica
+        else if (detMonto.length >= 7 ){
+            error5 = "\n La cifra excede el limite permitido para transferencia del sistema!\n\
+             Por favor intente un valor menor a un millon!   ";
+            datosCorrectos = false;
+        }
+        
+
+// Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+if (!datosCorrectos5) {
+alert('ERROR: ' + error5);
+        }
+return datosCorrectos5;
+}
+
+
+
+
+
+
+
+
+
+
+
+//----------------- FIN VALIDACION RETIROS DE EFECTIVO CAJERO-----------------------------
 

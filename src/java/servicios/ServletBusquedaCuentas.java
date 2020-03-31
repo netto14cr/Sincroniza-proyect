@@ -283,7 +283,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
                 }
             }
         } catch (NumberFormatException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
         
     }

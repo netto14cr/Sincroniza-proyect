@@ -16,7 +16,6 @@
         <link href="css/estiloFormulario.css" rel="stylesheet" type="text/css"/>
         <!--Se declara la direccion y uso de javascript para validacion de la pagina-->
         <script type="text/javascript" src="jsValidaFormularios.js"></script>
-        
         <!--Se define el uso de la etiqueta bean con datos de deposito bancario-->
         <jsp:useBean class="beans.BeanRetiro" id="descripRetiro" scope="session">
         </jsp:useBean>
@@ -293,8 +292,9 @@
                     
                      <%
                 // Falso si la busqueda seleccionada es por número de cuenta
-                }else if (msgRetiro.equals("1") && msgRetiro2.equals("ERROR_NO_CUENTA")) {
-                    System.out.println("\n\n<<<<<ERROR NO EXISTE CUENTA CEDULA! \n\n");
+                }else if (msgRetiro.equals("1") && msgRetiro2.equals("ERROR_NO_CUENTA")
+                        || msgRetiro.equals("ERROR_NO_CUENTA") || msgRetiro2.equals("ERROR_NO_CUENTA")) {
+                    System.out.println("\n\n::::: ERROR PRODUCIDO :::::");
                 %>
                 
                 <p class="mensajeErrorDep">

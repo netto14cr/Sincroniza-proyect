@@ -56,8 +56,8 @@ public class ServletBusquedaRetiros extends HttpServlet {
         // cuenta y su esta exsite en el sistema
         
         if (id != null && !id.isEmpty()) {
-            
-            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
+//            
+//            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
             
             try {
                 // Verificamos primero que la cédula del usuario exista en el 
@@ -239,7 +239,7 @@ public class ServletBusquedaRetiros extends HttpServlet {
             throws ServletException, IOException{
         try {
             
-            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
+//            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
             String botonFormulario = "";
             botonFormulario = request.getParameter("regresoOpcion");
             if (botonFormulario != null && !botonFormulario.isEmpty()) {
@@ -277,7 +277,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
                 }
             }
         } catch (NumberFormatException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
         
     }

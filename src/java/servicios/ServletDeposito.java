@@ -3,7 +3,6 @@ package servicios;
 import beans.BeanDeposito;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -13,13 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.cliente;
 import model.cuenta;
 import model.movimiento;
-import model.usuario;
 import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
-import modelo.dao.servicioCliente;
 
 /*
  * ServletInicionSesion.java

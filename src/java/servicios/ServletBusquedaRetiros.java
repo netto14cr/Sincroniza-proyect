@@ -144,7 +144,14 @@ public class ServletBusquedaRetiros extends HttpServlet {
                     case "2":
                         System.out.println("\n<--- NO EXISTE CLIENTE EN EL SISTEMA --->\n");
                       
-                        request.getSession().setAttribute("servletMsjRetiro", "3");
+                        bRet.seteMensaje("Error: la identificación "+id+" no pertenece"
+                                + "aún usurio en nuestro sistema!");
+                        sesionActual.setAttribute("descripRetiro", 
+                        new BeanRetiro(bRet.geteMensaje()));
+                        
+                        request.getSession().setAttribute("servletMsjRetiro", "ERROR_NO_CUENTA");
+                        
+                        
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -157,7 +164,13 @@ public class ServletBusquedaRetiros extends HttpServlet {
                         System.out.println("\n <--- NO EXISTE EL NUMERO DE CUENTA DIGITADO ---> ");
                         
                         
-                        request.getSession().setAttribute("servletMsjRetiro", "4");
+                        
+                        bRet.seteMensaje("Error: El numero de cuenta "+id+" no pertenece"
+                                + "aun usurio en nuestro sistema!");
+                        sesionActual.setAttribute("descripRetiro", 
+                        new BeanRetiro(bRet.geteMensaje()));
+                        
+                        request.getSession().setAttribute("servletMsjRetiro", "ERROR_NO_CUENTA");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;

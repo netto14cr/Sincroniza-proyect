@@ -46,17 +46,13 @@ public class BeanRetiro implements Serializable {
         this.eMensaje = eMensaje;
     }
 
-    public BeanRetiro(String eCedula, String eCedulaDet, String eNumCuenta, 
-            String eNombreUs, String eMontoDeposito, String eDetalleDeposito, 
-            String eMensaje,String eTipoBusqueda) {
+    public BeanRetiro(String eCedula,String eNumCuenta,String eTipoBusqueda,
+            boolean eExitenciaCuenta, String eMensaje) {
         this.eCedula = eCedula;
-        this.eCedulaDet = eCedulaDet;
         this.eNumCuenta = eNumCuenta;
-        this.eNombreUs = eNombreUs;
-        this.eMontoDeposito = eMontoDeposito;
-        this.eDetalleDeposito = eDetalleDeposito;
-        this.eMensaje = eMensaje;
         this.eTipoBusqueda=eTipoBusqueda;
+        this.eExitenciaCuenta=eExitenciaCuenta;
+        this.eMensaje = eMensaje;
     }
     
 

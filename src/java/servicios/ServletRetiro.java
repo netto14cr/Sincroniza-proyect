@@ -139,7 +139,8 @@ public class ServletRetiro extends HttpServlet {
                                     bRet.seteMensaje("El monto no puede ser negativo , ni menor o igual a 0!");
                                     sesionActual.setAttribute("descripRetiro",
                                         new BeanRetiro(bRet.geteCedula(), bRet.geteNumCuenta(),
-                                                bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(), bRet.geteMensaje()));
+                                                bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(), 
+                                                bRet.geteMensaje(),bRet.geteDetalleDeposito()));
                                     
                                     // El servidor envia el mensaje de error el monto ingresado por el 
                                     // usuario es nulo o menor a 0 por lo que se reponde error monto
@@ -192,6 +193,7 @@ public class ServletRetiro extends HttpServlet {
                             // de cuenta indicado le pertenecen y que ya no haya entrado y
                             // que el bean sepa si ya es usuario
                             
+                            System.out.println(">>>>>>>>>>>>"+bRet.getExitenciaCuenta());
                             if (fLogin.verificarPosibleCedulaCliente(detNumIden) && !bRet.getExitenciaCuenta()) {
 
                                 System.out.println("VERIFICA CUENTA ASOCIADA LE PERTENEZCA");
@@ -209,18 +211,22 @@ public class ServletRetiro extends HttpServlet {
                                     // Si la conside el numero de cuenta con el indicado
                                     // para depositar entonces siginifca que es el usuario
                                     // y existenciaCuentaAsociada pasa a verdadero
+                                    
+                                    System.out.println("---->"+listaCuentas.get(i).getNum_cuenta());
                                     if (listaCuentas.get(i).getNum_cuenta()
                                             == Integer.parseInt(bRet.geteNumCuenta())) {
                                         System.out.println("PISITIVO++++++");
                                         existeCuentaAsociada = true;
+                                        
                                     }
                                 }
+                                
+                                if(existeCuentaAsociada){
                                 // Se pasa el valor de eixstencia cuenta al bean para recordar la 
                                 // informacion
                                 bRet.seteExitenciaCuenta(existeCuentaAsociada);
                                 bRet.seteCedula(detNumIden);
                                 bRet.seteTipoBusqueda(tipoBus);
-                                bRet.seteMensaje("");
                                 // Se actualizan los datos del bean Deposito con la información
                                 // del deposito realizado para mostrarla al usuario cajero
                                 sesionActual.setAttribute("descripRetiro",
@@ -231,6 +237,13 @@ public class ServletRetiro extends HttpServlet {
                                 // de deposito.
                                 request.getSession().setAttribute("servletMsjRetiro2", "INGRESA_MONTO_RETIRO");
                             System.out.println("\n||||| RETIRO NUMERO CUENTA && DUEÑO SE GUARDAN DATOS!!    |||||||||");
+                                }else if(!existeCuentaAsociada){
+                                    System.out.println("Error el usuario no es dueño de la cuenta");
+                                bRet.seteMensaje("ERROR: La persona identificada no es dueña de la cuenta! "
+                                        + "No se puede procesar la solicitud de deposito.");
+                                sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
+                                request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                                }
                             }
                             // Verifica que la cuenta sea verdaderamente del depositante
                             else if (bRet.getExitenciaCuenta()) {
@@ -262,7 +275,8 @@ public class ServletRetiro extends HttpServlet {
                                     bRet.seteMensaje("El monto no puede ser negativo , ni menor o igual a 0!");
                                     sesionActual.setAttribute("descripRetiro",
                                         new BeanRetiro(bRet.geteCedula(), bRet.geteNumCuenta(),
-                                                bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(), bRet.geteMensaje()));
+                                                bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(), 
+                                                bRet.geteMensaje(),bRet.geteDetalleDeposito()));
                                     
                                     // El servidor envia el mensaje de error el monto ingresado por el 
                                     // usuario es nulo o menor a 0 por lo que se reponde error monto
@@ -288,7 +302,7 @@ public class ServletRetiro extends HttpServlet {
                             // identificación ingresada
                             
                             else if (!bRet.getExitenciaCuenta()){
-                                System.out.println("Error el usuario no es deuño de la cuenta");
+                                System.out.println("Error el usuario no es dueño de la cuenta");
                                 // Se envia el mensaje de error que no se puede efecutar el retiro
                                 bRet.seteMensaje("ERROR: La persona identificada no es dueña de la cuenta! "
                                         + "No se puede procesar la solicitud de deposito.");
@@ -318,12 +332,22 @@ public class ServletRetiro extends HttpServlet {
                                 case "9":
                                     
                                     System.out.println("\n<--- ERRROR NO TIENE SUFICIENTES FONDOS --->\n");
-                                    bRet.seteMensaje("ERROR: El usuario no dispone de fondos suficientes para realizar el retiro elegido");
-                                    sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
+                                    
+                                    bRet.seteNumCuenta(bRet.geteNumCuenta());
+                                    bRet.seteCedula(bRet.geteCedula());
+                                    bRet.seteTipoBusqueda(bRet.geteTipoBusqueda());
+                                    bRet.seteDetalleDeposito(detalleDep);
+                                    bRet.seteMensaje("ERROR: El usuario no dispone de fondos suficientes "
+                                            + "para realizar el retiro indicado, por favor intente otro monto a retirar");
+                                    // Se envia el mensaje de error al servidor
+                                    sesionActual.setAttribute("descripRetiro",
+                                        new BeanRetiro(bRet.geteCedula(), bRet.geteNumCuenta(),
+                                                bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(),
+                                                bRet.geteMensaje(), bRet.geteDetalleDeposito()));
                                     // Servlet envia información a la pagina con el detalle de error
                                     // ocurrido 
                                     
-                                    request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                                    request.getSession().setAttribute("servletMsjRetiro2", "ERROR_MONTO");
                                     dispatcher = request.getRequestDispatcher(destino);
                                     dispatcher.forward(request, response);
                                     //dispatcher.forward(request, response);

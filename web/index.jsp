@@ -29,7 +29,7 @@
             <div id="contents">
                 
                 
-                <p class="information2">
+<!--                <p class="information2">
                     APARTIR DE ESTA ACTUALIZACIÓN SE PODRAN OBSERVAR LOS NUEVOS CAMBIOS
                     DESDE LA PAGINA PRINCIPAL ;D!
                 </p>
@@ -43,7 +43,7 @@
                     esta asociada a el o no... De lo contrario se pedira que ingrese su 
                     nombre como bien indica el R3.
                 </p>
-                <br>
+                <br>-->
                 
                 <form method="GET" action="registro-usuario" class="e-deposito" onsubmit="return validarSecion()">
                     

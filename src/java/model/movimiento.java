@@ -97,6 +97,7 @@ public class movimiento {
         this.depositante="dueño de la cuenta";
         this.aplicado=0;
         this.detalle="NINGUNO";
+        this.detalle="";
     }
 
 }

@@ -121,7 +121,7 @@
                     }else if (msgDeposito!=null && msgDeposito.equals("1") 
                         && msgDeposito2==null) {
                        
-                        System.out.println("\n\n+++FORM 2 COMPLETA4 DEPOSITO MONTO++++++++++++\n\n");
+                        System.out.println("\n\n+++FORM 2 COMPLETA DEPOSITO MONTO++++++++++++\n\n");
                         %>
 
                         <form method="GET" action="deposito-cajero" class="e-deposito2" 
@@ -510,9 +510,32 @@
                                      >Volver a menú</button>&nbsp;
                     </form>
                             
-                            
-                        <%}
-                        %>
+
+                        <%} 
+                //  Falso si el numero de cuenta no existe
+                else if (msgDeposito.equals("2") && msgDeposito.equals("10")) {%>
+                <p class="mensajeErrorDep">
+                    ${descrip.geteMensaje()}
+                </p>
+
+                <p class="mensajeErrorDep2">
+                    POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
+                </p>
+                
+                
+                 <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                        <input type="hidden" id="regreso" name="regreso" />
+                        <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                                     >Volver a menú</button>&nbsp;
+                    </form>
+                
+
+
+
+
+
+                      <%}  %>
                 
                 
                 

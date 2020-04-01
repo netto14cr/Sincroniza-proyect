@@ -4,24 +4,26 @@ import java.io.Serializable;
 import java.util.List;
 import model.cuenta;
 
-public class BeanDeposito implements Serializable {
+public class BeanRetiro implements Serializable {
 
     // Declaracion de constructor por defecto
-    public BeanDeposito() {
+    public BeanRetiro() {
     }
     
     // Declaracion del constructor si el usuario a depositar es la cuenta propia
     // entonces se guardan los valores de cedula, nombre, apellidos y el tipoBusqueda
     // realizada
-     public BeanDeposito(String eCedula, String eNombreUs, String eTipoBusqueda) {
+     public BeanRetiro(String eCedula, String eNumCuenta, String eTipoBusqueda, 
+             boolean eExitenciaCuenta) {
         this.eCedula = eCedula;
-        this.eNombreUs = eNombreUs;
+        this.eNumCuenta = eNumCuenta;
         this.eTipoBusqueda = eTipoBusqueda;
+        this.eExitenciaCuenta=eExitenciaCuenta;
     }
 
     // Declaracion del constructor por si la cuenta se realiza por numero de cuenta
     // y no le pertenece al usuario
-    public BeanDeposito(String eNumCuenta, String eTipoBusqueda) {
+    public BeanRetiro(String eNumCuenta, String eTipoBusqueda) {
         this.eNumCuenta = eNumCuenta;
         this.eTipoBusqueda = eTipoBusqueda;
     }
@@ -29,13 +31,13 @@ public class BeanDeposito implements Serializable {
     // Declaracion del constructor por si la cuenta buscada por el numero de cedula
     // no pertenece al usuario cajero
 
-    public BeanDeposito(String eCedula, String eTipoBusqueda, List<cuenta> lista) {
+    public BeanRetiro(String eCedula, String eTipoBusqueda, List<cuenta> lista) {
         this.eCedula = eCedula;
         this.eTipoBusqueda = eTipoBusqueda;
         this.lista = lista;
     }
 
-    public BeanDeposito(String eNumCuenta, String eCedula,
+    public BeanRetiro(String eNumCuenta, String eCedula,
             String eMontoDeposito, String eDetalleDeposito, String eMensaje) {
         this.eNumCuenta = eNumCuenta;
         this.eCedula = eCedula;
@@ -44,36 +46,25 @@ public class BeanDeposito implements Serializable {
         this.eMensaje = eMensaje;
     }
 
-    public BeanDeposito(String eCedula, String eCedulaDet, String eNumCuenta, 
-            String eNombreUs, String eMontoDeposito, String eDetalleDeposito, 
-            String eMensaje,String eTipoBusqueda) {
+    public BeanRetiro(String eCedula,String eNumCuenta,String eTipoBusqueda,
+            boolean eExitenciaCuenta, String eMensaje) {
         this.eCedula = eCedula;
-        this.eCedulaDet = eCedulaDet;
         this.eNumCuenta = eNumCuenta;
-        this.eNombreUs = eNombreUs;
-        this.eMontoDeposito = eMontoDeposito;
-        this.eDetalleDeposito = eDetalleDeposito;
-        this.eMensaje = eMensaje;
         this.eTipoBusqueda=eTipoBusqueda;
+        this.eExitenciaCuenta=eExitenciaCuenta;
+        this.eMensaje = eMensaje;
     }
     
 
-    public BeanDeposito(String eMensaje) {
+    public BeanRetiro(String eMensaje) {
         this.eMensaje = eMensaje;
     }
     
-    
-     public BeanDeposito(String eMensaje, String eNumCuenta,String eTipoBusqueda,  
-             String eNombreUs ) {
+     public BeanRetiro(String eMensaje, String eNumCuenta,String eTipoBusqueda) {
         this.eMensaje = eMensaje;
         this.eNumCuenta = eNumCuenta;
         this.eTipoBusqueda=eTipoBusqueda;
     }
-    
-     
-     
-     
-    
 
     public String geteCedulaDet() {
         return eCedulaDet;
@@ -160,17 +151,23 @@ public class BeanDeposito implements Serializable {
         this.lista = lista;
     }
 
+    public boolean getExitenciaCuenta() {
+        return eExitenciaCuenta;
+    }
+
+    public void seteExitenciaCuenta(boolean eExitenciaCuenta) {
+        this.eExitenciaCuenta = eExitenciaCuenta;
+    }
+
     @Override
     public String toString() {
-        return "BeanDeposito{" + "eCedula=" + eCedula + ", eCedulaDet=" + eCedulaDet 
+        return "BeanRetiro{" + "eCedula=" + eCedula + ", eCedulaDet=" + eCedulaDet 
                 + ", eNumCuenta=" + eNumCuenta + ", eNombreUs=" + eNombreUs 
-                + ", eMontoDeposito=" + eMontoDeposito 
-                + ", eMonedaDeposito=" + eMonedaDeposito + ", eDetalleDeposito=" 
-                + eDetalleDeposito + ", eTipoBusqueda=" + eTipoBusqueda + ", lista=" 
-                + lista + ", eMensaje=" + eMensaje + '}';
+                + ", eMontoDeposito=" + eMontoDeposito + ", eMonedaDeposito=" 
+                + eMonedaDeposito + ", eDetalleDeposito=" + eDetalleDeposito 
+                + ", eTipoBusqueda=" + eTipoBusqueda + ", lista=" + lista 
+                + ", eMensaje=" + eMensaje + ", eExitenciaCuenta=" + eExitenciaCuenta + '}';
     }
-    
-    
     
     
     private String eCedula;
@@ -183,5 +180,6 @@ public class BeanDeposito implements Serializable {
     private String eTipoBusqueda;
     private List<cuenta> lista;
     private String eMensaje;
+    private boolean eExitenciaCuenta;
     
 }

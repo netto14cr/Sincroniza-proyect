@@ -1,6 +1,5 @@
 package servicios;
-
-import beans.BeanDeposito;
+import beans.BeanRetiro;
 import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,12 +21,12 @@ import modelo.dao.funcionesFrontEnd.funcionesLogueo;
  * Descripcion: Clase java tipo servlet de inicio sesión de usuarios
  */
 @WebServlet(
-        name = "ServletBusquedaCuentas",
-        urlPatterns = {"/ServletBusquedaCuentas", "/busquedaCuenta-cajero",
-            "/regresarDeposito"}
+        name = "ServletBusquedaRetiros",
+        urlPatterns = {"/ServletBusquedaRetiros", "/busquedaCuentaRetiro-cajero",
+            "/regresarRetiro"}
 )
 
-public class ServletBusquedaCuentas extends HttpServlet {
+public class ServletBusquedaRetiros extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,7 +35,7 @@ public class ServletBusquedaCuentas extends HttpServlet {
         
            // Se define de que direccion viene el usaurio
         String destino="";
-        destino = "/WEB-INF/Banco/Vista/Deposito.jsp";
+        destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
         HttpSession sesionActual = request.getSession();
         sesionActual.setAttribute("ruta", request.getRequestURI());
         
@@ -46,8 +45,8 @@ public class ServletBusquedaCuentas extends HttpServlet {
         RequestDispatcher dispatcher = null;
         
         // Se obtiene los valores guardados en el beanNueva Cuenta
-        BeanDeposito bDep = (BeanDeposito) sesionActual.getAttribute("descrip");
-        request.getSession().getAttribute("bDep");
+        BeanRetiro bRet = (BeanRetiro) sesionActual.getAttribute("descripRetiro");
+        request.getSession().getAttribute("bRet");
         
         verificaOpcionesFormularioRegreso( dispatcher, request,response, destino);
 
@@ -57,20 +56,22 @@ public class ServletBusquedaCuentas extends HttpServlet {
         // cuenta y su esta exsite en el sistema
         
         if (id != null && !id.isEmpty()) {
-            
-            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
+//            
+//            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
             
             try {
                 // Verificamos primero que la cédula del usuario exista en el 
                 //sistema
 
-                bDep.seteTipoBusqueda(tipoBusquedaCuenta);
+                bRet.seteTipoBusqueda(tipoBusquedaCuenta);
+                if (bRet.geteTipoBusqueda()!=null)
+                System.out.println("TPI BUSQUEDA"+bRet.geteTipoBusqueda());
                 //----------- BUSQUEDA POR TIPO NUEMERO DE CÉDULA ------------------------
                 
                 // Si el tipo de busqueda seleccionado es por numero de cédula
                 if (tipoBusquedaCuenta.equals("nCedula")) {
  
-                    
+                    System.out.println("<<<ENTRA EN TIPO CEDULA>>>");
                     // Se verifica si la cedula ingresada existe en el sistema
                     // si se cuemple entra y manda la respuesta de que puede continuar
                     // con el deposito a esta cuenta
@@ -90,13 +91,13 @@ public class ServletBusquedaCuentas extends HttpServlet {
                         
                        // Se pasan los valores a la clase bean para el manejo de informacion
                        // entre el servidor y manejo de la clase Deposito.jsp
-                        sesionActual.setAttribute("descrip", new BeanDeposito(id, 
+                        sesionActual.setAttribute("descripRetiro", new BeanRetiro(id, 
                                 tipoBusquedaCuenta,listaCuentas));
                         
                         // Se define que el servidor respondera con un 1 a depisto.jsp
                         // significando que la busqueda de la cedula ha sido exitoso
                         // y que se puede continuar con las acciones de deposito
-                        request.getSession().setAttribute("servletMsjDeposito", "1");
+                        request.getSession().setAttribute("servletMsjRetiro", "1");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                     }
@@ -117,31 +118,24 @@ public class ServletBusquedaCuentas extends HttpServlet {
                               
                        // Se pasan los valores a la clase bean para el manejo de informacion
                        // entre el servidor y manejo de la clase Deposito.jsp
-                        bDep.seteMensaje("");
-                        bDep.seteNumCuenta(id); // Se pasa el numero de cuenta
-                        bDep.seteTipoBusqueda(tipoBusquedaCuenta);
-                        sesionActual.setAttribute("descrip", 
-                        new BeanDeposito(bDep.geteMensaje(),bDep.geteNumCuenta(), 
-                                bDep.geteTipoBusqueda(), ""));
+                        bRet.seteMensaje("");
+                        bRet.seteNumCuenta(id); // Se pasa el numero de cuenta
+                        bRet.seteTipoBusqueda(tipoBusquedaCuenta);
+                        sesionActual.setAttribute("descripRetiro", 
+                        new BeanRetiro(bRet.geteMensaje(),bRet.geteNumCuenta(), 
+                                bRet.geteTipoBusqueda()));
                         
                         // Si el numero de cuenta existe Servlet respode que la 
                         // operacion es uno y se toma como correcta.
-                        request.getSession().setAttribute("servletMsjDeposito", "2");
+                        request.getSession().setAttribute("servletMsjRetiro", "2");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                     }
                 
                 }
             } catch (Exception ex) {
-                String tipoExcepcion;
-                tipoExcepcion = ex.getMessage();
                 
-                // Se determina que si existe una error se capta la excepcion y 
-                // mediante un switch se maneja el tipo de excepcion que representa
-                // y se le notifica a la pagina deposito.jsp para que está conozca
-                // del error y lo informe al usuario
-                
-                switch (tipoExcepcion) {
+                switch (ex.getMessage()) {
                    
                     // Si la exceppcion es de tipo #2 -- Significa que a la hora de 
                     // realizar la busqueda de la cedula no se obtubo una respuesta
@@ -150,7 +144,14 @@ public class ServletBusquedaCuentas extends HttpServlet {
                     case "2":
                         System.out.println("\n<--- NO EXISTE CLIENTE EN EL SISTEMA --->\n");
                       
-                        request.getSession().setAttribute("servletMsjDeposito", "3");
+                        bRet.seteMensaje("Error: la identificación "+id+" no pertenece"
+                                + "aún usurio en nuestro sistema!");
+                        sesionActual.setAttribute("descripRetiro", 
+                        new BeanRetiro(bRet.geteMensaje()));
+                        
+                        request.getSession().setAttribute("servletMsjRetiro", "ERROR_NO_CUENTA");
+                        
+                        
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -163,7 +164,13 @@ public class ServletBusquedaCuentas extends HttpServlet {
                         System.out.println("\n <--- NO EXISTE EL NUMERO DE CUENTA DIGITADO ---> ");
                         
                         
-                        request.getSession().setAttribute("servletMsjDeposito", "4");
+                        
+                        bRet.seteMensaje("Error: El numero de cuenta "+id+" no pertenece"
+                                + "aun usurio en nuestro sistema!");
+                        sesionActual.setAttribute("descripRetiro", 
+                        new BeanRetiro(bRet.geteMensaje()));
+                        
+                        request.getSession().setAttribute("servletMsjRetiro", "ERROR_NO_CUENTA");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -171,7 +178,7 @@ public class ServletBusquedaCuentas extends HttpServlet {
             }
         }else{
             System.out.println("\n\n:::::::::::::F A L S O ::::::::\n\n");
-            request.getSession().setAttribute("servletMsjDeposito", null);
+            request.getSession().setAttribute("servletMsjRetiro", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
         }
@@ -225,13 +232,13 @@ public class ServletBusquedaCuentas extends HttpServlet {
     }
 
     /**
-     * Returns a short description of the servlet.
+     * Returns a short descripRetirotion of the servlet.
      *
-     * @return a String containing servlet description
+     * @return a String containing servlet descripRetirotion
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Short descripRetirotion";
     }// </editor-fold>
 
     
@@ -245,7 +252,7 @@ public class ServletBusquedaCuentas extends HttpServlet {
             throws ServletException, IOException{
         try {
             
-            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
+//            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
             String botonFormulario = "";
             botonFormulario = request.getParameter("regresoOpcion");
             if (botonFormulario != null && !botonFormulario.isEmpty()) {
@@ -257,25 +264,25 @@ public class ServletBusquedaCuentas extends HttpServlet {
                     // Opción 1 - El usuario cajero desea regresar al menu principal
                     case "1":
                         destino = "/WEB-INF/Banco/Vista/Cajero.jsp";
-                        request.getSession().setAttribute("servletMsjDeposito", null);
-                        request.getSession().setAttribute("servletMsjDeposito2", null);
+                        request.getSession().setAttribute("servletMsjRetiro", null);
+                        request.getSession().setAttribute("servletMsjRetiro2", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
                     // Opción 2 - Ocurrio un error en la creacion de la cuenta y el
                    //  usuario desaa intentar de nuevo registar una nueva
                     case "2":
-                        destino = "/WEB-INF/Banco/Vista/Deposito.jsp";
-                        request.getSession().setAttribute("servletMsjDeposito", null);
-                        request.getSession().setAttribute("servletMsjDeposito2", null);
+                        destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
+                        request.getSession().setAttribute("servletMsjRetiro", null);
+                        request.getSession().setAttribute("servletMsjRetiro2", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
                       // Opción 3 - El usuario cajero desea registar una nueva cuenta
                     case "3":
-                        destino = "/WEB-INF/Banco/Vista/Deposito.jsp";
-                        request.getSession().setAttribute("servletMsjDeposito", null);
-                        request.getSession().setAttribute("servletMsjDeposito2", null);
+                        destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
+                        request.getSession().setAttribute("servletMsjRetiro", null);
+                        request.getSession().setAttribute("servletMsjRetiro2", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -286,10 +293,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
         }
         
     }
-    
-    
-    
-    
     
     
 }

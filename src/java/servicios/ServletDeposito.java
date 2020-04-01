@@ -106,6 +106,7 @@ public class ServletDeposito extends HttpServlet {
                                 mov.setMonto(Double.parseDouble(montoDep));
                                 mov.setCuenta_num_cuenta(numeroCuentaSelect);
                                 mov.setDetalle(detalleDep);
+                                System.out.println("__1__>>>"+mov.getDetalle());
                                 // Se realiza el deposito en la base de datos
                                 fDeposito.realizarDepositoACuentaRefact(mov);
                                 
@@ -161,6 +162,7 @@ public class ServletDeposito extends HttpServlet {
                                 mov.setMonto(Double.parseDouble(montoDep));
                                 mov.setCuenta_num_cuenta(numeroCuentaSelect);
                                 mov.setDetalle(detalleDep);
+                                System.out.println("__2__>>>"+mov.getDetalle());
                                 
                                 // Se realiza el deposito en la base de datos
                                 fDeposito.realizarDepositoACuentaRefact(mov);
@@ -319,6 +321,7 @@ public class ServletDeposito extends HttpServlet {
             }// Falso si se recarga la pagina y identificacion ya no contiene valores
             // se segira respondiento y direccionando a la misma pagina que estaba
             else{
+                
                 dispatcher = request.getRequestDispatcher(destino);
                 dispatcher.forward(request, response);
             }
@@ -345,7 +348,6 @@ public class ServletDeposito extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -363,7 +365,6 @@ public class ServletDeposito extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

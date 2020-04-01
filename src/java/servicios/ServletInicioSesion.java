@@ -173,7 +173,6 @@ public class ServletInicioSesion extends HttpServlet {
                         request.getSession().setAttribute("servletMsjError", "3");
                         dispatcher = request.getRequestDispatcher(
                                 "/index.jsp");
-
                         dispatcher.forward(request, response);
                         break;
 

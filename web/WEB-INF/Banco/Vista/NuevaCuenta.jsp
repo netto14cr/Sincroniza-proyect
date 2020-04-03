@@ -139,9 +139,10 @@
                           %>
                           <p class="mensajeCorrecto">
                             
-                         ${descripción.geteMensaje()}<br>
-                         <strong>iIdentificación   : </strong> ${descripción.geteCedula()}<br>
-                         <strong>Número de cuenta  : </strong> ${descripción.geteNumeroCuenta()}<br>
+                              ${descripción.geteMensaje()}</p><br>
+                          <p class="mensajeCorrecto">
+                         <strong>Identificación   : &nbsp;&nbsp;&nbsp;</strong> ${descripción.geteCedula()}<br>
+                         <strong>Número de cuenta:</strong> ${descripción.geteNumeroCuenta()}<br>
                          <strong>Max. transferencia: </strong> ${descripción.geteMaxTransferencia()}<br>
                          <strong>Tipo de Moneda    : </strong> ${descripción.geteTipoMoneda()}<br>
                          <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">

@@ -6,16 +6,19 @@ public class BeanNuevaCuenta implements Serializable {
 
     public BeanNuevaCuenta() {
     }
+    
+    private boolean cuentaCreada;
 
     // Se define el constructor por defecto para pasar los parametros 
     // del usuario que no existe en el sistema y se procedera a craer cuenta
     public BeanNuevaCuenta(String eCedula, String eMaxTransferencia, String eTipoMoneda,
-            String eNumeroCuenta, String eMensaje) {
+            String eNumeroCuenta, String eMensaje, boolean cuentaCreada) {
         this.eCedula = eCedula;
         this.eMaxTransferencia = eMaxTransferencia;
         this.eTipoMoneda = eTipoMoneda;
         this.eNumeroCuenta = eNumeroCuenta;
         this.eMensaje = eMensaje;
+        this.cuentaCreada=cuentaCreada;
     }
 
     // Se define el constructor por defecto para pasar los parametros 
@@ -41,6 +44,15 @@ public class BeanNuevaCuenta implements Serializable {
         this.ePassword=ePassword;
     }
 
+    public boolean getCuentaCreada() {
+        return cuentaCreada;
+    }
+
+    public void setCuentaCreada(boolean cuentaCreada) {
+        this.cuentaCreada = cuentaCreada;
+    }
+
+    
     public String getePassword() {
         return ePassword;
     }
@@ -131,11 +143,15 @@ public class BeanNuevaCuenta implements Serializable {
 
     @Override
     public String toString() {
-        return "BeanNuevaCuenta{" + "eCedula=" + eCedula + ", eMaxTransferencia="
-                + eMaxTransferencia + ", eTipoMoneda=" + eTipoMoneda + ", eNumeroCuenta="
-                + eNumeroCuenta + ", eNombreUs=" + eNombreUs + ", eApellidosUs="
-                + eApellidosUs + ", eTipoUs=" + eTipoUs + '}';
+        return "BeanNuevaCuenta{" + "cuentaCreada=" + cuentaCreada + ", eCedula=" 
+                + eCedula + ", eMaxTransferencia=" + eMaxTransferencia + ", eTipoMoneda=" 
+                + eTipoMoneda + ", eNumeroCuenta=" + eNumeroCuenta + ", eNombreUs=" 
+                + eNombreUs + ", eApellidosUs=" + eApellidosUs + ", eTipoUs=" 
+                + eTipoUs + ", eMensaje=" + eMensaje + ", eTelefono=" + eTelefono 
+                + ", ePassword=" + ePassword + '}';
     }
+
+    
 
     public String getEtiqueta() {
         return eCedula;

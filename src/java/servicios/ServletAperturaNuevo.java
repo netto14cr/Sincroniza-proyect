@@ -18,7 +18,7 @@ import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 @WebServlet(
         name = "ServletAperturaNuevo",
-        urlPatterns = {"/ServletAperturaNuevo", "/crearCuentaPaso2"/*, "/regresarCuenta-Cajero"*/}
+        urlPatterns = {"/ServletAperturaNuevo", "/crearCuentaPaso2"}
 )
 public class ServletAperturaNuevo extends HttpServlet {
 
@@ -128,6 +128,7 @@ public class ServletAperturaNuevo extends HttpServlet {
             // Se verifica si la creacion de la cuenta se ha realizado correctamente
             // de ser verdadero es true y si ocurre un error es false
             
+            
             if(fAC.crearClienteNuevo(cl, tipoUsuario)){
                 fAC.crearCuentaClienteExistente(cedulaUs, tipoMoneda, tipoUsuario);
                 System.out.println("\n::::: LA NUEVA CUENTA"+cedulaUs+" HA SIDO CREADA "
@@ -160,7 +161,7 @@ public class ServletAperturaNuevo extends HttpServlet {
                         dispatcher.forward(request, response);
                         
             }else{
-                        dispatcher = request.getRequestDispatcher(destino);
+                       dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                 
             }

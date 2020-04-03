@@ -39,15 +39,17 @@ public class ServletAperturaCuenta extends HttpServlet {
 
         // Declaracion de vairables empleadas para asignar el manejo de la información
         // obtenidos de los datos recibidos de NuevaCeunta.jsp
-        String tipoMoneda = "";
-        String numeroCuenta = "";
-        String maxTrans = "";
-        String cedula = "";
-        String mensaje = "";
+        String tipoMoneda;tipoMoneda = "";
+        String numeroCuenta;numeroCuenta = "";
+        String maxTrans;maxTrans = "";
+        String cedula;cedula = "";
+        String mensaje;mensaje = "";
         int tipoCuenta;
+        boolean cuentaCreada;
+        cuentaCreada=false;
         
         tipoCuenta = 0;
-        verificaOpcionesFormularioRegreso( dispatcher, request,response, destino);
+        verificaOpcionesFormularioRegreso( dispatcher, request,response, destino, bNC);
         
 
         try {
@@ -70,29 +72,48 @@ public class ServletAperturaCuenta extends HttpServlet {
         try {
             // Se verifica si la cedula brindada por el usuario existe y se procede
             // ha mandar el mensaje y creacion de cuenta en el sistema
-            if (fL.verificarExistenciaCedulaCliente(checkId(cedula))) {
+            if (fL.verificarExistenciaCedulaCliente(checkId(cedula)) && !bNC.getCuentaCreada()) {
+                
+                // Se obtiene el valor del numero de cuenta asignado por el sistema
+                
+                bNC.seteNumeroCuenta(fAC.generarNumeroCuentaNuevo()+"");
+                bNC.seteCedula(cedula);
+                
+                
                 System.out.println("\n::::: NUEVA CUENTA HA SIDO ASOCIADA A: " + cedula);
                 fAC.crearCuentaClienteExistente(checkId(cedula), tipoMoneda, tipoCuenta);
-                // Se responde al servidor que la cuenta ha sido creada con exito!
-                request.getSession().setAttribute("servletMsjNuevaCuenta", "1");
+                
 
+                // Se cambia el estado de cuenta creada a verdadero
+                cuentaCreada=true;
+                bNC.setCuentaCreada(cuentaCreada);
                 // Se realiza la conversion de etiqueta para mostrar al usuario
-                maxTrans = bNC.maxTranferenciaEtiqueta(maxTrans);
+                
+                bNC.seteMaxTransferencia(bNC.maxTranferenciaEtiqueta(maxTrans));
+                bNC.seteTipoMoneda(tipoMoneda);
+                
 
                 // Se define un menaje de que la nueva cuenta fue creada con exito
                 bNC.seteMensaje("NUEVA CUENTA CREADA EXITOSAMENTE!!");
-                mensaje = bNC.geteMensaje();
 
                 // Se pasa los valores de la nueva cuenta a la clae bean para
                 // poder manejar los datos mas facilmente en nuevaCuenta.jsp
-                sesionActual.setAttribute("descripción", new BeanNuevaCuenta(cedula,
-                        maxTrans, tipoMoneda, numeroCuenta, mensaje));
+                sesionActual.setAttribute("descripción", new BeanNuevaCuenta(bNC.geteCedula(),
+                        bNC.geteMaxTransferencia(), bNC.geteTipoMoneda(), bNC.geteNumeroCuenta(),
+                        bNC.geteMensaje(), bNC.getCuentaCreada()));
+                // Se responde al servidor que la cuenta ha sido creada con exito!
+                request.getSession().setAttribute("servletMsjNuevaCuenta", "1");
 
+            }else{
+                
+                sesionActual.setAttribute("descripción", new BeanNuevaCuenta(bNC.geteCedula(),
+                        bNC.geteMaxTransferencia(), bNC.geteTipoMoneda(), bNC.geteNumeroCuenta(),
+                        bNC.geteMensaje(), bNC.getCuentaCreada()));
+                request.getSession().setAttribute("servletMsjNuevaCuenta", "1");
+                
+            }
                 dispatcher = request.getRequestDispatcher(destino);
                 dispatcher.forward(request, response);
-
-            }
-
             // Se define un catch para capturar la excepcion si no existiera la cedula o no se 
             // encontraran cuentas al usuario.
         } catch (Exception ex) {
@@ -110,7 +131,7 @@ public class ServletAperturaCuenta extends HttpServlet {
                     bNC.seteMensaje("ERROR NO EXISTE EL CLIENTE EN EL SISTEMA");
                     mensaje = bNC.geteMensaje();
                     sesionActual.setAttribute("descripción", new BeanNuevaCuenta(cedula,
-                            maxTrans, tipoMoneda, numeroCuenta, mensaje));
+                            maxTrans, tipoMoneda, numeroCuenta, mensaje, false));
                     dispatcher = request.getRequestDispatcher(destino);
                     dispatcher.forward(request, response);
                     break;
@@ -152,7 +173,7 @@ public class ServletAperturaCuenta extends HttpServlet {
 
     
     protected void verificaOpcionesFormularioRegreso(RequestDispatcher dispatcher,
-            HttpServletRequest request, HttpServletResponse response, String destino) 
+            HttpServletRequest request, HttpServletResponse response, String destino, BeanNuevaCuenta bNC ) 
             throws ServletException, IOException{
         try {
             String botonFormulario = "";
@@ -182,6 +203,7 @@ public class ServletAperturaCuenta extends HttpServlet {
                     case "3":
                         destino = "/WEB-INF/Banco/Vista/NuevaCuenta.jsp";
                         request.getSession().setAttribute("servletMsjNuevaCuenta", null);
+                        bNC.setCuentaCreada(false);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;

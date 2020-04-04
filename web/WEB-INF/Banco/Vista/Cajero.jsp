@@ -33,15 +33,23 @@
                 %>
 
                 <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
-                    <button type="submit" id="opcionMenu" name="opcionMenu" value="1" class="botonMenuOpciones"
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="1" class="botonMenuOpciones"
                             >Apertura cuentas</button>&nbsp;
-                    <button type="submit" id="opcionMenu" name="opcionMenu" value="2" class="botonMenuOpciones"
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="2" class="botonMenuOpciones"
                             >Depositos</button>&nbsp;
-                    <button type="submit" id="opcionMenu" name="opcionMenu" value="3" class="botonMenuOpciones"
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="3" class="botonMenuOpciones"
                             >Retiros</button>&nbsp;
-                    <button type="submit" id="opcionMenu" name="opcionMenu" value="4" class="botonMenuOpciones"
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="11" class="botonMenuOpciones"
+                            >Transf. en caja </button>&nbsp;
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="4" class="botonMenuOpciones"
                             >Acreditación interes</button>&nbsp;
-                    <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonMenuOpciones"
+                    <button type="submit" id="opcionMenu" name="opcionMenu" 
+                            value="5" class="botonMenuOpciones"
                             >Cerrar Sesión</button>&nbsp;
                 </form>
 

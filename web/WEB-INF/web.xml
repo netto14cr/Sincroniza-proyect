@@ -20,6 +20,10 @@
         <servlet-name>InicioSesion</servlet-name>
         <servlet-class>servicios.ServletInicioSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletTransferenciaCaja</servlet-name>
+        <servlet-class>servicios.ServletTransferenciaCaja</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarCuenta</servlet-name>
         <url-pattern>/ConsultarCuenta</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTransferenciaCaja</servlet-name>
+        <url-pattern>/ServletTransferenciaCaja</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

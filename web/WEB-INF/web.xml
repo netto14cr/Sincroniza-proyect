@@ -20,6 +20,14 @@
         <servlet-name>InicioSesion</servlet-name>
         <servlet-class>servicios.ServletInicioSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletMovimientosCuentas</servlet-name>
+        <servlet-class>servicios.ServletMovimientosCuentas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>datosMovimientoCuenta</servlet-name>
+        <servlet-class>servicios.datosMovimientoCuenta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarCuenta</servlet-name>
         <url-pattern>/ConsultarCuenta</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMovimientosCuentas</servlet-name>
+        <url-pattern>/ServletMovimientosCuentas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>datosMovimientoCuenta</servlet-name>
+        <url-pattern>/datosMovimientoCuenta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

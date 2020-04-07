@@ -27,12 +27,18 @@
 
 
                 <div id="contents">
+                    
                     <%
                         String msgLogin = "";
                         msgLogin = (String) session.getAttribute("servletLogin");
+                        beans.BeanLogin bl = (beans.BeanLogin) session.getAttribute("eLogin");
+                        session.setAttribute("beanLogin", bl);
+                        session.setAttribute("id",bl.geteIdentificacion());
                         if (msgLogin != null && msgLogin.equals("1")) {
                     %>
-
+                    <p>Bean : id = <%= bl.geteIdentificacion()%></p>
+                    <p>Id: <jsp:getProperty name="eLogin" property="eIdentificacion"/></p>
+                    <p>Contraseña: <jsp:getProperty name="eLogin" property="ePasword"/></p>
                     <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
                                 >Mis cuentas</button>&nbsp;
@@ -55,7 +61,7 @@
                                     Se le mostrara al usuario una pantalla con un pequeño formulario
                                     para que cambie de sesion-->
 
-                    
+
                     <p class="mensajeErrorDep">
                         ${eLogin.geteMensaje()}
                     </p>

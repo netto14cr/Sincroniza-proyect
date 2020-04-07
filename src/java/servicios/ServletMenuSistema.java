@@ -1,6 +1,10 @@
 package servicios;
 
+import beans.BeanLogin;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
@@ -10,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.cuenta;
+import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
@@ -84,8 +90,12 @@ public class ServletMenuSistema extends HttpServlet {
                     // Opción 6 - El usuario cliente desea consultar sus cuentas
                     case "6":
 //                        destino = "/WEB-INF/Banco/Vista/MisCuentas.jsp";
-                        destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
+                        destino = "/WEB-INF/Banco/Vista/CuentasCliente.jsp";
                         request.getSession().setAttribute("servletMsjMenu", null);
+                        funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
+                        String cedu=(String) request.getSession().getAttribute("id");
+                        System.out.println("CEDULA : " + cedu);
+                             request.getSession().setAttribute("listaCuentas",(List<cuenta>)fc.listarCuentasCliente(cedu));
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -129,6 +139,9 @@ public class ServletMenuSistema extends HttpServlet {
             }
             }
         } catch (NumberFormatException ex) {
+            System.out.println("Error : "+ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Error : "+ex.getMessage());
         }
         
         

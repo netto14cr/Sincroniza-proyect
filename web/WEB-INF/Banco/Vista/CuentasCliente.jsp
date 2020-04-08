@@ -104,7 +104,10 @@ function validateFormRANGO() {
     <input type="hidden" id="Maximo" name="Maximo" value="<%= lis.size()%>"/>
     <button type="submit">Enviar</button>
 </form>
- 
+    <form  action="ServletMovimientosCuentas"> 
+        <input type="hidden" name="volverOpciones" value="1"/>
+        <button type="submit">Volver Menu</button>
+ </form>
 <h2>Datos para los requerimientos</h2>
 <p>Numero de cuenta : <%= numCu%></p>
 

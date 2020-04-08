@@ -7,20 +7,19 @@ package servicios;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.movimiento;
-import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
+import model.favorita;
+import modelo.dao.funcionesFrontEnd.funcionesVinculacionCuentas;
 
 /**
  *
  * @author gabri
  */
-public class ServletMovimientosCuentas extends HttpServlet {
+public class ServletVerificacionCuenta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,41 +34,58 @@ public class ServletMovimientosCuentas extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String destino ="";
-            String volver=request.getParameter("volver");
-            String volverOpciones=request.getParameter("volverOpciones");
-            if(volver != null && volver.equals("1"))
-            {
-                destino= "/WEB-INF/Banco/Vista/CuentasCliente.jsp";
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
-            dispatcher.forward(request, response);
-            }
-            if(volverOpciones!=null && volverOpciones.equals("1"))
+            /* TODO output your page here. You may use following sample code. */
+
+            String destino="";
+            String RealizarVinculacion=request.getParameter("RealizarVinculación");
+            String volverMenu=request.getParameter("volverMenu");
+            String volverEscogerCuenta=request.getParameter("volverEscogerCuenta");
+            if(volverMenu!=null && volverMenu.equals("1"))
             {
                 destino= "/WEB-INF/Banco/Vista/Cliente.jsp";
+                RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+            dispatcher.forward(request, response);
+            }else if(volverEscogerCuenta!=null && volverEscogerCuenta.equals("1"))
+            {
+                destino= "/WEB-INF/Banco/Vista/SolicitarCuentaVinculacion.jsp";
+            //request.getSession().setAttribute("servletMsjMenu", null);
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+            dispatcher.forward(request, response);
+            }else if(RealizarVinculacion!=null &&  RealizarVinculacion.equals("1"))
+            {// se realiza la vinculacion
+                beans.BeanLogin bl = (beans.BeanLogin) request.getSession().getAttribute("eLogin");
+                funcionesVinculacionCuentas fv=new funcionesVinculacionCuentas();
+                String numCuenta=request.getParameter("numeroCuenta");
+                int num=Integer.parseInt(numCuenta);
+                if(fv.realizarVinculacion(new favorita(bl.geteIdentificacion(),num)))
+                {
+                    request.setAttribute("Hecho",true);
+                }else
+                {
+                    request.setAttribute("Hecho",false);
+                }
+                destino= "/WEB-INF/Banco/Vista/MostrarDatosVinculacion.jsp";
+            //request.getSession().setAttribute("servletMsjMenu", null);
+           request.setAttribute("numeroCuenta",request.getParameter("numeroCuenta"));
+            RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+            dispatcher.forward(request, response);
+            }else if(RealizarVinculacion!=null &&  RealizarVinculacion.equals("2"))
+            {
+                destino= "/WEB-INF/Banco/Vista/SolicitarCuentaVinculacion.jsp";
+            //request.getSession().setAttribute("servletMsjMenu", null);
             RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
             dispatcher.forward(request, response);
             }
             else
             {
-            destino= "/WEB-INF/Banco/Vista/MovimientosCuenta.jsp";
-            String fech1="",fech2="",numCuenta="";
-            numCuenta=request.getParameter("numeroCuenta");
-            fech1=request.getParameter("fech1");
-            fech2=request.getParameter("fech2");
-            
-            if(fech1.equals("")==false || fech2.equals("")==false)
-            {//entonces ordenamos  la lista diferente
-                funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
-                
-                List<movimiento> lis=(List<movimiento>)fc.listarMovimientosCuentaPorFecha(Integer.parseInt(numCuenta), fech1, fech2);
-                
-                request.getSession().setAttribute("listaMovimientos", lis);
-            }
-            
+                destino= "/WEB-INF/Banco/Vista/MostrarDatosVinculacion.jsp";
+            //request.getSession().setAttribute("servletMsjMenu", null);
             RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
             dispatcher.forward(request, response);
             }
+            }catch(Exception ex)
+        {
+            System.out.println("Error : "+ex.getMessage());
         }
     }
 

@@ -93,6 +93,7 @@ public class ServletMenuSistema extends HttpServlet {
                         destino = "/WEB-INF/Banco/Vista/CuentasCliente.jsp";
                         request.getSession().setAttribute("servletMsjMenu", null);
                         funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
+                        
                         String cedu=(String) request.getSession().getAttribute("id");
                         System.out.println("CEDULA : " + cedu);
                              request.getSession().setAttribute("listaCuentas",(List<cuenta>)fc.listarCuentasCliente(cedu));
@@ -130,8 +131,8 @@ public class ServletMenuSistema extends HttpServlet {
                     // Opción 10 - El usuario cliente desea afiliar una cuenta a favoritos
                     case "10":
 //                        destino = "/WEB-INF/Banco/Vista/AfliarFav.jsp";
-                        destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
-                        request.getSession().setAttribute("servletMsjMenu", null);
+                        destino = "/WEB-INF/Banco/Vista/SolicitarCuentaVinculacion.jsp";
+                        //request.getSession().setAttribute("servletMsjMenu", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;

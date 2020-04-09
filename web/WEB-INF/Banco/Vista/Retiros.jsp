@@ -58,13 +58,6 @@
                 
                 
                 
-                cuenta c = (cuenta) request.getAttribute("busquedaCuenta-cajero");
-                String tipoBusqueda = request.getParameter("tipoBusquedaCuenta");
-                String numeroCuenta = request.getParameter("nCuentaDeposito");
-                String montoAux = request.getParameter("montoDeposito");
-                String montoAux2 = request.getParameter("detalleMontoDep");
-                
-                
                 if(msgRetiro==null || msgRetiro.isEmpty()){ 
                 System.out.println("\n\n::::::FORMULARIO DE BUSQUEDA # CUENTA :::::\n\n");
                 

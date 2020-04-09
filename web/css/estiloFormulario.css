@@ -88,10 +88,19 @@ body {
 }
 
 #wrapper h2 {
-    color: red;
-    font-size: 14pt;
+    color: #00cc99;
+    font-size: 16pt;
     margin: 4px;
     margin-left: 16px;
+    text-align: center;
+}
+
+#wrapper h3 {
+    color: #ff6600;
+    font-size: 16pt;
+    margin: 4px;
+    margin-left: 16px;
+    text-align: center;
 }
 
 #wrapper #contents {
@@ -116,17 +125,33 @@ body {
     position: relative;
     height: 80%;
 }
-#wrapper #contents .e-BuscaTransferenciaCaja {
+#wrapper #contents .e-BusCajaOrig {
     border: 2px solid white;
     border-radius: 16px; 
     margin: auto;
-    margin-left: 30px;
-    float: left;
+    margin-left: 5px;
+    left: 5%;
+    top: 200px;
     padding: 8px 16px 16px 30px;
     min-width: 30%;
     width: 40%;
-    position: relative;
-    height: 80%;
+    position: fixed;
+    height: 300px;
+}
+#wrapper #contents .e-BusqCajaDest {
+    border: 2px solid white;
+    border-radius: 16px; 
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 5px;
+    float: right;
+    right: 5%;
+    top: 180px;
+    padding: 8px 16px 16px 30px;
+    min-width: 30%;
+    width: 40%;
+    position: fixed;
+    height: 300px;
 }
 
 
@@ -174,6 +199,46 @@ body {
     font-size: 20px;
     left: 43%;
 }
+
+
+#wrapper #contents .botonTransacion{
+    background-color: #003366;
+    color: #ffffff;
+    position: fixed;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid ghostwhite;
+    font-size: 20px;
+    top: 60%;
+    left: 43%;
+}
+#wrapper #contents .botonCanOrigen{
+    background-color: #990000;
+    color: #ffffff;
+    position: fixed;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid ghostwhite;
+    font-size: 20px;
+    bottom: 10%;
+    left: 5%;
+}
+#wrapper #contents .botonMenuT{
+    background-color: #003366;
+    color: #ffffff;
+    position: fixed;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid ghostwhite;
+    font-size: 20px;
+    bottom: 2%;
+    left: 5%;
+}
+
+
 
 
 
@@ -508,4 +573,31 @@ body {
 }
 
 
+
+#wrapper #contents .ErrorBusqCajaOrig {
+    color: #fff;
+    position: relative;
+    left: 7%;
+    float: left;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: auto;
+    margin-bottom: 30px;
+    border: 2px #ffffff ridge;
+    background-color: #990000;
+    width: 33%;
+}
+#wrapper #contents .ErrorBusqCajaDest {
+    color: #fff;
+    position: relative;
+    right: 7%;
+    float: right;
+    text-align: center;
+    padding: 16px 16px 16px 16px;
+    margin: auto;
+    margin-bottom: 30px;
+    border: 2px #ffffff ridge;
+    background-color: #990000;
+    width: 33%;
+}
 

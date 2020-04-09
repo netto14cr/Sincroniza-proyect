@@ -83,8 +83,9 @@ public class ServletMenuSistema extends HttpServlet {
                         
                     // Opción 11 - El usuario cajero reliza un transferencia en cajas
                     case "11":
-                        destino = "/WEB-INF/Banco/Vista/TransferenciaCaja.jsp";
-                        //request.getSession().setAttribute("servletMsjTransCaja", null);
+                        destino = "/WEB-INF/Banco/Vista/BusqCuentaTrans.jsp";
+                        request.getSession().setAttribute("servletMsjTCaja", null);
+                        request.getSession().setAttribute("servletMsjTCaja2", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;    

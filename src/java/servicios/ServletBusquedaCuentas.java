@@ -32,7 +32,7 @@ public class ServletBusquedaCuentas extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+        System.out.println("\n:::::::  SERVLET BUSQUEDA DE CUENTAS DEPOSTIO     ::::::::");
         
            // Se define de que direccion viene el usaurio
         String destino="";
@@ -58,7 +58,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
         
         if (id != null && !id.isEmpty()) {
             
-            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
             
             try {
                 // Verificamos primero que la cédula del usuario exista en el 
@@ -70,11 +69,9 @@ public class ServletBusquedaCuentas extends HttpServlet {
                 // Si el tipo de busqueda seleccionado es por numero de cédula
                 if (tipoBusquedaCuenta.equals("nCedula")) {
  
-                    
                     // Se verifica si la cedula ingresada existe en el sistema
                     // si se cuemple entra y manda la respuesta de que puede continuar
                     // con el deposito a esta cuenta
-                    
                     
                     if (servicioLogin.verificarExistenciaCedulaCliente(checkId(id))) {
                         // Si usuario existe se procede a buscarla cuentas asociadas
@@ -100,16 +97,12 @@ public class ServletBusquedaCuentas extends HttpServlet {
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                     }
-                    
                     //----------- BUSQUEDA POR TIPO NUEMERO DE CUENTA -------------------------
                     
 //                Falso si el tipo de busqueda seleccionado es por numero de cuenta
                 } else if (tipoBusquedaCuenta.equals("nCuenta")) {
                     int numeroCuenta=0;
-                    
                     numeroCuenta = Integer.parseInt(id);
-                    
-                    
 //                    Se verifica SI que el numero de cuenta a la que se quiere buscar
 //                    para realizar el deposito exista en el sistema con un usuario
 //                    registrado 
@@ -148,7 +141,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
                     // positiva por parte de la busqueda en la base de datos y que
                     // está es equivocada y no existe.
                     case "2":
-                        System.out.println("\n<--- NO EXISTE CLIENTE EN EL SISTEMA --->\n");
                       
                         request.getSession().setAttribute("servletMsjDeposito", "3");
                         dispatcher = request.getRequestDispatcher(destino);
@@ -160,9 +152,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
                     // positiva por parte de la busqueda en la base de datos y que
                     // está es equivocada y no existe.
                     case "4":
-                        System.out.println("\n <--- NO EXISTE EL NUMERO DE CUENTA DIGITADO ---> ");
-                        
-                        
                         request.getSession().setAttribute("servletMsjDeposito", "4");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
@@ -170,13 +159,11 @@ public class ServletBusquedaCuentas extends HttpServlet {
                 }
             }
         }else{
-            System.out.println("\n\n:::::::::::::F A L S O ::::::::\n\n");
             request.getSession().setAttribute("servletMsjDeposito", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
         }
         
-
     }
 
 //    Validacion para el ingreso de tipo de identificación
@@ -245,7 +232,6 @@ public class ServletBusquedaCuentas extends HttpServlet {
             throws ServletException, IOException{
         try {
             
-            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
             String botonFormulario = "";
             botonFormulario = request.getParameter("regresoOpcion");
             if (botonFormulario != null && !botonFormulario.isEmpty()) {

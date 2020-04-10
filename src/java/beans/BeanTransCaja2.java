@@ -80,6 +80,15 @@ public class BeanTransCaja2 implements Serializable {
         this.eExitenciaCuenta=eExitenciaCuenta;
         this.cuentaSeleccionada=cuentaSeleccionada;
     }
+      public BeanTransCaja2(String eCedula,String eNumCuenta,String eTipoBusqueda, 
+              boolean eExitenciaCuenta, boolean cuentaSeleccionada, String eMensaje) {
+        this.eCedula = eCedula;
+        this.eNumCuenta = eNumCuenta;
+        this.eTipoBusqueda=eTipoBusqueda;
+        this.eExitenciaCuenta=eExitenciaCuenta;
+        this.cuentaSeleccionada=cuentaSeleccionada;
+        this.eMensaje = eMensaje;
+    }
      
      
      

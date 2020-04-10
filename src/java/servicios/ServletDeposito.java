@@ -45,13 +45,11 @@ public class ServletDeposito extends HttpServlet {
 
      
 
-            System.out.println("\n\n<<<<<<<<<<<<<<< SERVELET DEPOSITO >>>>>\n\n");
-            String opcionDep;
+            System.out.println("\n:::::::  SERVLET DEPOSTIO   ::::::::");
             String detalleDep;
             String tipoBus;
             tipoBus = "";
             detalleDep = "";
-            opcionDep = "";
             int numeroCuentaSelect;
             numeroCuentaSelect = 0;
             String montoDep;montoDep = "";
@@ -61,17 +59,12 @@ public class ServletDeposito extends HttpServlet {
             boolean existeCuentaAsociada;
             existeCuentaAsociada=false;
             
-            
-            
             tipoBus = bDep.geteTipoBusqueda();
             System.out.println("TIPO B:::"+tipoBus);
             if (tipoBus != null) {
                 
-                System.out.println("<<<<SALTO TIPO BUSQUEDA>>>>>");
-                
                 // Si la forma de deposito es por numero de cedula
                 if (tipoBus.equals("nCedula")) {
-                    System.out.println("\n\n:::::::DEPOSITO POR NUMERO DE CEDULA::::::::::::");
                     montoDep = request.getParameter("montoDeposito");
                     detalleDep = request.getParameter("detalleDep");
                     detNumIden=request.getParameter("detalleNumId");
@@ -83,7 +76,6 @@ public class ServletDeposito extends HttpServlet {
                         bDep.seteNumCuenta(numeroCuentaSelect + "");
                         bDep.seteTipoBusqueda(tipoBus);
                         bDep.seteDetalleDeposito(detalleDep);
-                        System.out.println("\n\n<<<<<<<<<<<<<<< CEDULA  " + bDep.geteNumCuenta() + ">>>>>>>>>\n\n");
                         
                         // Verifica si el numero de cuenta ingresado por cedula y el numero de
                         // identificación son iguales entonces el es el dueño de la cuenta
@@ -96,13 +88,13 @@ public class ServletDeposito extends HttpServlet {
                                 // del deposito realizado para mostrarla al usuario cajero
                                 sesionActual.setAttribute("descrip",
                                         new BeanDeposito(bDep.geteCedula(),detNumIden,bDep.geteNumCuenta(),
-                                                "",montoDep,bDep.geteDetalleDeposito(), bDep.geteMensaje(),bDep.geteTipoBusqueda()));
+                                                "",montoDep,bDep.geteDetalleDeposito(), bDep.geteMensaje(),
+                                                bDep.geteTipoBusqueda()));
                                 
                                 // Se pasan los datos obtenidos  del deposito a movimientos
                                 mov.setMonto(Double.parseDouble(montoDep));
                                 mov.setCuenta_num_cuenta(numeroCuentaSelect);
                                 mov.setDetalle(detalleDep);
-                                System.out.println("__1__>>>"+mov.getDetalle());
                                 // Se realiza el deposito en la base de datos
                                 fDeposito.realizarDepositoACuentaRefact(mov);
                                 
@@ -110,8 +102,6 @@ public class ServletDeposito extends HttpServlet {
                                 // deposito 2 indicando el deposito ha sido efectuadp correctamente
                                 // y que tipo de pantalla debe mostrar al usuario cajero
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY");
-                                
-                                System.out.println("\n\n|||||   DEPOSITO POR CEDULA && DUEÑO    |||||||||\n\n");
                             } catch (Exception ex) {
                                 Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -127,13 +117,13 @@ public class ServletDeposito extends HttpServlet {
                                   + "de detalle de depositante!");
                           sesionActual.setAttribute("descrip", 
                             new BeanDeposito(bDep.geteCedula(),detNumIden,bDep.geteNumCuenta(),
-                                 "",montoDep,bDep.geteDetalleDeposito(),bDep.geteMensaje(),bDep.geteTipoBusqueda()));
+                                 "",montoDep,bDep.geteDetalleDeposito(),bDep.geteMensaje(),
+                                    bDep.geteTipoBusqueda()));
 
                           // El servlet avisa a la pagina Depostio.jsp que el usuario no
                           // no es dueño de la cuenta para que se le muestre un nuevo campo 
                           // de detalle de cuenta que debe llenar
                           request.getSession().setAttribute("servletMsjDeposito2", "2");
-                            System.out.println("\n\n::::::: ERROR NO MISMO DUEÑO:::::::::\n\n");
                           
                         }
                         // Si detalle de nombre es diferenta a vacio o nulo 
@@ -151,14 +141,12 @@ public class ServletDeposito extends HttpServlet {
                                                 bDep.geteNombreUs(),montoDep,detalleDep, bDep.geteMensaje(),
                                                 ""));
                                 
-                                
                                 //--- Aqui se setea el detalle de nombre depostiante ----
                                 
                                 // Se pasan los datos obtenidos  del deposito a movimientos
                                 mov.setMonto(Double.parseDouble(montoDep));
                                 mov.setCuenta_num_cuenta(numeroCuentaSelect);
                                 mov.setDetalle(detalleDep);
-                                System.out.println("__2__>>>"+mov.getDetalle());
                                 
                                 // Se realiza el deposito en la base de datos
                                 fDeposito.realizarDepositoACuentaRefact(mov);
@@ -167,7 +155,6 @@ public class ServletDeposito extends HttpServlet {
                                 // deposito 2 indicando el deposito ha sido efectuadp correctamente
                                 // y que tipo de pantalla debe mostrar al usuario cajero
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY2");
-                                System.out.println("\n\n|||||   DEPOSITO POR CEDULA && PERSONA DIFERENTE    |||||||||\n\n");
                             } catch (Exception ex) {
                                 Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -176,8 +163,6 @@ public class ServletDeposito extends HttpServlet {
                 }
                 // Falso si la forma de deposito es por numero de cuenta
                  else if (tipoBus.equals("nCuenta")) {
-                     
-                     System.out.println("\n\n:::::::DEPOSITO POR NUMERO CUENTA::::::::::::");
                      
                     detNombre=request.getParameter("detalleNombreDep");
                     montoDep=request.getParameter("detalleMontoDep");
@@ -190,11 +175,9 @@ public class ServletDeposito extends HttpServlet {
                             // Verifica si la cedula indicada del depositante y el numero
                             // de cuenta indicado le pertenecen
                             
-                            System.out.println(">>> IF NUM IDEN ");
                             
                             if(fLogin.verificarPosibleCedulaCliente(detNumIden)){
                                 
-                                System.out.println("VERIFICA EXIS CLIENT");
                             // Se declara una lista de tipo de informacion de cuenta
                             List<cuenta> listaCuentas;
                         
@@ -211,7 +194,6 @@ public class ServletDeposito extends HttpServlet {
                                     // y existenciaCuentaAsociada pasa a verdadero
                                     if(listaCuentas.get(i).getNum_cuenta()
                                             ==Integer.parseInt(bDep.geteNumCuenta())){
-                                        System.out.println("PISITIVO++++++");
                                         existeCuentaAsociada=true;
                                     }
                                 }
@@ -239,7 +221,6 @@ public class ServletDeposito extends HttpServlet {
                                 fDeposito.realizarDepositoACuentaRefact(mov);
                                 // Se actualiza el mensaje al servidor como deposito listo
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY3");
-                                System.out.println("\n\n-----DEPOSITO CORRECTO DUEÑO CUENTA--------\n\n");
                                 
                             }// Falso si no existe una cuenta asociada y el detalle de nombre
                             // es vacio o nulo, se le tiene que pedir a usuario que ingrese la
@@ -262,9 +243,7 @@ public class ServletDeposito extends HttpServlet {
                                 // Se actualiza el mensaje al servidor que el usario no es el dueño de
                                 // la cuenta  pasando un numero 3
                                 request.getSession().setAttribute("servletMsjDeposito2", "3");
-                                
-                                System.out.println("\n\n|||||  DIFERENTE DUEÑO NUM CUENTA 33   |||||||||\n\n");
-                                
+                                 
                             }// Falso si no es dueño de la cuenta y ya ingreso su nombre en 
                             // valor de detalle nombre entonces se procede a actualizar los 
                             // datos y a realizar el deposito en la cuenta
@@ -293,14 +272,10 @@ public class ServletDeposito extends HttpServlet {
                                 // la transaccion de deposito ha sido efectuada correctamente
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY4");
                                 
-                                System.out.println("\n\n||||| DEPOSITO REALIZADO  NUM CUENTA && "
-                                        + "PERSONA DIFERENTE    |||||||||\n\n");
-                                
                             }
                         } catch (Exception ex) {
                             switch (ex.getMessage()) {
                 case "6":
-                    System.out.println("\n<--- NO SE PUDO REALIZAR EL DE DEPOSITO --->\n");
                     bDep.seteMensaje("NO SE PUDO REALIZAR EL DEPOSITVO\nERROR:" + ex.getMessage() + "\n");
                     sesionActual.setAttribute("descrip", new BeanDeposito(bDep.geteMensaje()));
 
@@ -322,7 +297,6 @@ public class ServletDeposito extends HttpServlet {
                 dispatcher.forward(request, response);
             }
     }
-    
     private final funcionesDeposito fDeposito = new funcionesDeposito();
     private final funcionesLogueo fLogin = new funcionesLogueo();
     private final movimiento mov = new movimiento();

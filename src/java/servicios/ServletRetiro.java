@@ -31,6 +31,9 @@ public class ServletRetiro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
              {
 
+                 
+        System.out.println("\n:::::::  SERVLET RETIRO CAJERO    ::::::::");
+                 
         // Se define de que direccion viene el usaurio
         String destino = "";
         destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
@@ -42,7 +45,6 @@ public class ServletRetiro extends HttpServlet {
         BeanRetiro bRet = (BeanRetiro) sesionActual.getAttribute("descripRetiro");
         request.getSession().getAttribute("bRet");
 
-        System.out.println("\n\n<<<<<<<<<<<<<<< SERVELET RETIRO CAJERO >>>>>\n\n");
         String opcionDep;
         String detalleDep;
         String tipoBus;
@@ -66,20 +68,14 @@ public class ServletRetiro extends HttpServlet {
 
         try {
             tipoBus = bRet.geteTipoBusqueda();
-            System.out.println("TIPO B:::" + tipoBus);
             if (tipoBus != null) {
-
-                System.out.println("<<<<SALTO TIPO BUSQUEDA>>>>>");
 
                 // Si la forma de deposito es por numero de cedula
                 if (tipoBus.equals("nCedula")) {
-                    System.out.println("\n::::::: RETIRO --- X --- CEDULA  ::::::::::::");
                     detNumIden = request.getParameter("detalleNumId");
-                    System.out.println("\n NUM CUENTA:::" + bRet.geteNumCuenta());
                     // Verifica que el campo de identificacion de usuario no venga vacio 
                     if (detNumIden != null) {
                         
-                        System.out.println("\nRETIRO-- ID ! = NULL");
                         // Verifica si el numero de cuenta ingresado por cedula y el numero de
                         // identificación son iguales y que no haya escogido ninguna cuenta para
                         // realizar el deposito, entonces se serciora que se la primera vez
@@ -93,7 +89,8 @@ public class ServletRetiro extends HttpServlet {
                             existeCuentaAsociada = true;
                             bRet.seteExitenciaCuenta(existeCuentaAsociada);
 
-                            numeroCuentaSelect = Integer.parseInt(request.getParameter("seletCuenta"));
+                            numeroCuentaSelect = Integer.parseInt(
+                                    request.getParameter("seletCuenta"));
                             bRet.seteNumCuenta(numeroCuentaSelect + "");
                             bRet.seteTipoBusqueda(tipoBus);
                             bRet.seteCedula(detNumIden);
@@ -107,13 +104,12 @@ public class ServletRetiro extends HttpServlet {
                             // Servlet responde a la pagina que el usuario es dueño de la 
                             // cuenta y que se encuenta listo para pasar al fromulario 3
                             // de deposito.
-                            request.getSession().setAttribute("servletMsjRetiro2", "INGRESA_MONTO_RETIRO");
-                            System.out.println("\n||||| RETIRO CEDULA && DUEÑO SELECT CUENTA!!    |||||||||");
-
-                        }// Falso si existencia de cuenta es verdadera entonces usario puede proceder a
-                        // verificar si puede realizar el retiro
+                            request.getSession().setAttribute("servletMsjRetiro2", 
+                                    "INGRESA_MONTO_RETIRO");
+                            
+                        }// Falso si existencia de cuenta es verdadera entonces usario 
+//                        puede proceder a verificar si puede realizar el retiro
                         else if (bRet.getExitenciaCuenta() && bRet.geteNumCuenta() != null) {
-                            System.out.println("REALIZAR RETIRO VERIFICA 3 FORM");
                             montoDep = request.getParameter("montoDeposito");
                             detalleDep = request.getParameter("detalleDep");
 
@@ -133,10 +129,10 @@ public class ServletRetiro extends HttpServlet {
                                                  bRet.geteMontoDeposito(), bRet.geteDetalleDeposito(), bRet.geteMensaje()));
                                 request.getSession().setAttribute("servletMsjRetiro2", "RETIRO");
                                  
-                                System.out.println("QUE:::"+montoDep);
                             }// Falso si el usuario ingreso un valor pero es menor o igual a 0
                                 else if(montoDep != null && Integer.parseInt(montoDep) < 0){
-                                    bRet.seteMensaje("El monto no puede ser negativo , ni menor o igual a 0!");
+                                    bRet.seteMensaje("El monto no puede ser negativo , "
+                                            + "ni menor o igual a 0!");
                                     sesionActual.setAttribute("descripRetiro",
                                         new BeanRetiro(bRet.geteCedula(), bRet.geteNumCuenta(),
                                                 bRet.geteTipoBusqueda(), bRet.getExitenciaCuenta(), 
@@ -144,10 +140,12 @@ public class ServletRetiro extends HttpServlet {
                                     
                                     // El servidor envia el mensaje de error el monto ingresado por el 
                                     // usuario es nulo o menor a 0 por lo que se reponde error monto
-                                    request.getSession().setAttribute("servletMsjRetiro2", "ERROR_MONTO");
+                                    request.getSession().setAttribute("servletMsjRetiro2", 
+                                            "ERROR_MONTO");
                                 }
 
-                                  // Falso si se recarga la pagina y no se ha completado la accion guarda la informacion
+                                  // Falso si se recarga la pagina y no se ha completado la 
+//                                  accion guarda la informacion
                                  else {
                                     bRet.seteNumCuenta(bRet.geteNumCuenta());
                                     bRet.seteCedula(bRet.geteCedula());
@@ -158,42 +156,39 @@ public class ServletRetiro extends HttpServlet {
                                         new BeanRetiro(bRet.geteCedula(),bRet.geteNumCuenta(), 
                                                 bRet.geteTipoBusqueda(),bRet.getExitenciaCuenta()));
 
-                                    // El servidor envia el mensaje de que continua relizando la operacion de retiro
-                                    // a la pagina retiro.jsp
-                                    request.getSession().setAttribute("servletMsjRetiro2", "INGRESA_MONTO_RETIRO");
+                                    // El servidor envia el mensaje de que continua relizando 
+//                                    la operacion de retiro a la pagina retiro.jsp
+                                    request.getSession().setAttribute("servletMsjRetiro2", 
+                                            "INGRESA_MONTO_RETIRO");
                                     }
 
                         }// Falso si no existe la cuenta
                         else if (!bRet.getExitenciaCuenta()) {
-                            bRet.seteMensaje("No puede efectuar el retiro de efectivo por que no es el dueño de la cuenta!");
+                            bRet.seteMensaje("No puede efectuar el retiro de efectivo "
+                                    + "por que no es el dueño de la cuenta!");
                             // Se envia el mensaje de error al servidor
                             sesionActual.setAttribute("descripRetiro",
                                     new BeanRetiro(bRet.geteMensaje()));
-                            // El servidor envia el mansaje de error el usuario y la cuenta no le pertenece
-                            // y por lo tanto no podra realizar el retiro de efectivo
-                            request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                            // El servidor envia el mansaje de error el usuario y la cuenta 
+//                            no le pertenece y por lo tanto no podra realizar el 
+//                              retiro de efectivo
+                            request.getSession().setAttribute("servletMsjRetiro2", 
+                                    "ERROR_NO_CUENTA");
                         }
                     }
                 }
                 
                 // ---------------  TIPO RETIRO POR NUMERO DE CUENTA     ---------------------
                 else if (tipoBus.equals("nCuenta")) {
-                    System.out.println("\n\n:::::::RETIRO POR NUMERO CUENTA::::::::::::");
-
                     detNumIden = request.getParameter("detalleNumId");
                     // Valida que el numero de identificacion
                     // no sea vacio o sean nulo
                     
-                    
-                    System.out.println("VALOR ::: NUM"+detNumIden);
                     if (detNumIden != null) {
-                        
-                        System.out.println("\nNUMERO DE CUENTA ! = N U L L ");
                             // Verifica si la cedula indicada del depositante y el numero
                             // de cuenta indicado le pertenecen y que ya no haya entrado y
                             // que el bean sepa si ya es usuario
                             
-                            System.out.println(">>>>>>>>>>>>"+bRet.getExitenciaCuenta());
                             if (fLogin.verificarPosibleCedulaCliente(detNumIden) && !bRet.getExitenciaCuenta()) {
 
                                 System.out.println("VERIFICA CUENTA ASOCIADA LE PERTENEZCA");
@@ -212,12 +207,9 @@ public class ServletRetiro extends HttpServlet {
                                     // para depositar entonces siginifca que es el usuario
                                     // y existenciaCuentaAsociada pasa a verdadero
                                     
-                                    System.out.println("---->"+listaCuentas.get(i).getNum_cuenta());
                                     if (listaCuentas.get(i).getNum_cuenta()
                                             == Integer.parseInt(bRet.geteNumCuenta())) {
-                                        System.out.println("PISITIVO++++++");
                                         existeCuentaAsociada = true;
-                                        
                                     }
                                 }
                                 
@@ -235,14 +227,17 @@ public class ServletRetiro extends HttpServlet {
                                 // Servlet responde a la pagina que el usuario es dueño de la 
                                 // cuenta y que se encuenta listo para pasar al fromulario 3
                                 // de deposito.
-                                request.getSession().setAttribute("servletMsjRetiro2", "INGRESA_MONTO_RETIRO");
-                            System.out.println("\n||||| RETIRO NUMERO CUENTA && DUEÑO SE GUARDAN DATOS!!    |||||||||");
+                                request.getSession().setAttribute("servletMsjRetiro2", 
+                                        "INGRESA_MONTO_RETIRO");
+                           
                                 }else if(!existeCuentaAsociada){
-                                    System.out.println("Error el usuario no es dueño de la cuenta");
-                                bRet.seteMensaje("ERROR: La persona identificada no es dueña de la cuenta! "
+                                bRet.seteMensaje("ERROR: La persona identificada no es dueña "
+                                        + "de la cuenta! "
                                         + "No se puede procesar la solicitud de deposito.");
-                                sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
-                                request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                                sesionActual.setAttribute("descripRetiro", 
+                                        new BeanRetiro(bRet.geteMensaje()));
+                                request.getSession().setAttribute("servletMsjRetiro2", 
+                                        "ERROR_NO_CUENTA");
                                 }
                             }
                             // Verifica que la cuenta sea verdaderamente del depositante
@@ -266,9 +261,9 @@ public class ServletRetiro extends HttpServlet {
                                     bRet.seteMontoDeposito(montoDep);
                                     sesionActual.setAttribute("descripRetiro",
                                         new BeanRetiro(bRet.geteNumCuenta(), bRet.geteCedula(),
-                                                 bRet.geteMontoDeposito(), bRet.geteDetalleDeposito(), bRet.geteMensaje()));
+                                                 bRet.geteMontoDeposito(), bRet.geteDetalleDeposito(), 
+                                                bRet.geteMensaje()));
                                     request.getSession().setAttribute("servletMsjRetiro2", "RETIRO");
-                                    System.out.println("\n\n-----RETIRO CORRECTO POR NUMERO DE CUENTA--------\n\n");
                                  
                                 }// Falso si el usuario ingreso un valor pero es menor o igual a 0
                                 else if(montoDep != null && Integer.parseInt(montoDep) < 0){
@@ -296,13 +291,13 @@ public class ServletRetiro extends HttpServlet {
 
                                     // El servidor envia el mensaje de que continua relizando la operacion de retiro
                                     // a la pagina retiro.jsp
-                                    request.getSession().setAttribute("servletMsjRetiro2", "INGRESA_MONTO_RETIRO");
+                                    request.getSession().setAttribute("servletMsjRetiro2",
+                                            "INGRESA_MONTO_RETIRO");
                                     }
                             } // Falso si el nuemro de cuenta no le pertenece a la persona con la 
                             // identificación ingresada
                             
                             else if (!bRet.getExitenciaCuenta()){
-                                System.out.println("Error el usuario no es dueño de la cuenta");
                                 // Se envia el mensaje de error que no se puede efecutar el retiro
                                 bRet.seteMensaje("ERROR: La persona identificada no es dueña de la cuenta! "
                                         + "No se puede procesar la solicitud de deposito.");
@@ -311,34 +306,23 @@ public class ServletRetiro extends HttpServlet {
                             }
                         }  //Falso numero de identificacion falso
                             else if (detNumIden==null){
-                                System.out.println("Error numero de identificacion es nulo");
                                 bRet.seteMensaje("ERROR: numero de identificacion es nulo!");
                                 sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
                                 request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
                             }
                              }
                                 }
-                          // Falso si se recarga la pagina y identificacion ya no contiene valores
-                          // se segira respondiento y direccionando a la misma pagina que estaba
-//                            }else{
-//                                System.out.println("TIPO DE BUSQUEDA ES NULO");
-//                                bRet.seteMensaje("ERROR: Tipo de busqueda es vacio o nulo!");
-//                                sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
-//                                request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
-//                                }
-            
+                         
                         } catch (Exception ex) {
                             switch (ex.getMessage()) {
                                 case "9":
-                                    
-                                    System.out.println("\n<--- ERRROR NO TIENE SUFICIENTES FONDOS --->\n");
-                                    
                                     bRet.seteNumCuenta(bRet.geteNumCuenta());
                                     bRet.seteCedula(bRet.geteCedula());
                                     bRet.seteTipoBusqueda(bRet.geteTipoBusqueda());
                                     bRet.seteDetalleDeposito(detalleDep);
                                     bRet.seteMensaje("ERROR: El usuario no dispone de fondos suficientes "
-                                            + "para realizar el retiro indicado, por favor intente otro monto a retirar");
+                                            + "para realizar el retiro indicado, por favor "
+                                            + "intente otro monto a retirar");
                                     // Se envia el mensaje de error al servidor
                                     sesionActual.setAttribute("descripRetiro",
                                         new BeanRetiro(bRet.geteCedula(), bRet.geteNumCuenta(),
@@ -354,23 +338,27 @@ public class ServletRetiro extends HttpServlet {
                                     break;
 
                                 case "10":
-                                    System.out.println("\n<--- ERRROR NO TIENE SUFICIENTES FONDOS --->\n");
-                                    bRet.seteMensaje("ERROR: El usuario a realizar el retiro no es dueño de la cuenta");
-                                    sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
+                                    bRet.seteMensaje("ERROR: El usuario a realizar el retiro no "
+                                            + "es dueño de la cuenta");
+                                    sesionActual.setAttribute("descripRetiro", 
+                                            new BeanRetiro(bRet.geteMensaje()));
                                     // Servlet envia información a la pagina con el detalle de error
                                     // ocurrido 
-                                    request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                                    request.getSession().setAttribute("servletMsjRetiro2", 
+                                            "ERROR_NO_CUENTA");
                                     dispatcher = request.getRequestDispatcher(destino);
                                     dispatcher.forward(request, response);
                                     break;
 
                                 case "11":
-                                    System.out.println("\n<--- ERRROR EL USUARIO NO TIENE ESTA CUENTA ASOCIADA A FAVORITAS --->\n");
-                                    bRet.seteMensaje("ERROR: El usuario no tiene la cuenta asociada a favoritas");
-                                    sesionActual.setAttribute("descripRetiro", new BeanRetiro(bRet.geteMensaje()));
+                                    bRet.seteMensaje("ERROR: El usuario no tiene la cuenta asociada "
+                                            + "a favoritas");
+                                    sesionActual.setAttribute("descripRetiro", 
+                                            new BeanRetiro(bRet.geteMensaje()));
                                     // Servlet envia información a la pagina con el detalle de error
                                     // ocurrido 
-                                    request.getSession().setAttribute("servletMsjRetiro2", "ERROR_NO_CUENTA");
+                                    request.getSession().setAttribute("servletMsjRetiro2", 
+                                            "ERROR_NO_CUENTA");
                                     dispatcher = request.getRequestDispatcher(destino);
                                     dispatcher.forward(request, response);
                                     break;
@@ -380,7 +368,6 @@ public class ServletRetiro extends HttpServlet {
                     dispatcher.forward(request, response);
             }
        
-        
 
     private final funcionesDeposito fDeposito = new funcionesDeposito();
     private final funcionesLogueo fLogin = new funcionesLogueo();

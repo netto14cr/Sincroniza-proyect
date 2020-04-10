@@ -27,6 +27,7 @@
 
             <div id="contents">
                 <%
+                    System.out.println("::::::::::   VISTA CAJERO   :::::::::");
                     String msgLogin = "";
                     msgLogin = (String) session.getAttribute("servletLogin");
                     if (msgLogin != null && msgLogin.equals("1")) {

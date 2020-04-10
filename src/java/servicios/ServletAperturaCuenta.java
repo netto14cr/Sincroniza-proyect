@@ -25,6 +25,8 @@ public class ServletAperturaCuenta extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        System.out.println("\n:::::::  SERVLET PERTURA DE NUEVA CUENTA EXISTENTE     ::::::::");
+        
         // Se define de que direccion viene el usaurio
         String destino = "";
         destino = "/WEB-INF/Banco/Vista/NuevaCuenta.jsp";
@@ -47,11 +49,9 @@ public class ServletAperturaCuenta extends HttpServlet {
         int tipoCuenta;
         boolean cuentaCreada;
         cuentaCreada=false;
-        
         tipoCuenta = 0;
         verificaOpcionesFormularioRegreso( dispatcher, request,response, destino, bNC);
         
-
         try {
 //            Se obtiene el valor de tipo moneda seleccionada
             tipoMoneda = request.getParameter("tipoMoneda");
@@ -66,7 +66,6 @@ public class ServletAperturaCuenta extends HttpServlet {
 
 //        Se obtine el tipo de cuenta ha crear para el cliente
         } catch (NumberFormatException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         try {
@@ -79,11 +78,8 @@ public class ServletAperturaCuenta extends HttpServlet {
                 bNC.seteNumeroCuenta(fAC.generarNumeroCuentaNuevo()+"");
                 bNC.seteCedula(cedula);
                 
-                
-                System.out.println("\n::::: NUEVA CUENTA HA SIDO ASOCIADA A: " + cedula);
                 fAC.crearCuentaClienteExistente(checkId(cedula), tipoMoneda, tipoCuenta);
                 
-
                 // Se cambia el estado de cuenta creada a verdadero
                 cuentaCreada=true;
                 bNC.setCuentaCreada(cuentaCreada);
@@ -123,7 +119,6 @@ public class ServletAperturaCuenta extends HttpServlet {
             switch (tipoExcepcion) {
 
                 case "2":
-                    System.out.println("\n <:::: NO EXISTE El CLIENTE EN EL SISTEMA :::: ");
 //                        Se reponde a la pagina que no existe ese usuario para poder continuar
 //                        con el registro de este al sistema
                     request.getSession().setAttribute("servletMsjNuevaCuenta", "2");
@@ -173,7 +168,8 @@ public class ServletAperturaCuenta extends HttpServlet {
 
     
     protected void verificaOpcionesFormularioRegreso(RequestDispatcher dispatcher,
-            HttpServletRequest request, HttpServletResponse response, String destino, BeanNuevaCuenta bNC ) 
+            HttpServletRequest request, HttpServletResponse response, 
+            String destino, BeanNuevaCuenta bNC ) 
             throws ServletException, IOException{
         try {
             String botonFormulario = "";
@@ -211,7 +207,6 @@ public class ServletAperturaCuenta extends HttpServlet {
                 }
             }
         } catch (NumberFormatException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
         
     }

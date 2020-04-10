@@ -5,14 +5,6 @@
  */
 package modelo.dao.funcionesFrontEnd;
 
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.cliente;
-import model.cuenta;
-import model.movimiento;
-import modelo.dao.servicioCliente;
-
 
 /**
  *

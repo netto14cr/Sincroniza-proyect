@@ -39,21 +39,13 @@
 
             <div id="contents">
                 <%
-                System.out.println("°°°°°°°°°°°°°°°°°°CARGA DEPOSITO PAGINA°°°°°°°°°°°°°°");
+                System.out.println("::::::::::   VISTA DEPOSITO BANCARIO    :::::::::");
                 // Se obtienen los mensajes enviados por el Servlet en una variable
                 // de tipo string la informacion enviada a la pagina de Deposito
                 String msgDeposito ="";
                 String msgDeposito2="";
                 msgDeposito = (String) session.getAttribute("servletMsjDeposito");
                 msgDeposito2 = (String) session.getAttribute("servletMsjDeposito2");
-                
-                if (msgDeposito!=null){
-                    System.out.println("----D1--"+msgDeposito);
-                }
-                if (msgDeposito2!=null){
-                    System.out.println("----D2--"+msgDeposito2);
-                }
-                
                 
                 // Declacion del uso de la clase bean para manejor de datos
                 BeanDeposito bDep = (BeanDeposito) session.getAttribute("descrip");
@@ -62,37 +54,29 @@
                 // vacios se muestre el primer formulario de busqueda de cuenta 
                 // a depositar
                 
-                
-                
-                cuenta c = (cuenta) request.getAttribute("busquedaCuenta-cajero");
                 String tipoBusqueda = request.getParameter("tipoBusquedaCuenta");
                 String numeroCuenta = request.getParameter("nCuentaDeposito");
-                String montoAux = request.getParameter("montoDeposito");
-                String montoAux2 = request.getParameter("detalleMontoDep");
                 
-                
-                if(msgDeposito==null || msgDeposito.isEmpty()){ 
-                System.out.println("\n\n+++++++++++FORM 1++++++++++++++++++\n\n");
-                
-                %>
-                
-                
+                if(msgDeposito==null || msgDeposito.isEmpty()){ %>
                 <form method="GET" action="busquedaCuenta-cajero" class="e-deposito" 
                       onsubmit="return validarForumlarioDeposito1()">
-
                     <!--Campo para ingresar la identificación-->
                     <p>
-                        <label class="texto">Buscar cuenta por:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <select id="tipoBusquedaCuenta" name="tipoBusquedaCuenta" class="select">
+                        <label class="texto">Buscar cuenta por:  &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;</label>
+                        <select id="tipoBusquedaCuenta" name="tipoBusquedaCuenta" 
+                                class="select">
                             <option value="nCedula" >Número de cédula</option>
                             <option value="nCuenta">Número de cuenta</option>
                         </select>
 
                     </p>
-                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
+                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o 
+                    cedula de la cuenta-->
                     <p>
                         <label class="texto">Cuenta a depositar:&nbsp;</label>
-                        <input type="text" name="nCuentaDeposito" id="nCuentaDeposito" autofocus="autofocus"
+                        <input type="text" name="nCuentaDeposito" id="nCuentaDeposito" 
+                               autofocus="autofocus"
                                placeholder="digite la cuenta " class="campo" autocomplete="off" />
                     </p>
                     <p style="text-align: right;">
@@ -101,7 +85,6 @@
                     </p>
                 </form>
                     
-                
                 <!--Se muestra un formulario para que el cajero pueda volver al menu principal-->
                 <form method="GET" action="regresarDeposito" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
@@ -109,20 +92,12 @@
                                 value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
                     </form>
                 <!--TABLA DOS PARA DEPOSITO-->
-
                 <%
-//                    Se recibe la respuesta si se ejecuta alguna accion con el servlet 
-//                    de buscar cuenta en el sistema
-                    //String msgBusqueda = (String) session.getAttribute("servletMsjBusquedaCuenta");
-                    
                     // Condision si el usuario ha ingresado un valor cuando le 
                     // dio buscar cuentas
                   
                     }else if (msgDeposito!=null && msgDeposito.equals("1") 
-                        && msgDeposito2==null) {
-                       
-                        System.out.println("\n\n+++FORM 2 COMPLETA DEPOSITO MONTO++++++++++++\n\n");
-                        %>
+                        && msgDeposito2==null) {%>
 
                         <form method="GET" action="deposito-cajero" class="e-deposito2" 
                               onsubmit="return validarForumlarioDeposito2()">
@@ -133,40 +108,45 @@
                        
                         <select id="seletCuenta" name="seletCuenta" class="select">
                             <%for (cuenta lis : bDep.getLista()) {%>
-                            <option value="<%=lis.getNum_cuenta()%>"><%=lis.getNum_cuenta()%></option>
+                            <option value="<%=lis.getNum_cuenta()%>">
+                                <%=lis.getNum_cuenta()%></option>
                             <% } %>
                         </select>
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el monto a depositar-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese 
+                    el monto a depositar-->
                     <p>
-                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="montoDeposito" name="montoDeposito" autofocus="autofocus"
+                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;</label>
+                        <input type="text" id="montoDeposito" name="montoDeposito" 
+                               autofocus="autofocus"
                                placeholder=" Monto deposito " class="campo2"/>
                     </p>
                     
-                    
-                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
+                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o 
+                    cedula de la cuenta-->
                     <p>
                         <label class="texto">Número identificación:</label>
-                        <input type="text" name="detalleNumId" id="detalleNumId" autofocus="autofocus"
-                               placeholder="Identificación depositante " class="campo2" autocomplete="off" />
+                        <input type="text" name="detalleNumId" id="detalleNumId" 
+                               autofocus="autofocus"
+                               placeholder="Identificación depositante " class="campo2" 
+                               autocomplete="off" />
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle del deposito-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese el 
+                    detalle del deposito-->
                     <p>
                         <label class="texto">Detalle de deposito:&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="detalleDep" name="detalleDep" autofocus="autofocus"
                                placeholder="Detalle de deposito" class="campo2"/>
                     </p>
-                    
-
                     <p style="text-align: right;">
                         <button type="submit" class="boton">Realizar deposito</button>
                     </p>
                 </form> 
-                        
-                        <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
+                        <!--Se muestra un formulario para que el cajero pueda cancelar 
+                        la accion y volver a la 
                         pantalla anterior-->
                 <form method="GET" action="regresarDeposito" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
@@ -178,9 +158,7 @@
                         
 <!--                    Se muestra el 3 formulario con una pequeña variante en 
                         campo de detalle de nombre de depositante si no es el dueño de la cuenta-->
-                        <%}else if (msgDeposito2!=null && msgDeposito2.equals("2")){
-                        System.out.println("::::::MUESTRA MSG NO DUEÑO::");
-                        %>   
+                        <%}else if (msgDeposito2!=null && msgDeposito2.equals("2")){ %>   
                          <p class="mensajeErrorDep">
                         ${descrip.geteMensaje().toString()} </p> 
                          
@@ -191,35 +169,42 @@
                     <!--Campo para ingresar la identificación-->
                     <p>
                         <label class="texto">Cuenta seleccionada:&nbsp;</label>
-                        <input type="text" name="seletCuenta" id="seletCuenta" autofocus="autofocus"
+                        <input type="text" name="seletCuenta" id="seletCuenta" 
+                               autofocus="autofocus"
                                class="campo2" readonly="true" value="${descrip.geteNumCuenta()}"/>
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el monto a depositar-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese 
+                    el monto a depositar-->
                     <p>
-                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="montoDeposito" name="montoDeposito" 
-                               autofocus="autofocus"placeholder=" Monto deposito " class="campo2" 
+                               autofocus="autofocus"placeholder=" Monto deposito " 
+                               class="campo2" 
                                value="${descrip.geteMontoDeposito()}"/>
                     </p>
                     
-                    
-                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
+                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o 
+                    cedula de la cuenta-->
                     <p>
                         <label class="texto">Número identificación:</label>
-                        <input type="text" name="detalleNumId" id="detalleNumId" autofocus="autofocus"
+                        <input type="text" name="detalleNumId" id="detalleNumId" 
+                               autofocus="autofocus"
                                placeholder="Identificación depositante " class="campo2" 
                                autocomplete="off" value="${descrip.geteCedulaDet()}" />
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle del deposito-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle 
+                    del deposito-->
                     <p>
-                        <label class="texto">Detalle de deposito:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="detalleDep" name="detalleDep" autofocus="autofocus"
+                        <label class="texto">Detalle de deposito:&nbsp;&nbsp;
+                            &nbsp;&nbsp;</label>
+                        <input type="text" id="detalleDep" name="detalleDep" 
+                               autofocus="autofocus"
                                placeholder="Detalle de deposito" class="campo2" 
                                value="${descrip.geteDetalleDeposito()}"/>
                     </p>
-                    
                          <!--Campo para ingresar la identificación-->
                     <p>
                         <label class="texto">Nombre depositante:&nbsp;&nbsp;</label>
@@ -227,14 +212,13 @@
                                placeholder="Nombre depositante" class="campo2"
                                id="detalleNombreDep"/>
                     </p>
-
                     <p style="text-align: right;">
                         <button type="submit" class="boton">Realizar deposito</button>
                     </p>
                 </form> 
                         
-                   <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
-                    pantalla anterior-->
+                   <!--Se muestra un formulario para que el cajero pueda cancelar la 
+                   accion y volver a la pantalla anterior-->
                 <form method="GET" action="regresarDeposito" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
@@ -245,25 +229,28 @@
                    
                    
                    <%   }           // Falso si se realizo el deposito correctamente
-
-                        else if (msgDeposito.equals("1") && msgDeposito2.equals("DEPREADY")){ 
-                            System.out.println("\n\n MUESTRA MENSAJE DEPOSITO CEDULA");
-                            %>
+                        else if (msgDeposito.equals("1") && msgDeposito2.equals("DEPREADY")){%>
                           
                         <p class="mensajeCorrecto"> Se ha completado el deposito correctamente
                         </p>
                         <p class="mensajeDepositoR">
-                           
-                            <strong>N° Céd. cuenta dep   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteCedula()}<br>
-                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNumCuenta()}<br>
-                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteMontoDeposito()}<br>
-                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteDetalleDeposito()}<br>
+                            <strong>N° Céd. cuenta dep   :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteCedula()}<br>
+                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteNumCuenta()}<br>
+                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteMontoDeposito()}<br>
+                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteDetalleDeposito()}<br>
                         </p>
                         
-                        <!--Formulario de opciones para volver a realizar un deposito o regresar al menu principal-->
-                        <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                        <!--Formulario de opciones para volver a realizar un deposito 
+                        o regresar al menu principal-->
+                        <form method="GET" action="regresarDeposito" onsubmit=""  
+                              class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                         <button type="submit" name="regresoOpcion" value="3" 
                                 class="botonRegreso">Realizar otro deposito</button>&nbsp;
@@ -271,24 +258,32 @@
                 
                         
                         
-                        <%}else if (msgDeposito.equals("1") && msgDeposito2.equals("DEPREADY2")){
-                        System.out.println("DEEEEEP2");%>
+                        <%}else if (msgDeposito.equals("1") && 
+                                msgDeposito2.equals("DEPREADY2")){%>
                         <p class="mensajeCorrecto"> ${descrip.geteMensaje()}</p>
                         
                              <p class="mensajeDepositoR">
-                            <strong>N° Cédula cuenta deposito:&nbsp;&nbsp;&nbsp;</strong>${descrip.geteCedula()}<br>
-                            <strong>N° Identificacion depositante   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteCedulaDet()}<br>
-                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNumCuenta()}<br>
-                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteMontoDeposito()}<br>
-                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteDetalleDeposito()}<br>
-                            <strong>Nombre detalle dep.  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNombreUs()}<br>
+                            <strong>N° Cédula cuenta deposito:&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteCedula()}<br>
+                            <strong>N° Identificacion depositante   :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteCedulaDet()}<br>
+                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteNumCuenta()}<br>
+                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteMontoDeposito()}<br>
+                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteDetalleDeposito()}<br>
+                            <strong>Nombre detalle dep.  :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteNombreUs()}<br>
                         </p>
                         
-                        
-                         <!--Formulario de opciones para volver a realizar un deposito o regresar al menu principal-->
-                        <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                         <!--Formulario de opciones para volver a realizar un deposito 
+                         o regresar al menu principal-->
+                        <form method="GET" action="regresarDeposito" onsubmit=""  
+                              class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                         <button type="submit" name="regresoOpcion" value="3" 
                                 class="botonRegreso">Realizar otro deposito</button>&nbsp;
@@ -299,45 +294,56 @@
                 }else if (msgDeposito.equals("2") && msgDeposito2==null) {
                     System.out.println("\n\n++++FORM 3+++++CUENTA++++ \n\n");
                 %>
-                <form method="GET" action="deposito-cajero" class="e-deposito2" onsubmit="return validarDepNumCuenta()">
+                <form method="GET" action="deposito-cajero" class="e-deposito2" 
+                      onsubmit="return validarDepNumCuenta()">
 
                     <!--Campo para mostrar el numero de cuenta ingresado previamente
                     a la cual se realizara el deposito-->
                     <p>
                         <label class="texto">Número de cuenta :&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text"  class="campo2" readonly="true" value="${descrip.geteNumCuenta()}"/>
+                        <input type="text"  class="campo2" readonly="true" 
+                               value="${descrip.geteNumCuenta()}"/>
                     </p>
 
                     
-                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
+                    <!--Campo para que el usuario pueda ingresar la cuenta el numero 
+                    o cedula de la cuenta-->
                     <p>
                         <label class="texto">Número identificación:</label>
-                        <input type="text" name="detalleNumId" id="detalleNumId" autofocus="autofocus"
-                               placeholder="Identificación depositante " class="campo2" autocomplete="off" />
+                        <input type="text" name="detalleNumId" id="detalleNumId" 
+                               autofocus="autofocus"
+                               placeholder="Identificación depositante " class="campo2" 
+                               autocomplete="off" />
                     </p>
                     
                     
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el monto a depositar-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese 
+                    el monto a depositar-->
                     <p>
-                        <label class="texto">Monto a depositar :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="detalleMontoDep" name="detalleMontoDep" autofocus="autofocus"
+                        <label class="texto">Monto a depositar :&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;</label>
+                        <input type="text" id="detalleMontoDep" name="detalleMontoDep" 
+                               autofocus="autofocus"
                                placeholder="Monto deposito" class="campo2"/>
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle del deposito-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese 
+                    el detalle del deposito-->
                     <p>
                         <label class="texto">Detalle de deposito :&nbsp;</label>
-                        <textarea type="text" name="detalleDepTxt" id="detalleDepTxt" autofocus="autofocus"
-                                  placeholder=" Ingresar aqui el detalle de deposito" class="textarea"></textarea>
+                        <textarea type="text" name="detalleDepTxt" id="detalleDepTxt" 
+                                  autofocus="autofocus"
+                                  placeholder=" Ingresar aqui el detalle de deposito" 
+                                  class="textarea"></textarea>
                     </p>
                     <br>
                     <p>
                         <button type="submit" class="botonRegreso">Realizar deposito</button>
                     </p>
                 </form> 
-                    
                     <!--Fromulario para cancelar la operacion de realizar el deposito-->
-                    <form method="GET" action="regresarDeposito" onsubmit=""  class="forBotonRegreso">
+                    <form method="GET" action="regresarDeposito" onsubmit="" 
+                          class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -345,24 +351,21 @@
                                 value="1" class="botonRegreso4"  >Volver a menú</button>&nbsp;
                     </form>
                  
-                    
-                    
                      <%
                 // Falso si la busqueda seleccionada es por número de cuenta
-                }else if (msgDeposito.equals("2") && msgDeposito2.equals("3")) {
-                    System.out.println("\n\n++++FORM 4+++++CUENTA NO DUEÑO++++ \n\n");
-                %>
-                
+                }else if (msgDeposito.equals("2") && msgDeposito2.equals("3")) {%>
                 
                 <p class="mensajeErrorDep">
                         ${descrip.geteMensaje().toString()} </p> 
-                <form method="GET" action="deposito-cajero" class="e-deposito2" onsubmit="return validarDepNumCuenta2()">
+                <form method="GET" action="deposito-cajero" class="e-deposito2" 
+                      onsubmit="return validarDepNumCuenta2()">
 
                     <!--Campo para mostrar el numero de cuenta ingresado previamente
                     a la cual se realizara el deposito-->
                     <p>
                         <label class="texto">Número de cuenta :&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text"  class="campo2" readonly="true" value="${descrip.geteNumCuenta()}"/>
+                        <input type="text"  class="campo2" readonly="true" 
+                               value="${descrip.geteNumCuenta()}"/>
                     </p>
 
                     <!--Campo para ingresar la identificación-->
@@ -373,25 +376,34 @@
                                id="detalleNombreDep"/>
                     </p>
                     
-                    <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
+                    <!--Campo para que el usuario pueda ingresar la cuenta el numero 
+                    o cedula de la cuenta-->
                     <p>
                         <label class="texto">Número identificación:</label>
-                        <input type="text" name="detalleNumId" id="detalleNumId" autofocus="autofocus"
-                               placeholder="Identificación depositante " class="campo2" value="${descrip.geteCedulaDet()}" />
+                        <input type="text" name="detalleNumId" id="detalleNumId" 
+                               autofocus="autofocus"
+                               placeholder="Identificación depositante " class="campo2" 
+                               value="${descrip.geteCedulaDet()}" />
                     </p>
                     
                     
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el monto a depositar-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese el
+                    monto a depositar-->
                     <p>
-                        <label class="texto">Monto a depositar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="detalleMontoDep" name="detalleMontoDep" autofocus="autofocus"
-                               placeholder="Monto deposito" class="campo2" value="${descrip.geteMontoDeposito()}"/>
+                        <label class="texto">Monto a depositar:&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;</label>
+                        <input type="text" id="detalleMontoDep" name="detalleMontoDep" 
+                               autofocus="autofocus"
+                               placeholder="Monto deposito" class="campo2" 
+                               value="${descrip.geteMontoDeposito()}"/>
                     </p>
 
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle del deposito-->
+                    <!--Se define la etiqueta y el campo para que el cajero ingrese 
+                    el detalle del deposito-->
                     <p>
                         <label class="texto">Detalle de deposito:&nbsp;</label>
-                        <textarea type="text" name="detalleDepTxt" id="detalleDepTxt" autofocus="autofocus"
+                        <textarea type="text" name="detalleDepTxt" id="detalleDepTxt" 
+                                  autofocus="autofocus"
                                   class="textarea">${descrip.geteDetalleDeposito()}</textarea>
                     </p>
                     <br>
@@ -401,7 +413,8 @@
                 </form> 
                     
                     <!--Fromulario para cancelar la operacion de realizar el deposito-->
-                    <form method="GET" action="regresarDeposito" onsubmit=""  class="forBotonRegreso">
+                    <form method="GET" action="regresarDeposito" onsubmit="" 
+                          class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -411,48 +424,58 @@
                     
                 <%   }           // Falso si se realizo el deposito correctamente
 
-                        else if (msgDeposito.equals("2") && msgDeposito2.equals("DEPREADY3")){ 
-                            System.out.println("\n\n MUESTRA MENSAJE DEPOSITO CEDULA");
-                            %>
+                        else if (msgDeposito.equals("2") && msgDeposito2.equals("DEPREADY3")){%>
                           
                         <p class="mensajeCorrecto"> Se ha completado el deposito correctamente
                         </p>
                         <p class="mensajeDepositoR">
-                           <strong>N° Cédula dueño cuenta:&nbsp;&nbsp;&nbsp;</strong>${descrip.geteCedula()}<br>
-                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNumCuenta()}<br>
-                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteMontoDeposito()}<br>
-                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteDetalleDeposito()}<br>
+                           <strong>N° Cédula dueño cuenta:&nbsp;&nbsp;&nbsp;</strong>
+                           ${descrip.geteCedula()}<br>
+                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteNumCuenta()}<br>
+                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteMontoDeposito()}<br>
+                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>
+                            ${descrip.geteDetalleDeposito()}<br>
                         </p>
                         
-                        <!--Formulario de opciones para volver a realizar un deposito o regresar al menu principal-->
-                        <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                        <!--Formulario de opciones para volver a realizar un deposito 
+                        o regresar al menu principal-->
+                        <form method="GET" action="regresarDeposito" onsubmit=""  
+                              class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                         <button type="submit" name="regresoOpcion" value="3" 
                                 class="botonRegreso">Realizar otro deposito</button>&nbsp;
                     </form>    
-                    
-                    
-                    
                     
                 <%}else if (msgDeposito.equals("2") && msgDeposito2.equals("DEPREADY4")){
                         System.out.println("DEEEEEP2");%>
                         <p class="mensajeCorrecto"> ${descrip.geteMensaje()}</p>
                         
                              <p class="mensajeDepositoR">
-                            <strong>N° Identificacion depositante   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteCedulaDet()}<br>
-                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNumCuenta()}<br>
-                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteMontoDeposito()}<br>
-                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteDetalleDeposito()}<br>
-                            <strong>Nombre detalle dep.  :&nbsp;&nbsp;&nbsp;</strong>${descrip.geteNombreUs()}<br>
+                            <strong>N° Identificacion depositante   :&nbsp;&nbsp;
+                                &nbsp;</strong>${descrip.geteCedulaDet()}<br>
+                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;
+                            </strong>${descrip.geteNumCuenta()}<br>
+                            <strong>Monto transferencia  :&nbsp;&nbsp;&nbsp;
+                            </strong>${descrip.geteMontoDeposito()}<br>
+                            <strong>Detalle Deposito     :&nbsp;&nbsp;&nbsp;
+                            </strong>${descrip.geteDetalleDeposito()}<br>
+                            <strong>Nombre detalle dep.  :&nbsp;&nbsp;&nbsp;
+                            </strong>${descrip.geteNombreUs()}<br>
                         </p>
                         
                         
-                         <!--Formulario de opciones para volver a realizar un deposito o regresar al menu principal-->
-                        <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                         <!--Formulario de opciones para volver a realizar un deposito 
+                         o regresar al menu principal-->
+                        <form method="GET" action="regresarDeposito" onsubmit=""  
+                              class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                         <button type="submit" name="regresoOpcion" value="3" 
                                 class="botonRegreso">Realizar otro deposito</button>&nbsp;
@@ -465,85 +488,81 @@
                 } else if (msgDeposito!=null && msgDeposito.equals("3")) {
                 %>
                 <p class="mensajeErrorDep">
-                    EL NÚMERO DE CÉDULA <strong> <%= numeroCuenta%> </strong> DIGITADO NO EXISTE EN EL SISTEMA
+                    EL NÚMERO DE CÉDULA <strong> <%= numeroCuenta%> </strong> 
+                    DIGITADO NO EXISTE EN EL SISTEMA
                 </p>
                 <p class="mensajeErrorDep2">
                     POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
                 </p>
                 
                 
-                <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                <form method="GET" action="regresarDeposito" onsubmit=""  
+                      class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" name="regresoOpcion" value="2" 
+                                class="botonRegreso">Intentar de nuevo</button>&nbsp;
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                     </form>
                 
                 
                 <%} 
                 //  Falso si el numero de cuenta no existe
-                else if (tipoBusqueda.equals("nCuenta") && msgDeposito.equals("4")) {%>
+                else if (tipoBusqueda.equals("nCuenta") && msgDeposito.equals("4")){%>
                 <p class="mensajeErrorDep">
-                    EL NÚMERO DE CUENTA <strong> <%= numeroCuenta%> </strong> NO ESTA ASOCIADO A NINGUN CLIENTE
+                    EL NÚMERO DE CUENTA <strong> <%= numeroCuenta%> </strong> 
+                    NO ESTA ASOCIADO A NINGUN CLIENTE
                 </p>
-
                 <p class="mensajeErrorDep2">
                     POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
                 </p>
                 
                 
-                 <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                 <form method="GET" action="regresarDeposito" onsubmit=""  
+                       class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" name="regresoOpcion" value="2" 
+                                class="botonRegreso">Intentar de nuevo</button>&nbsp;
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                     </form>
                 
-
                 <%} // Falso si se presenta un error a la hora de depositar!
                             else if (msgDeposito2!=null && msgDeposito2.equals("10")){%>
                             <p class="mensajeDepositoR">${descrip.geteMensaje()}</p>
-                            <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                            <form method="GET" action="regresarDeposito" onsubmit="" 
+                                  class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" name="regresoOpcion" value="2" 
+                                class="botonRegreso">Intentar de nuevo</button>&nbsp;
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                     </form>
-                            
-
                         <%} 
                 //  Falso si el numero de cuenta no existe
                 else if (msgDeposito.equals("2") && msgDeposito.equals("10")) {%>
                 <p class="mensajeErrorDep">
                     ${descrip.geteMensaje()}
                 </p>
-
                 <p class="mensajeErrorDep2">
                     POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
                 </p>
                 
-                
-                 <form method="GET" action="regresarDeposito" onsubmit=""  class="formRegresoMenu">
+                 <form method="GET" action="regresarDeposito" onsubmit=""  
+                       class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
+                        <button type="submit" name="regresoOpcion" value="2" 
+                                class="botonRegreso">Intentar de nuevo</button>&nbsp;
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion"
+                                value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                     </form>
-                
-
-
-
-
-
                       <%}  %>
-                
-                
-                
             </div>
-                
-                
             <footer></footer>
         </div>
-
     </body>
 </html>

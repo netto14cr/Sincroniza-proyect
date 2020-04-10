@@ -6,7 +6,6 @@
 package modelo.dao.funcionesFrontEnd;
 
 import java.util.Optional;
-import model.cliente;
 import model.usuario;
 import modelo.dao.servicioCliente;
 import modelo.dao.servicioUsuario;
@@ -73,6 +72,7 @@ public class funcionesLogueo {
         if (scl.obtenerCliente(ced).isPresent()) {
             return true;
         } else {
+            System.out.println("FALSOOOOOOOOOOOO");
             throw new Exception("2");//No existe el numero de cedula
         }
     }

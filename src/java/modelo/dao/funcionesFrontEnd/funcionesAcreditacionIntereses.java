@@ -9,7 +9,6 @@ import java.util.List;
 import model.cuentaConTasaYDescripcion;
 import model.movimiento;
 import modelo.dao.servicioCuenta;
-import modelo.dao.servicioDeposito;
 
 /**
  *

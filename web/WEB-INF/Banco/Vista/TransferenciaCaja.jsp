@@ -36,7 +36,7 @@
 
             <div id="contents">
                 <%
-                System.out.println(":::::::::::::::::INICIO TRANSFERENCIA CAJAS JSP");
+                System.out.println("::::::::::   VISTA TRASFERENCIAS BANACARIAS    :::::::::");
                 // Se obtienen los mensajes enviados por el Servlet en una variable
                 // de tipo string la informacion enviada a la pagina de Deposito
                 String msgCajas ="";
@@ -45,20 +45,15 @@
                 msgCajas2 = (String) session.getAttribute("servletMsjTCaja2");
                 
                 %>
-                          
-                        <p class="mensajeCorrecto"> Se ha completado el deposito correctamente
-                        </p>
                         <p class="mensajeDepositoR">
                            
-                            <strong>N° Céd. cuenta dep   :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteCedula()}<br>
-                            <strong>N° Cuenta deposito   :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteNumCuenta()}<br>
+                            <strong>N° Céd. cuenta dep:&nbsp;&nbsp;&nbsp;</strong>
+                            ${descTCaja.geteCedula()}<br>
+                            <strong>N° Cuenta deposito:&nbsp;&nbsp;&nbsp;</strong>
+                            ${descTCaja.geteNumCuenta()}<br>
                         </p>
-                        
             </div>
-                
-                
             <footer></footer>
         </div>
-
     </body>
 </html>

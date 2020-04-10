@@ -38,7 +38,7 @@
 
             <div id="contents">
                 <%
-                System.out.println(":::::::::::::::::INICIO TRANSFERENCIA CAJAS JSP");
+                System.out.println("::::::::::   VISTA BUSQUEDA CUENTAS T CAJAS   :::::::::");
                 // Se obtienen los mensajes enviados por el Servlet en una variable
                 // de tipo string la informacion enviada a la pagina de Deposito
                 String msgCajas ="";
@@ -48,13 +48,6 @@
                 msgCajas2 = (String) session.getAttribute("servletMsjTCaja2");
                 msgCajas3 = (String) session.getAttribute("servletMsjTCaja3");
                 
-                if (msgCajas!=null){
-                    System.out.println("----D1--"+msgCajas);
-                }
-                if (msgCajas2!=null){
-                    System.out.println("----D2--"+msgCajas2);
-                }
-                
                 
                 // Declacion del uso de la clase bean para manejor de datos
                 BeanTransCaja bTCaja = (BeanTransCaja) session.getAttribute("descTCaja");
@@ -63,14 +56,12 @@
                 request.getSession().getAttribute("bTCaja2");
                 
                 if(msgCajas==null || msgCajas.isEmpty() || msgCajas!=null && msgCajas.equals("ERROR")){ 
-                System.out.println("\n\n::::::FORM BUSQ CUENTA ORIGEN :::::\n\n");
-                
                  if(msgCajas!=null  && msgCajas.equals("ERROR")){
                      %><p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
                 <!--Forumlario para la busqueda de cuentas de origen-->
                 
                 <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
-                      onsubmit="return validarForumlarioDeposito1()">
+                      onsubmit="return valiFormBusqCajCuenOrigen()">
 
                     <h2> Busqueda cuenta Origen </h2>
                     <!--Campo para ingresar la identificación-->
@@ -96,16 +87,13 @@
                     
                 
                 <%} if (msgCajas2==null || msgCajas2!=null && msgCajas2.equals("ERROR")){
-            System.out.println("\n\n::::::FORM BUSQ CUENTA DESTINO :::::\n\n");
-                   
-              
-                     if(msgCajas2!=null && msgCajas2.equals("ERROR")){
-%><p class="ErrorBusqCajaDest">${descTCaja2.geteMensaje()}</p><%}%>
+                     if(msgCajas2!=null && msgCajas2.equals("ERROR")){%>
+                     <p class="ErrorBusqCajaDest">${descTCaja2.geteMensaje()}</p><%}%>
                     
                   <!----------------Formulario de busqueda de cuenta de destino------------------>
                   
                 <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
-                      onsubmit="return validarForumlarioDeposito1()">
+                      onsubmit="return valiFormBusqCajCuenDestino()">
 
                     <h3> Busqueda cuenta Destino </h3>
                     <!--Campo para ingresar la identificación-->
@@ -115,7 +103,6 @@
                             <option value="nCedula" >Número de cédula</option>
                             <option value="nCuenta">Número de cuenta</option>
                         </select>
-
                     </p>
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
                     <p>
@@ -130,9 +117,6 @@
                     </p>
                 </form>
                 
-                
-                
-                
 
                 <%
 //                    Muestra formulario de deposito cuenta por nuemro de cedula y
@@ -140,16 +124,14 @@
 //                    cuenta
                   
                     } if (msgCajas!=null && !msgCajas.isEmpty() 
-                        && msgCajas.equals("BusqDatosOrig1") || msgCajas!=null && msgCajas.equals("ERROR2")) {
+                        && msgCajas.equals("BusqDatosOrig1") || msgCajas!=null && 
+                        msgCajas.equals("ERROR2")) {
                        
-                        System.out.println("\n\n::::::::::  FORM 2 SELECT CUENTA ORIGEN  ::::::::::\n\n");
-
                         if(msgCajas!=null  && msgCajas.equals("ERROR2")){
                      %><p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
 
                         <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
-                              onsubmit="return validarForumlarioRetiro2()">
-
+                              onsubmit="return valiFormBusqCajCuenOrigen2()">
                             <h2> Cuenta origen</h2>     
                             
                     <!--Campo para ingresar la identificación-->
@@ -162,8 +144,7 @@
                             <% } %>
                         </select>
                     </p>
-                    
-                    <h2> Verificacion de cuenta pertenece al usaurio</h2> 
+                    <h2> Verificacion de cuenta pertenece al usuario</h2> 
                     
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
                     <p>
@@ -177,22 +158,18 @@
                     </p>
                 </form> 
                         
-                        
-                        
                         <%
 //                    Muestra formulario 2 ingreso de verificacion de numero de cedula
                    // de la persona dueña de la cuenta      
 
                   
                     }else if (msgCajas!=null && !msgCajas.isEmpty() 
-                        && msgCajas.equals("BusqDatosOrig2")) {
-                       
-                        System.out.println("\n\n:: FORM 2 MUESTRA NUMERO CUENTA ORIGEN  :::::::\n\n");
-                        %>
-                        
+                        && msgCajas.equals("BusqDatosOrig2") || msgCajas!=null 
+                        && msgCajas.equals("ERROR3")) {
+                         if (msgCajas!=null && msgCajas.equals("ERROR3")){%>
+                            <p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
                         <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
-                              onsubmit="return validarForumlarioRetiro2()">
-
+                              onsubmit="return valiFormBusqCajCuenOrigen3()">
                             <h2> Cuenta origen</h2>     
                             
                         <!--Campo para mostrar el numero de cuenta ingresado previamente
@@ -202,7 +179,6 @@
                         <input type="text"  class="campo2" readonly="true" value="${descTCaja.geteNumCuenta()}"/>
                     </p>
 
-                    
                     <h2> Verificacion de cuenta pertenece al usaurio</h2> 
                     
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
@@ -221,7 +197,6 @@
                     <%
                     } else if (msgCajas!=null && !msgCajas.isEmpty() && 
                         msgCajas.equals("SELECT_ORIGEN")) {
-                        System.out.println("\n\n::::::::::  FORM 3 CUENTA ORIGEN SELECCIONADA  ::::::::::\n\n");
                         %>
                         <form method="GET" action="" class="e-BusCajaOrig" >
                             <h2> Datos cuenta origen completa</h2>
@@ -240,14 +215,10 @@
 
                 </form> 
                         
-                   
-                    
-                    
                     
                          <%
                     } if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest1")) {
-                        System.out.println("\n\n::::::::::  FORM 2 SELECT CUENTA DESTINO  ::::::::::\n\n");
                         %>
                         <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
                               onsubmit="return validarForumlarioRetiro2()">
@@ -270,7 +241,6 @@
                  <%
                     } else if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest2")) {
-                        System.out.println("\n\n::::::::::  FORM 2 NUMERO CUENTA DESTINO  ::::::::::\n\n");
                         %>
                         <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
                               onsubmit="return validarForumlarioRetiro2()">
@@ -308,9 +278,7 @@
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="1" class="botonMenuT">Volver a menú</button>&nbsp;
                     </form>
-                      
             </div>
-                
                 
             <footer></footer>
         </div>

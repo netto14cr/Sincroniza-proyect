@@ -27,6 +27,8 @@ public class ServletCambioPassword extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("\n:::::::  SERVLET CAMBIO DE CONTRASEÑA     ::::::::");
+        
         // Se define de que direccion viene el usaurio
         String destinoCajero; destinoCajero = "";
         String destinoCliente;destinoCliente = "";
@@ -35,17 +37,14 @@ public class ServletCambioPassword extends HttpServlet {
         destinoCliente = "/WEB-INF/Banco/Vista/Cliente.jsp";
         destinoCajero = "/WEB-INF/Banco/Vista/Cajero.jsp";
         
-        
         // Se declara las respuestas de las sesiones
         HttpSession sesionActual = request.getSession();
         // Se establece el envio de etiqueta y mensaje al bean
         sesionActual.setAttribute("ruta", request.getRequestURI());
 
-        
         String newPass = request.getParameter("passwNew");
         String repPassw = request.getParameter("passwNew");
         RequestDispatcher dispatcher = null;
-        
         
         // Se declara el uso de informacion guarda en el bean de login y
         // se establece como se respondera la infromacion manejada en el servlet
@@ -76,7 +75,6 @@ public class ServletCambioPassword extends HttpServlet {
                 // Se verifica que la nueva contraseña sea diferente a la anterior
                 // registrada en el sistema
                 if(!newPass.equals(user.getClave_acceso())){
-                    
                     //----------------------------------------------------------
                     
                     // AQUI VA EL METODO QUE FALTA DE FUNCIONES DE LOGUEO QUE
@@ -137,10 +135,7 @@ public class ServletCambioPassword extends HttpServlet {
                     dispatcher = request.getRequestDispatcher(destino);
                     dispatcher.forward(request, response);
                         break;
-                    case "2":
-                        break;
-                    case "3":
-                        break;
+                    
                 }// Cierra la validacion del switch de excepciones
             }// Cierra el cacth de excepciones
         }// Falso si los datos registrados en la clase son nulos se envia un mensaje de
@@ -159,8 +154,6 @@ public class ServletCambioPassword extends HttpServlet {
 
     }// Cierra el metodo general
 
-
-    
     // Declaracion de clases de funciones de modelo.dao utilizados en la clase
     private final funcionesLogueo servicio = new funcionesLogueo();
     private final funcionesDeposito fD = new funcionesDeposito();

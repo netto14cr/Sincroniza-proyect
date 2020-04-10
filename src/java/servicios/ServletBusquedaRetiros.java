@@ -31,9 +31,9 @@ public class ServletBusquedaRetiros extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("\n:::::::  SERVLET BUSQUEDA CUENTAS RETIRO    ::::::::");
         
-        
-           // Se define de que direccion viene el usaurio
+        // Se define de que direccion viene el usaurio
         String destino="";
         destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
         HttpSession sesionActual = request.getSession();
@@ -56,8 +56,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
         // cuenta y su esta exsite en el sistema
         
         if (id != null && !id.isEmpty()) {
-//            
-//            System.out.println("\n\n<<<<<   B U S C A  P O R  I D  >>>>>>>>>>\n\n");
             
             try {
                 // Verificamos primero que la cédula del usuario exista en el 
@@ -70,8 +68,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
                 
                 // Si el tipo de busqueda seleccionado es por numero de cédula
                 if (tipoBusquedaCuenta.equals("nCedula")) {
- 
-                    System.out.println("<<<ENTRA EN TIPO CEDULA>>>");
                     // Se verifica si la cedula ingresada existe en el sistema
                     // si se cuemple entra y manda la respuesta de que puede continuar
                     // con el deposito a esta cuenta
@@ -106,10 +102,8 @@ public class ServletBusquedaRetiros extends HttpServlet {
                     
 //                Falso si el tipo de busqueda seleccionado es por numero de cuenta
                 } else if (tipoBusquedaCuenta.equals("nCuenta")) {
-                    int numeroCuenta=0;
-                    
+                    int numeroCuenta; numeroCuenta=0;
                     numeroCuenta = Integer.parseInt(id);
-                    
                     
 //                    Se verifica SI que el numero de cuenta a la que se quiere buscar
 //                    para realizar el deposito exista en el sistema con un usuario
@@ -131,7 +125,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                     }
-                
                 }
             } catch (Exception ex) {
                 
@@ -142,16 +135,11 @@ public class ServletBusquedaRetiros extends HttpServlet {
                     // positiva por parte de la busqueda en la base de datos y que
                     // está es equivocada y no existe.
                     case "2":
-                        System.out.println("\n<--- NO EXISTE CLIENTE EN EL SISTEMA --->\n");
-                      
                         bRet.seteMensaje("Error: la identificación "+id+" no pertenece"
                                 + "aún usurio en nuestro sistema!");
                         sesionActual.setAttribute("descripRetiro", 
                         new BeanRetiro(bRet.geteMensaje()));
-                        
                         request.getSession().setAttribute("servletMsjRetiro", "ERROR_NO_CUENTA");
-                        
-                        
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -161,10 +149,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
                     // positiva por parte de la busqueda en la base de datos y que
                     // está es equivocada y no existe.
                     case "4":
-                        System.out.println("\n <--- NO EXISTE EL NUMERO DE CUENTA DIGITADO ---> ");
-                        
-                        
-                        
                         bRet.seteMensaje("Error: El numero de cuenta "+id+" no pertenece"
                                 + "aun usurio en nuestro sistema!");
                         sesionActual.setAttribute("descripRetiro", 
@@ -177,7 +161,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
                 }
             }
         }else{
-            System.out.println("\n\n:::::::::::::F A L S O ::::::::\n\n");
             request.getSession().setAttribute("servletMsjRetiro", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
@@ -252,7 +235,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
             throws ServletException, IOException{
         try {
             
-//            System.out.println("\n\n:::::::::VERIFICA FORM REGRESO!::::\n\n");
             String botonFormulario = "";
             botonFormulario = request.getParameter("regresoOpcion");
             if (botonFormulario != null && !botonFormulario.isEmpty()) {

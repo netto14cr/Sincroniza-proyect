@@ -31,6 +31,8 @@
             
             <div id="contents">
                 <%
+                    System.out.println("::::::::::   VISTA APERTURA DE CUENTA    :::::::::");
+                    
                 funcionesAperturaCuenta fAP=new funcionesAperturaCuenta();
                 String msgNuevaCuenta =""; 
                 msgNuevaCuenta= (String) session.getAttribute("servletMsjNuevaCuenta");
@@ -134,9 +136,7 @@
                         // ya contaba con cuenta y se le procede a asignar una 
                         // nueva cuenta con esto se actualiza la pantalla con la
                         // informacion y mensaje de la nueva cuenta
-                      if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("1")){
-                          System.out.println("\n<<<<<<<< NUEVA CUENTA AGREGADA >>>>>>>>>>>>>>\n");
-                          %>
+                      if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("1")){%>
                           <p class="mensajeCorrecto">
                             
                               ${descripción.geteMensaje()}</p><br>
@@ -158,16 +158,16 @@
                           // cedula indicado para la cuenta no existe en el sistema y se procede
                           // a mostrar un segundo formulario para registrar al usuario y agregarlo
                           // seguidamente en el sistema.
-                          }else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("2")){
-                           System.out.println("\n<<<<<<<< FORMULARIO DE REGISTRO NUEVA CUENTA>>>>>>>>>>>>>>\n");
-                      %>
-                          <form method="GET" action="crearCuentaPaso2" class="e-deposito2" onsubmit="return validarForumlario2()">
+                          }else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("2")){%>
+                          <form method="GET" action="crearCuentaPaso2" class="e-deposito2" 
+                                onsubmit="return validarForumlario2()">
 
                         <!--Campo donde se muestra el numero de cuenta generado por el sistema-->
                     <p>
                         <label class="texto">Número de cuenta:&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" class="campo2" id="numeroCuenta2" readonly="true"
-                               name="numeroCuenta2" value="${descripción.geteNumeroCuenta()}" autofocus="autofocus"/>
+                               name="numeroCuenta2" value="${descripción.geteNumeroCuenta()}" 
+                               autofocus="autofocus"/>
                     </p>
                     <!--Campo para mostar la identificacion de la nueva cuenta-->
                     <p>
@@ -181,22 +181,17 @@
                     <p>
                         <label class="texto">Tipo de moneda: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</label>
                         <input  type="text" class="campo2" id="tipoMoneda2" disabled="true" 
-                                name="tipoMoneda2" autofocus="autofocus" value="${descripción.geteTipoMoneda()}" />
+                                name="tipoMoneda2" autofocus="autofocus" 
+                                value="${descripción.geteTipoMoneda()}" />
                     </p>
-<!--                    Campo para mostrar el maximo de transferencia
-                    <p>
-                        <label class="texto">Max. transferencia: &nbsp;&nbsp; </label>
-                         <input type="text" id="maximoTransferencia2" name="maximoTransferencia2" autofocus="autofocus"
-                                                    class="campo2" disabled="true" autocomplete="off" value="${descripción.geteMaxTransferencia()}"/>
-                    </p>-->
-                    
-                    <!--Campo para ingresar el nombre del nuevo cliente-->
                     <p>
                         <label class="texto">Nombre:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;</label>
-                        <input type="text" id="nombreUser" name="nombreUser" autofocus="autofocus"
-                               placeholder=" Digite el nombre " class="campo2" autocomplete="off" onblur="" />
+                        <input type="text" id="nombreUser" name="nombreUser" 
+                               autofocus="autofocus" placeholder=" Digite el nombre " 
+                               class="campo2" 
+                               autocomplete="off" onblur="" />
                     </p>
                     
                     <!--Campo para ingresar el apellido 1 del nuevo cliente-->
@@ -204,16 +199,18 @@
                         <label class="texto">Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;</label>
-                        <input type="text" id="apellidosUser" name="apellidosUser" autofocus="autofocus"
-                            id="apellidosUser"   placeholder=" Digite sus dos apellidos " 
-                            class="campo2" autocomplete="off" onblur=""/>
+                        <input type="text" id="apellidosUser" name="apellidosUser" 
+                               autofocus="autofocus" id="apellidosUser"
+                               placeholder=" Digite sus dos apellidos " class="campo2" 
+                               autocomplete="off" onblur=""/>
                     </p>
 
                     <!--Campo para ingresar el numero de telefono del nuevo cliente-->
                     <p>
                         <label class="texto">Número de telefono:&nbsp;</label>
-                        <input type="text" id="nTelefonoUser" name="nTelefonoUser" autofocus="autofocus"
-                               placeholder=" Digite número de telefono " class="campo2" autocomplete="off" />
+                        <input type="text" id="nTelefonoUser" name="nTelefonoUser" 
+                               autofocus="autofocus"placeholder=" Digite número de telefono " 
+                               class="campo2" autocomplete="off" />
                     </p>
                     
                      <!--Campo para seleccionar el tipo de usuario en el sistema 
@@ -227,13 +224,15 @@
                     </p>
 
                     <p style="text-align: right;">
-                        <button type="submit" id="BotonRegistrar"name="BotonRegistrar"class="boton" 
-                                onclick="">Registrar nuevo cliente</button>
+                        <button type="submit" id="BotonRegistrar"name="BotonRegistrar"
+                                class="boton" onclick="">Registrar nuevo cliente</button>
                     </p>
                 </form> 
                     <!--Se muestra el formulario para cancelar las acciones de registro-->
-                       <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
-                             <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonCuenta"
+                       <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  
+                             class="forBotonRegreso">
+                             <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                     value="1" class="botonCuenta"
                                      >Cancelar registro</button>&nbsp;
                          </form>
                     

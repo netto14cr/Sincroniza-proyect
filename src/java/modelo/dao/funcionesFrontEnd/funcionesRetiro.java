@@ -6,7 +6,6 @@
 package modelo.dao.funcionesFrontEnd;
 
 import java.util.List;
-import java.util.Scanner;
 import model.cuenta;
 import model.movimiento;
 import modelo.dao.servicioCuenta;
@@ -125,32 +124,4 @@ public class funcionesRetiro {
             return true;
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(new funcionesDeposito().obtenerSumaTotalTransferencias(1));
-//        funcionesRetiro fr = new funcionesRetiro();
-//        List<cuenta> lis;
-//        Scanner input = new Scanner(System.in);
-//        System.out.print("Ingrese el numero de CEDULA: ");
-//        String number = input.next();
-//        System.out.println("Ingresó " + number);
-//        try {
-//            // mostramos las cuentas con este numero de cuenta.
-//            lis = fr.listarCuentasDelCliente(number);
-//            for (cuenta li : lis) {
-//                System.out.println(li.toString());
-//            }
-//            // realizamos un deposito a una cuenta
-//            movimiento m = new movimiento();
-//            m.setCuenta_num_cuenta(1);
-//            System.out.print("Ingrese el Monto a Retirar");
-//            double number1 = input.nextDouble();
-//            System.out.println("Ingresó " + number1);
-//            m.setMonto(number1);
-//            fr.realizarRetiroDeCuenta(m, number);
-//        } catch (Exception ex) {
-//            System.out.println("Error : " + ex.getMessage());
-//        }
-    }
-
 }

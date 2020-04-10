@@ -1,8 +1,6 @@
 package servicios;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +26,8 @@ public class ServletMenuSistema extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("\n:::::::  SERVLET MENU DE REDIRECCION SISTEMA     ::::::::");
+        
         // Se define de que direccion viene el usaurio
         String destino = "";
         HttpSession sesionActual = request.getSession();
@@ -139,24 +139,10 @@ public class ServletMenuSistema extends HttpServlet {
             }
         } catch (NumberFormatException ex) {
         }
-        
-        
-        
 
     }
 
-//    Validacion para el ingreso de tipo de identificación
-    private String checkId(String txt) {
-        String r = txt;
 
-        Pattern pat = Pattern.compile("([1-9,A])-?([0-9]{4})-?([0-9]{4})");
-        Matcher m = pat.matcher(txt);
-        if (m.find()) {
-            r = String.format("%s%s%s", m.group(1), m.group(2), m.group(3));
-        }
-
-        return r;
-    }
 
     private final funcionesLogueo servicio = new funcionesLogueo();
 
@@ -199,17 +185,6 @@ public class ServletMenuSistema extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-//    Metodo que verifica la opciones de redireccion de la clase Cajero
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }

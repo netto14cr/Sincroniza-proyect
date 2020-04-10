@@ -26,13 +26,15 @@ public class ServletAperturaNuevo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        
+        System.out.println("\n:::::::  SERVLET PERTURA DE NUEVA CUENTA     ::::::::");
+        
+        
            // Se define de que direccion viene el usaurio
         String destino="";
         destino = "/WEB-INF/Banco/Vista/NuevaCuenta.jsp";
         HttpSession sesionActual = request.getSession();
         sesionActual.setAttribute("ruta", request.getRequestURI());
-        
-        
         
         // Se obtiene los valores guardados en el beanNueva Cuenta
         BeanNuevaCuenta bNC = (BeanNuevaCuenta) sesionActual.getAttribute("descripción");
@@ -82,12 +84,9 @@ public class ServletAperturaNuevo extends HttpServlet {
         //        Se obtiene el numero de telefono del usuario
         telefonoUser=request.getParameter("nTelefonoUser");
         
-            
-            
         } catch (NumberFormatException ex) {
             String tipoExcepcion="";
                 tipoExcepcion = ex.getMessage();
-                        System.out.println("\n <:::: ERROR AL RECUPERAR LA INFORMACION DEL USUARIO:::: "+tipoExcepcion);
 //                        // Se envia una respuesta de errror desconocido a la hora de obtener la informacion 
                         // ingresada por el usuario
                         request.getSession().setAttribute("servletMsjNuevaCuenta", "9");
@@ -99,7 +98,6 @@ public class ServletAperturaNuevo extends HttpServlet {
                         dispatcher.forward(request, response);
         }
         
-     
         // SE setean los valores enviados por el usuario
         
         cliente cl=new cliente();
@@ -107,23 +105,6 @@ public class ServletAperturaNuevo extends HttpServlet {
         cl.setApellidos(apellidosUs);
         cl.setId_cliente(cedulaUs);
         cl.setTelefono(telefonoUser);
-        
-//  ----------------------------------------------------------------------------
-//        Prueba por consola que los datos obtenidos en el bean estna siendo guardados y 
-//        obtenidos correctamente
-                
-        System.out.println("\n\nNOMBRE::"+nombreUs+
-                "\nAPELLIDOS::"+apellidosUs+
-                "\nCEDULA::"+cedulaUs+
-                "\nTIPO USUARIO::"+tipoUsuario+
-                "\nTIPO CUENTA::"+tipoCuenta+
-                "\nNUMERO TELEFONICO::"+telefonoUser+
-                "\nNUMERO CUENTA::"+numeroCuenta+
-                "\nTIPO MONEDA::"+tipoMoneda+
-                "\nMAX TRANSFERENCIA::"+maxTrans+"\n\n");
-       //  ----------------------------------------------------------------------------
-       
-       
         try {
             // Se verifica si la creacion de la cuenta se ha realizado correctamente
             // de ser verdadero es true y si ocurre un error es false
@@ -131,8 +112,6 @@ public class ServletAperturaNuevo extends HttpServlet {
             
             if(fAC.crearClienteNuevo(cl, tipoUsuario)){
                 fAC.crearCuentaClienteExistente(cedulaUs, tipoMoneda, tipoUsuario);
-                System.out.println("\n::::: LA NUEVA CUENTA"+cedulaUs+" HA SIDO CREADA "
-                        + "CORRECTAMENTE!\n ");
                 bNC.seteMensaje("NUEVA CUENTA CREADA EXITOSAMENTE!!");
                 mensaje=bNC.geteMensaje();
                 if(tipoUs.equals("0")){
@@ -144,7 +123,6 @@ public class ServletAperturaNuevo extends HttpServlet {
                 usuario user=fL.obtenerUsuarioPorCedula(cedulaUs);
                 pass=user.getClave_acceso();
                 bNC.setePassword(pass);
-                System.out.println("PASS:::"+pass);
                 
                 // Se responde al servidor que la cuenta ha sido creada con exito!
                 request.getSession().setAttribute("servletMsjNuevaCuenta", "6");
@@ -171,7 +149,6 @@ public class ServletAperturaNuevo extends HttpServlet {
         } catch (Exception ex) {
                 String tipoExcepcion="";
                 tipoExcepcion = ex.getMessage();
-                        System.out.println("\n <:::: HA OCURRIDO UN ERROR CON LA SOLICITUD :::: "+tipoExcepcion);
 //                        // Se envia una respuesta de errror desconocido y que la operacion 
                            // no se pudo completar con exito
                         request.getSession().setAttribute("servletMsjNuevaCuenta", "8");
@@ -180,9 +157,7 @@ public class ServletAperturaNuevo extends HttpServlet {
                         
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
-                
         }
-        
         
     }
 
@@ -202,8 +177,6 @@ public class ServletAperturaNuevo extends HttpServlet {
 
     
     
-    
-    
     //    Validacion para el ingreso de tipo de identificación
     private String checkId(String txt) {
         String r = txt;
@@ -217,12 +190,7 @@ public class ServletAperturaNuevo extends HttpServlet {
         return r;
     }
     
-    
-    
-    
-    
     // SE declara el uso de funciones de la clase DAO para el uso de los servicios
     private final funcionesAperturaCuenta fAC = new funcionesAperturaCuenta();
     private final funcionesLogueo fL = new funcionesLogueo();
-    
 }

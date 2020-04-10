@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 
-
-
-
 // Funcion que valida los campos del formulario de inicio de Sesión
 function validarSecion() {
 var datosRecibidos;
@@ -65,13 +62,11 @@ var datosCorrectos7;
                 {caracter_raro = true; }
 }
 
-
 // Valida que la contraseña nueva digitada sea igual a la contraseña del ejemplo
 if (passN.toString() == passExam.toString()) {
 error7 = "\n La contraseña nueva no puede ser igual a la del ejemplo!\n\n M A M O N  ;D";
         datosCorrectos7 = false;
         }
-
 
 else if (mayuscula == false || minuscula == false || caracter_raro == false || numero == false)
         {
@@ -112,16 +107,12 @@ else if (passN.length <= 8)
                 datosCorrectos7 = false;
                 }
 
-
-
 // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
 if (!datosCorrectos7) {
 alert('ERROR: ' + error7);
         }
 return datosCorrectos7;
 }
-
-
 //---------------   FIN VALIDACION DE CAMBIO DE CONTRASEÑA VENCIDA--------------
 
 
@@ -153,9 +144,7 @@ alert('ERROR: ' + error);
 return datosCorrectos;
 }
 
-
 // :::::::::: Funcion que valida los campos del formulario numero 2 ::::::::::::
-
 function validarForumlario2() {
 var datosCorrectos2;
         datosCorrectos2 = true;
@@ -173,7 +162,6 @@ var datosCorrectos2;
             error2 = "\n El nombre no puede ser menor o igual a 2 letras";
             datosCorrectos2 = false;
         }
-        
         
         // Falso Si el campo de aplellidos del usuario esta en blanco se detecta como error
         else if (document.getElementById('apellidosUser').value == "") {
@@ -204,8 +192,7 @@ var datosCorrectos2;
             error2 = "\n El numero telefonico debe contener 8 digitos! ";
             datosCorrectos2 = false;
         }
-        
-            
+          
         // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
         if (!datosCorrectos2) {
             alert('ERROR: ' + error2);
@@ -237,8 +224,6 @@ elemento.ClassName('campo');
         }
 }
 }
-
-
 //-----------------FIN VALIDACION DE APERTURA DE CUENTA ---------------------------
 
 
@@ -262,7 +247,6 @@ var datosCorrectos4;
 
         console.log("::::METODO DE DEPOSITO:::");
         if (tipoBusqueda.value.toString() == 'nCedula') {
-            console.log("<<<<< ENTRO EN CEDULA >>>>");
             if (document.getElementById('nCuentaDeposito').value == "") {
                 error4 = "\n El campo de la cédula está en blanco";
                 datosCorrectos4 = false;
@@ -273,7 +257,6 @@ var datosCorrectos4;
             }
         
         } else if (tipoBusqueda.value.toString() == 'nCuenta') {
-            console.log("<<<<< ENTRO EN NUMERO DE CUENTA >>>>");
             if (document.getElementById('nCuentaDeposito').value == "") {
                 error4 = "\n El campo del numero de cuenta está en blanco";
                 datosCorrectos4 = false;
@@ -291,7 +274,6 @@ var datosCorrectos4;
 return datosCorrectos4;
 }
 
-
 // Funcion que valida los campos del formulario numero 2 - deposito de efectivo
 function validarForumlarioDeposito2() {
 var datosCorrectos5;
@@ -307,7 +289,6 @@ var datosCorrectos5;
 error5 = "\n El campo monto de deposito no puede estár en blanco";
         datosCorrectos5 = false;
         }
-
 
 // Falso si el monto digitado es menor o igual a 0 se  valida su error
 else if (document.getElementById('montoDeposito').value <= 0){
@@ -328,7 +309,6 @@ error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
             datosCorrectos = false;
         }
         
-        
          // Valida si el campo de identificacion va vacio
         else if (document.getElementById('detalleNumId').value == "") {
             error5 = "\n El campo de numero de identificacion de depositante está en blanco";
@@ -348,8 +328,6 @@ alert('ERROR: ' + error5);
         }
 return datosCorrectos5;
 }
-
-
 
 // Funcion que valida los campos del formulario numero 2 - deposito de efectivo
 function validarForumlarioDeposito3() {
@@ -393,15 +371,11 @@ error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
             datosCorrectos = false;
         }
         
-        
-        
         // Valida que el detalle del nombre tenga al menos 5 caracteres ingresados
         else if (detNombre.length < 5 ){
             error = "\n El campo del nombre no puede ser menor a 5 letras! ";
             datosCorrectos = false;
         }
-        
-        
         
          // Valida si el campo de identificacion va vacio
         else if (document.getElementById('detalleNumId').value == "") {
@@ -423,10 +397,7 @@ alert('ERROR: ' + error5);
 return datosCorrectos5;
 }
 
-
-
 // Funcion que valida le formulario de deposito por numero de cuenta
-
 function validarDepNumCuenta() {
         var datosCorrectos;
         datosCorrectos = true;
@@ -435,13 +406,11 @@ function validarDepNumCuenta() {
         cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/, expNumerica = /^[0-1000000]$/;
         var detMonto=document.getElementById('detalleMontoDep').value;
         
-         console.log("ENTRA EN METODO DE VALIDACION");
         
         // Valida si el campo de identificacion va vacio
          if (document.getElementById('detalleNumId').value == "") {
             error = "\n El campo de numero de identificacion de depositante está en blanco";
             datosCorrectos = false;
-            console.log("VALIDA ID");
             
         }
         // Valida si el formato ingresado en la cedula es correcto
@@ -449,17 +418,13 @@ function validarDepNumCuenta() {
             error = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
             1-0000-0000";
             datosCorrectos = false;
-            console.log("VALIDA ID FORMATO");
         }
         
-       
         // Valida que el campo ingresado en monto sea una expresion numerica
         else if (isNaN(detMonto) ) {
             error = "\n El valor ingresado en el campo monto de deposito no es una experesion numerica! ";
             datosCorrectos = false;
-            console.log("VALIDA TIPO MONTO");
         }
-        
         
         // Falso si el monto digitado es menor o igual a 0 se  valida su error
         else if (detMonto <= 0){
@@ -483,9 +448,7 @@ alert('ERROR: ' + error);
 return datosCorrectos;
 }
 
-
 // Funcion que valida le formulario de deposito por numero de cuenta
-
 function validarDepNumCuenta2() {
         var datosCorrectos;
         datosCorrectos = true;
@@ -496,8 +459,6 @@ function validarDepNumCuenta2() {
         var detMonto=document.getElementById('detalleMontoDep').value;
         var detNombre=document.getElementById('detalleNombreDep').value;
         
-        
-
         // Valida que el campo de nombre de detalle depositante vaya con un nombre ingresado
         // y no sea vacio
         if (document.getElementById('detalleNombreDep').value == "") {
@@ -530,7 +491,6 @@ function validarDepNumCuenta2() {
             datosCorrectos = false;
         }
         
-        
         // Falso si el monto digitado es menor o igual a 0 se  valida su error
         else if (detMonto <= 0){
             error = "\n El campo monto de deposito no puede ser menor o igual a 0";
@@ -550,10 +510,7 @@ alert('ERROR: ' + error);
         }
 return datosCorrectos;
 }
-
-
 //----------------- FIN VALIDACION DEPOSITOS BANCARIOS -----------------------------
-
 
 
 //-----------------  VALIDACION RETIROS DE EFECTIVO CAJERO  -------------------------
@@ -604,7 +561,6 @@ error5 = "\n El campo monto de deposito no puede estár en blanco";
         datosCorrectos5 = false;
         }
 
-
 // Falso si el monto digitado es menor o igual a 0 se  valida su error
 else if (document.getElementById('montoDeposito').value <= 0){
 error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
@@ -624,23 +580,166 @@ error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
             datosCorrectos = false;
         }
         
-
 // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
 if (!datosCorrectos5) {
 alert('ERROR: ' + error5);
         }
 return datosCorrectos5;
 }
-
-
-
-
-
-
-
-
-
-
-
 //----------------- FIN VALIDACION RETIROS DE EFECTIVO CAJERO-----------------------------
 
+
+//----------------- VALIDACION BUSQUEDA CUENTAS CAJERO-------------------------------------
+
+
+
+// Funcion que valida el formulario 1 - de busqueda por tipo de cuenta y numero de origen
+function valiFormBusqCajCuenOrigen() {
+var datosCorrectos;
+        datosCorrectos = true;
+        var error = "";
+        var cd = document.getElementById('busqCuentaOrigen').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/, expNumerica = /^[1-1000000]$/;
+        var tipoBusqueda = document.getElementById('tipoBusqOrigen');
+        //var op1='nCedula';
+
+        // Si el campo de número de cédula de usuario esta en blanco se detecta como error
+
+
+        if (tipoBusqueda.value.toString() == 'nCedula') {
+            
+            if (document.getElementById('busqCuentaOrigen').value == "") {
+                error = "\n El campo de la cédula origen está en blanco";
+                datosCorrectos = false;
+            } else if (!cedulaFormato.test(cd)) {
+                error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
+                1-0000-0000";
+                datosCorrectos = false;
+            }
+        
+        } else if (tipoBusqueda.value.toString() == 'nCuenta') {
+            if (document.getElementById('busqCuentaOrigen').value == "") {
+                error= "\n El campo del numero de cuenta origen está en blanco";
+                datosCorrectos = false;
+            }
+            else if (isNaN(cd) ) {
+                error = "\n El valor en el numero de cuenta no es un valor numerico! ";
+                datosCorrectos = false;
+            }else if (document.getElementById('busqCuentaOrigen').value <=0){
+                error = "\n El valor en el numero de cuenta origen no puede ser menor o igual a 0! ";
+                datosCorrectos = false;
+            }
+        }
+
+    // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+    if (!datosCorrectos) {
+        alert('ERROR: ' + error);
+        }
+return datosCorrectos;
+}
+
+
+
+// Funcion que valida el formulario 12 - de busqueda por tipo de cuenta y numero de destino
+function valiFormBusqCajCuenDestino() {
+var datosCorrectos;
+        datosCorrectos = true;
+        var error = "";
+        var cd = document.getElementById('busqCuentaDestino').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/, expNumerica = /^[1-1000000]$/;
+        var tipoBusqueda = document.getElementById('tipoBusqDestino');
+        //var op1='nCedula';
+
+        // Si el campo de número de cédula de usuario esta en blanco se detecta como error
+
+
+        if (tipoBusqueda.value.toString() == 'nCedula') {
+            
+            if (document.getElementById('busqCuentaDestino').value == "") {
+                error = "\n El campo de la cédula destino está en blanco";
+                datosCorrectos = false;
+            } else if (!cedulaFormato.test(cd)) {
+                error = "\n El numero de cédula destino: " + cd + " es incorrecto!\nPor favor intente el formato\n\
+                1-0000-0000";
+                datosCorrectos = false;
+            }
+        
+        } else if (tipoBusqueda.value.toString() == 'nCuenta') {
+            if (document.getElementById('busqCuentaDestino').value == "") {
+                error= "\n El campo del numero de cuenta destino está en blanco";
+                datosCorrectos = false;
+            }
+            else if (isNaN(cd) ) {
+                error = "\n El valor en el numero de cuenta destino no es un valor numerico! ";
+                datosCorrectos = false;
+            }else if (document.getElementById('busqCuentaDestino').value <=0){
+                error = "\n El valor en el numero de cuenta destino no puede ser menor o igual a 0! ";
+                datosCorrectos = false;
+            }
+        }
+
+    // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+    if (!datosCorrectos) {
+        alert('ERROR: ' + error);
+        }
+return datosCorrectos;
+}
+
+
+function valiFormBusqCajCuenOrigen2() {
+var datosCorrectos;
+        datosCorrectos = true;
+        var error = "";
+        var cd = document.getElementById('idUOrigen').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/;
+
+         // Valida si el campo de identificacion va vacio
+        if (document.getElementById('idUOrigen').value == "") {
+            error = "\n El campo de numero de identificacion origen de depositante está en blanco";
+            datosCorrectos = false;
+            
+        }
+        // Valida si el formato ingresado en la cedula es correcto
+        else if (!cedulaFormato.test(cd)) {
+            error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
+            1-0000-0000";
+            datosCorrectos = false;
+        }
+
+// Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+if (!datosCorrectos) {
+alert('ERROR: ' + error);
+        }
+return datosCorrectos;
+}
+
+
+function valiFormBusqCajCuenOrigen3() {
+var datosCorrectos;
+        datosCorrectos = true;
+        var error = "";
+        var cd = document.getElementById('idUserOrigen').value,
+        cedulaFormato = /^[1-9]-?\d{4}-?\d{4}$/;
+
+         // Valida si el campo de identificacion va vacio
+        if (document.getElementById('idUserOrigen').value == "") {
+            error = "\n El campo de numero de identificacion origen de depositante está en blanco";
+            datosCorrectos = false;
+            
+        }
+        // Valida si el formato ingresado en la cedula es correcto
+        else if (!cedulaFormato.test(cd)) {
+            error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
+            1-0000-0000";
+            datosCorrectos = false;
+        }
+
+// Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+if (!datosCorrectos) {
+alert('ERROR: ' + error);
+        }
+return datosCorrectos;
+}
+
+
+//-----------------   FIN VALIDACION BUSQUEDA CUENTAS CAJERO   -------------------------

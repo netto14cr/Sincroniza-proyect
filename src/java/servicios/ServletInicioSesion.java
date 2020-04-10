@@ -27,11 +27,11 @@ import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 public class ServletInicioSesion extends HttpServlet {
 
-  
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        System.out.println("\n:::::::  SERVLET MENU INICIO     ::::::::");
+        
         // Se define de que direccion viene el usaurio
         String destinoCajero = "";
         String destinoCliente = "";
@@ -50,19 +50,13 @@ public class ServletInicioSesion extends HttpServlet {
         request.getSession().getAttribute("bLogin");
 
         if (id != null && passw != null) {
-
             try {
                 if (servicio.verificarLogueo(checkId(id), passw)) {
-                    
-                    System.out.println("\n\nPASA EL LOGIN:::::::::\n\n");
-                    
                     usuario user = servicio.obtenerUsuarioPorCedula(id);
 //                    Condisional que verifica el tipo de usuario que inicia sesión
 //                      Si es usuario es 0 es cliente
                     if (servicio.obtenerRolCliente(id) == 0) {
-                        System.out.println("CLIENTEEEEE -----");
 
-                        
                         // SI EL USUARIO CLIENTE TIENE LA CLAVE VENCIDA
                         if (user.getClave_vencida() == 1) {
                             mensajeAux="Bienvenido " + id + " a Proyect Bank\nPor "
@@ -78,10 +72,8 @@ public class ServletInicioSesion extends HttpServlet {
                             dispatcher = request.getRequestDispatcher(destinoCliente);
                             dispatcher.forward(request, response);
                             
-                            
                          // FALSO SI EL USUARIO CLIENTE NO TIENE LA CLAVE VENCIDA
                         } else if (user.getClave_vencida() == 0) {
-                            
                             // Se guardan en el beans de iniciao de sesion datos importantes
                             // de identificacion, contraseña del cliente
                             
@@ -89,25 +81,18 @@ public class ServletInicioSesion extends HttpServlet {
                             // Server envia mensaje a la pagina principal del cliente 
                             // enviando 1 la pagina sabra que cliente no debe cambiar contraseña
                             request.getSession().setAttribute("servletLogin", "1");
-                            
                             dispatcher = request.getRequestDispatcher(destinoCliente);
                             dispatcher.forward(request, response);
                         }
 
 //--------------- FALSO SI LA IDENTIFICACION INICIO SESION ES DE USUARIO CAJERO ------------
                     } else if (servicio.verificarLogueo(checkId(id), passw)) {
-                        System.out.println("\n\n-----CAJEROOOOO -----\n\n");
-
 
                             // SI EL USUARIO CAJERO TIENE LA CLAVE VENCIA
                         if (user.getClave_vencida() == 1) {
-                            System.out.println("\n\n<<<<<<<< CLAVE VENCIDA >>>>>>\n\n");
-                            
                             mensajeAux="Bienvenido " + id + " a Proyect Bank\nPor "
                                     + "ser la primera vez que inicia sesión su clave vencera hoy..\n"
                                     + "Por favor cambiarla, gracias!";
-                            
-                            
                             // Se guardan en el beans de iniciao de sesion datos importantes
                             // de identificacion, contraseña y mensaje del cajero
                             sesionActual.setAttribute("eLogin", new BeanLogin(id, passw, mensajeAux));
@@ -121,7 +106,6 @@ public class ServletInicioSesion extends HttpServlet {
                             
                        //   FALSO SI EL USUARIO CAJERO TIENE LA CLAVE VENCIA     
                         } else if (user.getClave_vencida() == 0) {
-                            System.out.println("\n\n<<<<<<<< ENTRA DIRECTO >>>>>>\n\n");
                             
                             // Se guardan en el beans de iniciao de sesion datos importantes
                             // de identificacion, contraseña del cajero
@@ -131,7 +115,6 @@ public class ServletInicioSesion extends HttpServlet {
                             request.getSession().setAttribute("servletLogin", "1");
                             dispatcher = request.getRequestDispatcher(destinoCajero);
                             dispatcher.forward(request, response);
-                            
                         }
                     }
 
@@ -140,43 +123,34 @@ public class ServletInicioSesion extends HttpServlet {
                 } else if (servicio.verificarExistenciaCedulaCliente(id)
                         && !servicio.verificarExistenciaCedulaCliente(id)) {
 
-                    System.out.println("CONTRASEÑA INVALIDA -----");
                     dispatcher = request.getRequestDispatcher(
                             "/WEB-INF/Banco/Vista/index.jsp");
                     dispatcher.forward(request, response);
                 }
 
             } catch (Exception ex) {
-                String tipoExcepcion;
-                tipoExcepcion = ex.getMessage();
-                System.out.println("\n\n++++ERROR+++++"+tipoExcepcion);
-                switch (tipoExcepcion) {
+                switch (ex.getMessage()) {
                     case "1":
-                        System.out.println("\n <-- NO EXISTE EL USUARIO DIGITADO --->\n");
                         request.getSession().setAttribute("servletMsjError", "1");
                         dispatcher = request.getRequestDispatcher(
                                 "/index.jsp");
                         dispatcher.forward(request, response);
                         break;
                     case "2":
-                        System.out.println("\n<--- NO EXISTE CLIENTE EN EL SISTEMA --->\n");
                         request.getSession().setAttribute("servletMsjError", "2");
                         dispatcher = request.getRequestDispatcher(
                                 "/index.jsp");
                         dispatcher.forward(request, response);
                         break;
                     case "3":
-                        System.out.println("\n <--- LA CONTRASEÑA DIGITADA ES INVALIDA ---> ");
                         request.getSession().setAttribute("servletMsjError", "3");
                         dispatcher = request.getRequestDispatcher(
                                 "/index.jsp");
                         dispatcher.forward(request, response);
                         break;
-
                 }
             }
         }
-
     }
 
 //    Validacion para el ingreso de tipo de identificación
@@ -191,7 +165,6 @@ public class ServletInicioSesion extends HttpServlet {
 
         return r;
     }
-
     private final funcionesLogueo servicio = new funcionesLogueo();
     private final funcionesDeposito fD = new funcionesDeposito();
 

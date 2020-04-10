@@ -66,7 +66,7 @@
                     </p>
                 </form>
                 <br>
-            
+                <p> Modiciacion</p>
                     <!--Validacion de los parametros digitados y recibidos por el servidor-->
                     <% 
                     usuario user=(usuario) request.getAttribute("registro-usuario");

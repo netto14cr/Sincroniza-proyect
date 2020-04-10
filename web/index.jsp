@@ -22,28 +22,12 @@
                 <div id="Deposito1">
             <header>
                     <h1>Proyecto I Banco Versión 1.0</h1>
-                    <h2>Iniciar Sesión</h2>
+                    <h2>FUNCIONA PERRA!</h2>
             </header>
                     
                     </div>
             <div id="contents">
-                
-                
-<!--                <p class="information2">
-                    APARTIR DE ESTA ACTUALIZACIÓN SE PODRAN OBSERVAR LOS NUEVOS CAMBIOS
-                    DESDE LA PAGINA PRINCIPAL ;D!
-                </p>
-                
-                <p class="information">
-                    <strong>CAMBIOS V 1.3 <i>FIX R3</i></strong><br><br>
-                    <i>-Se reestructuro en un 75% el servlet de deposito: </i><br>
-                    Esto permitio poder acoplar los cambios para determinar si a la hora
-                    de realizar un deposito la persona que de indentifica y el numero de 
-                    cuenta o numero de identificacion ingresada determinan si la cuenta
-                    esta asociada a el o no... De lo contrario se pedira que ingrese su 
-                    nombre como bien indica el R3.
-                </p>
-                <br>-->
+          
                 
                 <form method="GET" action="registro-usuario" class="e-deposito" onsubmit="return validarSecion()">
                     
@@ -66,7 +50,7 @@
                     </p>
                 </form>
                 <br>
-                <p> Modiciacion</p>
+                
                     <!--Validacion de los parametros digitados y recibidos por el servidor-->
                     <% 
                     usuario user=(usuario) request.getAttribute("registro-usuario");

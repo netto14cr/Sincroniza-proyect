@@ -21,8 +21,7 @@
         <servlet-class>servicios.ServletInicioSesion</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ServletTransferenciaCaja</servlet-name>
-        <servlet-class>servicios.ServletTransferenciaCaja</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarCuenta</servlet-name>
@@ -47,6 +46,16 @@
     <servlet-mapping>
         <servlet-name>ServletTransferenciaCaja</servlet-name>
         <url-pattern>/ServletTransferenciaCaja</url-pattern>
+        <servlet-name>ServletMovimientosCuentas</servlet-name>
+        <url-pattern>/ServletMovimientosCuentas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>datosMovimientoCuenta</servlet-name>
+        <url-pattern>/datosMovimientoCuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVerificacionCuenta</servlet-name>
+        <url-pattern>/ServletVerificacionCuenta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

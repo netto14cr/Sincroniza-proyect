@@ -7,8 +7,6 @@ package modelo.dao.funcionesFrontEnd;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.cuenta;
 import model.favorita;
 import model.movimiento;
@@ -73,8 +71,6 @@ public class funcionesTrasfereciasCajas extends funcionesDeposito {
                 ) {// como ambas existen verificamos si tienen el mismo tipo , pero antes
             // recuperamos ambas cuentas.
             
-            if(this.verificarCuentaExistenteEnFavoritas(cedula, numCuentaDestino)==false)
-                throw new Exception("11");
             servicioCuenta sc = new servicioCuenta();
             String tipo_moneda_cO = sc.obtenerCuenta(numCuentaOrigen).get().getMoneda_nombre();
             String tipo_moneda_cD = sc.obtenerCuenta(numCuentaDestino).get().getMoneda_nombre();

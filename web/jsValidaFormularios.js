@@ -589,7 +589,7 @@ return datosCorrectos5;
 //----------------- FIN VALIDACION RETIROS DE EFECTIVO CAJERO-----------------------------
 
 
-//----------------- VALIDACION BUSQUEDA CUENTAS CAJERO-------------------------------------
+//----------------- VALIDACION BUSQUEDA CUENTAS TRANSFERNECIA CAJERO-------------------------------------
 
 
 
@@ -740,6 +740,46 @@ alert('ERROR: ' + error);
         }
 return datosCorrectos;
 }
+//-----------------   FIN VALIDACION BUSQUEDA CUENTAS TRANFERENCIA CAJERO   -------------------------
 
+//-----------------   VALIDACION TRASNFERENCIA CUENTAS CAJERO   ----------------------------------
 
-//-----------------   FIN VALIDACION BUSQUEDA CUENTAS CAJERO   -------------------------
+// Funcion que valida los campos del formulario numero 2 - deposito de efectivo
+function validarFormTransferencia() {
+var datosCorrectos;
+        datosCorrectos = true;
+        var error = "";
+        var detMonto=document.getElementById('montoDeposito').value;
+        
+        // Si el campo de monto del deposito esta vacio , se valida que debe ingresar 
+        // informacion en este espacio
+        if (document.getElementById('montoDeposito').value == "") {
+            error = "\n El campo monto de deposito no puede estár en blanco";
+            datosCorrectos = false;
+        }
+
+        // Falso si el monto digitado es menor o igual a 0 se  valida su error
+        else if (document.getElementById('montoDeposito').value <= 0){
+        error = "\n El campo monto de deposito no puede ser menor o igual a 0";
+        datosCorrectos = false;
+        }
+        
+         // Valida que el campo ingresado en monto sea una expresion numerica
+        else if (isNaN(detMonto) ) {
+            error = "\n El valor ingresado en el campo monto de deposito no es una experesion numerica! ";
+            datosCorrectos = false;
+        }
+        
+         // Valida que el monto ingresado para deposito sea una expresion numerica
+        else if (detMonto.length >= 7 ){
+            error = "\n La cifra excede el limite permitido para transferencia del sistema!\n\
+             Por favor intente un valor menor a un millon!   ";
+            datosCorrectos = false;
+        }
+        
+        // Si existen datos incorrecto entonces se realiza un alert con el error ocurrido al usuario
+if (!datosCorrectos) {
+alert('ERROR: ' + error);
+        }
+return datosCorrectos;
+}

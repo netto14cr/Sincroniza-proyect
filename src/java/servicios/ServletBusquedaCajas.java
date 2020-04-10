@@ -479,6 +479,18 @@ public class ServletBusquedaCajas extends HttpServlet {
     }// </editor-fold>
 
     
+    
+    private void vaciaVariables(BeanTransCaja bTCaja,BeanTransCaja2 bTCaja2){
+                        bTCaja.seteTipoBusqueda("");
+                        bTCaja2.seteTipoBusqueda("");
+                        bTCaja.seteExitenciaCuenta(false);
+                        bTCaja2.seteExitenciaCuenta(false);
+                        bTCaja.setCuentaSeleccionada(false);
+                        bTCaja2.setCuentaSeleccionada(false);
+    }
+    
+    
+    
     // Metodo que verifica si el usuario selecciona algun boton de navegacion
     // mostrados para cancelar las acciones de deposito
     
@@ -500,8 +512,10 @@ public class ServletBusquedaCajas extends HttpServlet {
                     // Opción 1 - El usuario cajero desea regresar al menu principal
                     case "1":
                         destino = "/WEB-INF/Banco/Vista/Cajero.jsp";
+                        vaciaVariables(bTCaja,bTCaja2);
                         request.getSession().setAttribute("servletMsjTCaja", null);
                         request.getSession().setAttribute("servletMsjTCaja2", null);
+                        request.getSession().setAttribute("servletMsjTCaja3", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -509,14 +523,17 @@ public class ServletBusquedaCajas extends HttpServlet {
                    //  usuario desaa intentar de nuevo registar una nueva
                     case "2":
                         destino = "/WEB-INF/Banco/Vista/BusqCuentaTrans.jsp";
+                        vaciaVariables(bTCaja,bTCaja2);
                         request.getSession().setAttribute("servletMsjTCaja", null);
                         request.getSession().setAttribute("servletMsjTCaja2", null);
+                        request.getSession().setAttribute("servletMsjTCaja3", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
                       // Opción 3 - El usuario cajero desea registar una nueva cuenta
                     case "3":
                         destino = "/WEB-INF/Banco/Vista/BusqCuentaTrans.jsp";
+                        vaciaVariables(bTCaja,bTCaja2);
                         request.getSession().setAttribute("servletMsjTCaja", null);
                         request.getSession().setAttribute("servletMsjTCaja2", null);
                         dispatcher = request.getRequestDispatcher(destino);
@@ -529,19 +546,13 @@ public class ServletBusquedaCajas extends HttpServlet {
                         // se redireccion y se envian a la pagina de transfernecias
                     case "4":
                         destino = "/WEB-INF/Banco/Vista/TransferenciaCaja.jsp";
-                        sesionActual.setAttribute("descTCaja",
-                        new BeanTransCaja(bTCaja.geteCedula(), bTCaja.geteNumCuenta(), 
-                                bTCaja.geteTipoBusqueda(), bTCaja.getExitenciaCuenta(),
-                                bTCaja.getCuentaSeleccionada()));
-                        
-                        sesionActual.setAttribute("descTCaja2",
-                        new BeanTransCaja2(bTCaja2.geteCedula(), bTCaja2.geteNumCuenta(), 
-                                bTCaja2.geteTipoBusqueda(), bTCaja2.getExitenciaCuenta(),
-                                bTCaja2.getCuentaSeleccionada()));
+                        request.getSession().setAttribute("servletMsjTCaja3", "FORM1");
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
+                        
                         break;
                 }
+                
             }
         } catch (NumberFormatException ex) {
         }

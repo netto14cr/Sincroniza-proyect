@@ -20,6 +20,13 @@ public class BeanTransCaja implements Serializable {
         this.eTipoBusqueda = eTipoBusqueda;
         this.eExitenciaCuenta=eExitenciaCuenta;
     }
+     
+     
+     public BeanTransCaja(String eCedula, String eNumCuenta, String eMensaje) {
+        this.eCedula = eCedula;
+        this.eNumCuenta = eNumCuenta;
+        this.eMensaje = eMensaje;
+    }
 
     // Declaracion del constructor por si la cuenta se realiza por numero de cuenta
     // y no le pertenece al usuario
@@ -39,15 +46,16 @@ public class BeanTransCaja implements Serializable {
         this.eExitenciaCuenta=eExitenciaCuenta;
     }
     
-    public BeanTransCaja(String eCedula,String eNumCuenta,String eTipoBusqueda, boolean eExitenciaCuenta, 
-             boolean cuentaSeleccionada) {
+    public BeanTransCaja(String eCedula,String eNumCuenta,String eTipoBusqueda, 
+            boolean eExitenciaCuenta, boolean cuentaSeleccionada) {
         this.eCedula = eCedula;
         this.eNumCuenta = eNumCuenta;
         this.eTipoBusqueda=eTipoBusqueda;
         this.eExitenciaCuenta=eExitenciaCuenta;
         this.cuentaSeleccionada=cuentaSeleccionada;
     }
-    public BeanTransCaja(String eCedula,String eNumCuenta,String eTipoBusqueda, boolean eExitenciaCuenta, 
+    public BeanTransCaja(String eCedula,String eNumCuenta,String eTipoBusqueda, 
+            boolean eExitenciaCuenta, 
              boolean cuentaSeleccionada, String eMensaje) {
         this.eCedula = eCedula;
         this.eNumCuenta = eNumCuenta;
@@ -59,12 +67,15 @@ public class BeanTransCaja implements Serializable {
     
 
     public BeanTransCaja(String eNumCuenta, String eCedula,
-            String eMontoDeposito, String eDetalleDeposito, String eMensaje) {
+            String eMontoDeposito, String eDetalleDeposito, String eNumCuenta2, 
+            String eMensaje, boolean cuentaSeleccionada) {
         this.eNumCuenta = eNumCuenta;
         this.eCedula = eCedula;
         this.eMontoDeposito = eMontoDeposito;
         this.eDetalleDeposito = eDetalleDeposito;
+        this.eNumCuenta2 = eNumCuenta2;
         this.eMensaje = eMensaje;
+        this.cuentaSeleccionada=cuentaSeleccionada;
     }
 
     public BeanTransCaja(String eCedula,String eNumCuenta,String eTipoBusqueda,
@@ -99,13 +110,6 @@ public class BeanTransCaja implements Serializable {
         
     }
 
-    public String geteCedulaDet() {
-        return eCedulaDet;
-    }
-
-    public void seteCedulaDet(String eCedulaDet) {
-        this.eCedulaDet = eCedulaDet;
-    }
     
     public String geteCedula() {
         return eCedula;
@@ -200,22 +204,28 @@ public class BeanTransCaja implements Serializable {
         this.cuentaSeleccionada = cuentaSeleccionada;
     }
 
+    public String geteNumCuenta2() {
+        return eNumCuenta2;
+    }
+
+    public void seteNumCuenta2(String eNumCuenta2) {
+        this.eNumCuenta2 = eNumCuenta2;
+    }
+
     @Override
     public String toString() {
-        return "BeanTransCaja{" + "eCedula=" + eCedula + ", eCedulaDet=" 
-                + eCedulaDet + ", eNumCuenta=" + eNumCuenta + ", eNombreUs=" 
+        return "BeanTransCaja{" + "eCedula=" + eCedula + ", eNumCuenta=" 
+                + eNumCuenta + ", eNumCuenta2=" + eNumCuenta2 + ", eNombreUs=" 
                 + eNombreUs + ", eMontoDeposito=" + eMontoDeposito + ", eMonedaDeposito=" 
                 + eMonedaDeposito + ", eDetalleDeposito=" + eDetalleDeposito 
                 + ", eTipoBusqueda=" + eTipoBusqueda + ", lista=" + lista 
                 + ", eMensaje=" + eMensaje + ", eExitenciaCuenta=" + eExitenciaCuenta 
                 + ", cuentaSeleccionada=" + cuentaSeleccionada + '}';
     }
-
-    
     
     private String eCedula;
-    private String eCedulaDet;
     private String eNumCuenta;
+    private String eNumCuenta2;
     private String eNombreUs;
     private String eMontoDeposito;
     private String eMonedaDeposito;

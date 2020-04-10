@@ -1,6 +1,9 @@
 package servicios;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.cuenta;
+import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
@@ -92,9 +97,12 @@ public class ServletMenuSistema extends HttpServlet {
                         
                     // Opción 6 - El usuario cliente desea consultar sus cuentas
                     case "6":
-//                        destino = "/WEB-INF/Banco/Vista/MisCuentas.jsp";
-                        destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
+                        destino = "/WEB-INF/Banco/Vista/CuentasCliente.jsp";
                         request.getSession().setAttribute("servletMsjMenu", null);
+                        funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
+                        String cedu=(String) request.getSession().getAttribute("id");
+                             request.getSession().setAttribute("listaCuentas",
+                                     (List<cuenta>)fc.listarCuentasCliente(cedu));
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -128,16 +136,16 @@ public class ServletMenuSistema extends HttpServlet {
                         
                     // Opción 10 - El usuario cliente desea afiliar una cuenta a favoritos
                     case "10":
-//                        destino = "/WEB-INF/Banco/Vista/AfliarFav.jsp";
-                        destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
-                        request.getSession().setAttribute("servletMsjMenu", null);
+                        destino = "/WEB-INF/Banco/Vista/SolicitarCuentaVinculacion.jsp";
+                        //request.getSession().setAttribute("servletMsjMenu", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
-                        
             }
             }
         } catch (NumberFormatException ex) {
+        } catch (Exception ex) {
+            Logger.getLogger(ServletMenuSistema.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

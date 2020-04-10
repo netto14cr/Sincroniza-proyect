@@ -27,30 +27,30 @@
 
 
                 <div id="contents">
+                    
                     <%
                         String msgLogin = "";
                         msgLogin = (String) session.getAttribute("servletLogin");
+                        beans.BeanLogin bl = (beans.BeanLogin) session.getAttribute("eLogin");
+                        session.setAttribute("beanLogin", bl);
+                        session.setAttribute("id",bl.geteIdentificacion());
                         if (msgLogin != null && msgLogin.equals("1")) {
                     %>
-
+                    <p>Bean : id = <%= bl.geteIdentificacion()%></p>
+                    <p>Id: <jsp:getProperty name="eLogin" property="eIdentificacion"/></p>
+                    <p>Contraseña: <jsp:getProperty name="eLogin" property="ePasword"/></p>
                     <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="6" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
                                 >Mis cuentas</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="7" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
                                 >Consultar saldo</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="8" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="8" class="botonMenuOpciones"
                                 >Transferencias</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="9" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="9" class="botonMenuOpciones"
                                 >Movimientos</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="10" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="10" class="botonMenuOpciones"
                                 >Afiliar un cuenta</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="5" class="botonMenuOpciones"
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonMenuOpciones"
                                 >Cerrar Sesión</button>&nbsp;
                     </form>
 
@@ -61,18 +61,16 @@
                                     Se le mostrara al usuario una pantalla con un pequeño formulario
                                     para que cambie de sesion-->
 
-                    
+
                     <p class="mensajeErrorDep">
                         ${eLogin.geteMensaje()}
                     </p>
-                    <form method="GET" action="cambio-Contra" 
-                          onsubmit="return validarCambioPassw()"  class="e-deposito">
+                    <form method="GET" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
                         <!--Campo para ingresar la nueva contraseña-->
 
 
                         <p>
-                            <label class="texto">Contraseña nueva:&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;</label>
+                            <label class="texto">Contraseña nueva:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <input class="campo2" id="passwNew" name="passwNew" 
                                    autofocus="autofocus" placeholder="Nueva contraseña"
                                    autocomplete="off" />
@@ -93,10 +91,8 @@
                         </p>
                     </form>
 
-                    <form method="GET" action="menu-Navegacion" onsubmit=""  
-                          class="formRegresoMenu">
-                        <button type="submit" id="opcionMenu" name="opcionMenu" 
-                                value="5" class="botonCuenta">cancelar</button>&nbsp;
+                    <form method="GET" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
+                        <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
                     </form>
                     <%} else if (msgLogin != null && msgLogin.equals("5")) {
                     %>
@@ -106,6 +102,7 @@
 
                     <%}
                     %>
+
                     <!---------    FIN PAGINA CAJERO USUARIO POR PRIMERA VEZ------->
 
                 </div>

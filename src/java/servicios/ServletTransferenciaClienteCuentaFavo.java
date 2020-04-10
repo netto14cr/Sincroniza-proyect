@@ -7,23 +7,17 @@ package servicios;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.cuenta;
-import model.movimiento;
-import modelo.dao.funcionesFrontEnd.funcionesAcreditacionIntereses;
-import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
-import modelo.dao.servicioCuenta;
 
 /**
  *
  * @author gabri
  */
-public class datosMovimientoCuenta extends HttpServlet {
+public class ServletTransferenciaClienteCuentaFavo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,30 +32,13 @@ public class datosMovimientoCuenta extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String destino = "/WEB-INF/Banco/Vista/MovimientosCuenta.jsp";
-            String numCuenta=(String)request.getParameter("numeroCuenta");
-            request.setAttribute("numeroCuenta",numCuenta);
-         
-            funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
-            servicioCuenta sc=new servicioCuenta();
-            cuenta c=sc.obtenerCuenta(Integer.parseInt(numCuenta)).get();
-            String saldo=String.valueOf(c.getSaldo_actual());
-            String tipo=c.getMoneda_nombre();
-            request.setAttribute("saldo",saldo);
-            request.setAttribute("moneda",tipo);
-            List<movimiento> lis=(List<movimiento>)fc.listarMovimientosCuenta(Integer.parseInt(numCuenta));
-            System.out.println("TAMAÑOOOOOOO"+lis.size());
-            request.getSession().setAttribute("listaMovimientos",lis);
-//            request.setAttribute("listaMovimientos",fc.listarMovimientosCuenta(Integer.parseInt(numCuenta)));
-           
 
+            String cuen1 = request.getParameter("cuenta1");
+            String cuen2 = request.getParameter("cuenta2");
+            String destino = "/WEB-INF/Banco/Vista/TransferenciaClienteCuentasFavoritas.jsp";
+            request.getSession().setAttribute("servletMsjMenu", null);
             RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
             dispatcher.forward(request, response);
-             
-        }catch(Exception ex)
-        {
-            System.out.println("Error "+ex.getMessage());
         }
     }
 
@@ -92,8 +69,6 @@ public class datosMovimientoCuenta extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-       
     }
 
     /**

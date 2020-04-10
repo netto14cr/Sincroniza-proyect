@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.cuenta;
+import model.favorita;
 import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
+import modelo.dao.funcionesFrontEnd.funcionesTrasfereciasCajas;
 
 /*
  * ServletMenuSistema.java
@@ -97,12 +99,14 @@ public class ServletMenuSistema extends HttpServlet {
                         
                     // Opción 6 - El usuario cliente desea consultar sus cuentas
                     case "6":
+                      
+                             destino = "/WEB-INF/Banco/Vista/MisCuentas.jsp";
                         destino = "/WEB-INF/Banco/Vista/CuentasCliente.jsp";
                         request.getSession().setAttribute("servletMsjMenu", null);
-                        funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
-                        String cedu=(String) request.getSession().getAttribute("id");
-                             request.getSession().setAttribute("listaCuentas",
-                                     (List<cuenta>)fc.listarCuentasCliente(cedu));
+                        funcionesConsultaCuentasMovimientos fc = new funcionesConsultaCuentasMovimientos();
+                        String cedu = (String) request.getSession().getAttribute("id");
+                        System.out.println("CEDULA : " + cedu);
+                        request.getSession().setAttribute("listaCuentas", (List<cuenta>) fc.listarCuentasCliente(cedu));
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
@@ -118,12 +122,18 @@ public class ServletMenuSistema extends HttpServlet {
                         
                     // Opción 8 - El usuario cliente desea realizar transferencias
                     case "8":
-//                        destino = "/WEB-INF/Banco/Vista/Transferencias.jsp";
-                        destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
+//                         destino = "/WEB-INF/Banco/Vista/Transferencias.jsp";
+                        destino = "/WEB-INF/Banco/Vista/TransferenciaClienteCuentasFavoritas.jsp";
+                        
+                        funcionesTrasfereciasCajas ftc = new funcionesTrasfereciasCajas();
+                        String ceduas = (String) request.getSession().getAttribute("id");
+                        List<favorita> lis = ftc.listarCuentasFavoritasDeCliente(ceduas);
+                        request.setAttribute("listaFavoritas",lis);
                         request.getSession().setAttribute("servletMsjMenu", null);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
                         break;
+
                         
                     // Opción 9 - El usuario cliente desea consultar sus movimientos bancarios
                     case "9":
@@ -143,9 +153,11 @@ public class ServletMenuSistema extends HttpServlet {
                         break;
             }
             }
-        } catch (NumberFormatException ex) {
+        }
+        catch (NumberFormatException ex) {
+            System.out.println("Error : " + ex.getMessage());
         } catch (Exception ex) {
-            Logger.getLogger(ServletMenuSistema.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error : " + ex.getMessage());
         }
 
     }

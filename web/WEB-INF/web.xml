@@ -32,6 +32,14 @@
         <servlet-name>ServletVerificacionCuenta</servlet-name>
         <servlet-class>servicios.ServletVerificacionCuenta</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletTransferenciaClienteCuentaFavo</servlet-name>
+        <servlet-class>servicios.ServletTransferenciaClienteCuentaFavo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletMovimientosCuentas</servlet-name>
+        <servlet-class>servicios.ServletMovimientosCuentas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarCuenta</servlet-name>
         <url-pattern>/ConsultarCuenta</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>ServletVerificacionCuenta</servlet-name>
         <url-pattern>/ServletVerificacionCuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTransferenciaClienteCuentaFavo</servlet-name>
+        <url-pattern>/ServletTransferenciaClienteCuentaFavo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletMovimientosCuentas</servlet-name>
+        <url-pattern>/ServletMovimientosCuentas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

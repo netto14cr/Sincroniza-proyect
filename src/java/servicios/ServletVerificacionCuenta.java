@@ -59,10 +59,10 @@ public class ServletVerificacionCuenta extends HttpServlet {
                 int num=Integer.parseInt(numCuenta);
                 if(fv.realizarVinculacion(new favorita(bl.geteIdentificacion(),num)))
                 {
-                    request.setAttribute("Hecho",true);
+                    request.getSession().setAttribute("Hecho","true");
                 }else
                 {
-                    request.setAttribute("Hecho",false);
+                    request.getSession().setAttribute("Hecho","false");
                 }
                 destino= "/WEB-INF/Banco/Vista/MostrarDatosVinculacion.jsp";
             //request.getSession().setAttribute("servletMsjMenu", null);

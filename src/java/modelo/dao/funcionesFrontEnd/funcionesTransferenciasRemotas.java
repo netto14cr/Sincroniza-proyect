@@ -39,13 +39,13 @@ public class funcionesTransferenciasRemotas {
     public boolean realizarTrasnferencia(int numCuentaOrigen, int numCuentaDestino,
             movimiento mov, String cedula) throws Exception {
         funcionesTrasfereciasCajas ft = new funcionesTrasfereciasCajas();
-        if (ft.verificarExistenciaNumCuenta(numCuentaOrigen)
-                && ft.verificarExistenciaNumCuenta(numCuentaDestino)) {// como ambas existen verificamos si tienen el mismo tipo , pero antes
-            // recuperamos ambas cuentas.
+//        if (ft.verificarExistenciaNumCuenta(numCuentaOrigen)
+//                && ft.verificarExistenciaNumCuenta(numCuentaDestino)) {// como ambas existen verificamos si tienen el mismo tipo , pero antes
+//            // recuperamos ambas cuentas.
 
-            if (ft.verificarCuentaExistenteEnFavoritas(cedula, numCuentaDestino) == false) {
-                throw new Exception("11");
-            }
+//            if (ft.verificarCuentaExistenteEnFavoritas(cedula, numCuentaDestino) == false) {
+//                throw new Exception("11");
+//            }
             servicioCuenta sc = new servicioCuenta();
             String tipo_moneda_cO = sc.obtenerCuenta(numCuentaOrigen).get().getMoneda_nombre();
             String tipo_moneda_cD = sc.obtenerCuenta(numCuentaDestino).get().getMoneda_nombre();
@@ -79,9 +79,9 @@ public class funcionesTransferenciasRemotas {
                 throw new Exception("9");
             }
 
-        } else {
-            throw new Exception("4");
-        }
+//        } else {
+//            throw new Exception("4");
+//        }
     }
 
     public static void main(String[] args) {

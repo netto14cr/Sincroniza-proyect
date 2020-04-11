@@ -12,13 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.dao.servicioCuenta;
+import model.movimiento;
+import modelo.dao.funcionesFrontEnd.funcionesTransferenciasRemotas;
 
 /**
  *
  * @author gabri
  */
-public class ServletTransferenciaClienteCuentaFavo extends HttpServlet {
+public class ServletMostrarTransferencia extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,31 +35,51 @@ public class ServletTransferenciaClienteCuentaFavo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String cuen1 = request.getParameter("cuenta1");
-            String cuen2 = request.getParameter("cuenta2");
+            String aceptar = request.getParameter("aceptar");
+            String cancelar = request.getParameter("cancelar");
+            RequestDispatcher dispatcher;
             String destino = "";
-
-            if (cuen1 != null && cuen2 != null && cuen1.equals(cuen2) == false) {// nos vamos a confirmar las dos cuentas
-                int numCuen = Integer.parseInt((String) request.getParameter("cuenta1"));
-                servicioCuenta sc = new servicioCuenta();
-                double saldoDisponible = sc.obtenerCuenta(numCuen).get().getSaldo_actual();
-                String moneda=sc.obtenerCuenta(numCuen).get().getMoneda_nombre();
-                destino = "/WEB-INF/Banco/Vista/VerificacionCuenta1Cuenta2.jsp";
-                request.getSession().setAttribute("saldo", String.valueOf(saldoDisponible));
-                request.getSession().setAttribute("moneda",moneda);
-                request.getSession().setAttribute("cuenta1", cuen1);
-                request.getSession().setAttribute("cuenta2", cuen2);
-                RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
-                dispatcher.forward(request, response);
-            } else {
-
+            String volverTransferencia = request.getParameter("volverTransferencia");
+            String volverMenu = request.getParameter("volverMenu");
+            String monto = request.getParameter("monto");
+            request.setAttribute("monto", monto);
+            request.setAttribute("aceptar",aceptar);
+            request.setAttribute("cancelar",cancelar);
+            if (volverTransferencia != null && volverTransferencia.equals("1")) {
                 destino = "/WEB-INF/Banco/Vista/TransferenciaClienteCuentasFavoritas.jsp";
-                RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+                dispatcher = request.getRequestDispatcher(destino);
+                dispatcher.forward(request, response);
+            } else if (volverMenu != null && volverMenu.equals("1")) {
+                destino = "/WEB-INF/Banco/Vista/Cliente.jsp";
+                dispatcher = request.getRequestDispatcher(destino);
+                dispatcher.forward(request, response);
+            } else if (aceptar != null && aceptar.equals("1")) {
+                destino = "/WEB-INF/Banco/Vista/MostrarTrasnferenciaRealizada.jsp";
+                
+                funcionesTransferenciasRemotas fr=new funcionesTransferenciasRemotas();
+                int num1=Integer.parseInt( String.valueOf(request.getSession().getAttribute("cuenta1")));
+                int num2=Integer.parseInt( String.valueOf(request.getSession().getAttribute("cuenta2")));
+                movimiento mov=new movimiento();
+                double mon=Double.parseDouble(monto);
+                mov.setMonto(mon);
+                mov.setCuenta_num_cuenta(num1);
+                mov.setDetalle("DETALLE DEFECTO");
+                String ced=(String) request.getSession().getAttribute("id");
+                boolean realizado=fr.realizarTrasnferencia(num1,num2, mov,ced );
+                //realizamos la trasaccion
+                request.getSession().setAttribute("realizado",String.valueOf(realizado));
+                dispatcher = request.getRequestDispatcher(destino);
+                dispatcher.forward(request, response);
+            } else if (cancelar != null && cancelar.equals("1")) {
+                destino = "/WEB-INF/Banco/Vista/MostrarTrasnferenciaRealizada.jsp";
+                dispatcher = request.getRequestDispatcher(destino);
                 dispatcher.forward(request, response);
             }
+
         }catch(Exception ex)
+            
         {
-            System.out.println("Error : "+ex.getMessage());
+            System.out.print("error : "+ex.getMessage());
         }
     }
 

@@ -69,7 +69,8 @@
         </form>
         <% 
         }
-        boolean hecho=Boolean.parseBoolean(request.getParameter("Hecho"));
+
+        String hecho=(String)request.getSession().getAttribute("Hecho");
         
 %>
 <p>Hecho : <%= hecho %></p>

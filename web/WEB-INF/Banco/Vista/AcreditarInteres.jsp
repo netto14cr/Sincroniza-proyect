@@ -60,7 +60,7 @@
                     <p style="text-align: right;">
                         <button type="submit" class="boton"
                                 id="formAcredita" name="formAcredita" value="1"
-                                >Autorizar acredicación de interes</button>
+                                >Autorizar interes</button>
                     </p>
                 </form> 
                         

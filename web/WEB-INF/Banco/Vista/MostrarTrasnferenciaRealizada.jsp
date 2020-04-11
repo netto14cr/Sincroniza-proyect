@@ -16,7 +16,7 @@
         String cuenta1 = (String) request.getSession().getAttribute("cuenta1");
         String cuenta2 = (String) request.getSession().getAttribute("cuenta2");
         String aceptar= (String) request.getParameter("aceptar");
-        String cancelar= (String) request.getParameter("cancelar");
+        //String cancelar= (String) request.getParameter("cancelar");
         boolean realizado=Boolean.parseBoolean((String)request.getSession().getAttribute("realizado"));
         
     %>

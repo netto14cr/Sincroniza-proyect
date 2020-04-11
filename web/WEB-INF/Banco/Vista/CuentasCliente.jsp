@@ -1,7 +1,7 @@
 <%-- 
     Document   : CuentasCliente
     Created on : 04/04/2020, 12:48:07 AM
-    Author     : gabri
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.cuenta"%>

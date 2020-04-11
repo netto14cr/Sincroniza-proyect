@@ -1,8 +1,14 @@
 package beans;
-
 import java.io.Serializable;
 import java.util.List;
 import model.cuenta;
+
+/**
+ * BeanLogin.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean sirve para manejar de manera inteligente la información
+ * en el servlet de desposito bancario
+ */
 
 public class BeanDeposito implements Serializable {
 

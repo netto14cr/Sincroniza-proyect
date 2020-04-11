@@ -1,7 +1,7 @@
 <%-- 
     Document   : Retiros
     Created on : 28/03/2020, 03:08:35 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="beans.BeanRetiro"%>
@@ -49,9 +49,9 @@
                 // a depositar
                 
                 
-                if(msgRetiro==null || msgRetiro.isEmpty()){ 
-                %>
-                <form method="GET" action="busquedaCuentaRetiro-cajero" class="e-deposito" 
+                if(msgRetiro==null || msgRetiro.isEmpty()){%>
+                
+                <form method="GET" action="busCuentaRetiro-cajero" class="e-deposito" 
                       onsubmit="return validarForumlarioDeposito1()">
 
                     <!--Campo para ingresar la identificación-->
@@ -75,7 +75,7 @@
                     </p>
                 </form>
                 <!--Se muestra un formulario para que el cajero pueda volver al menu principal-->
-                <form method="GET" action="regresarRetiro" onsubmit=""  class="forBotonRegreso">
+                <form method="GET" action="regresar-Retiro" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
@@ -121,7 +121,7 @@
                         
                         <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                         pantalla anterior-->
-                <form method="GET" action="regresarRetiro" onsubmit=""  class="forBotonRegreso">
+                <form method="GET" action="regresar-Retiro" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -179,7 +179,7 @@
                         
                    <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
-                <form method="GET" action="regresarRetiro" onsubmit=""  class="forBotonRegreso">
+                <form method="GET" action="regresar-Retiro" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -204,7 +204,7 @@
                         </p>
                         
                         <!--Formulario de opciones para volver a realizar un deposito o regresar al menu principal-->
-                        <form method="GET" action="regresarRetiro" onsubmit=""  class="formRegresoMenu">
+                        <form method="GET" action="regresar-Retiro" onsubmit=""  class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
@@ -236,7 +236,7 @@
                     </p>
                 </form> 
                     <!--Fromulario para cancelar la operacion de realizar el deposito-->
-                    <form method="GET" action="regresarRetiro" onsubmit=""  class="forBotonRegreso">
+                    <form method="GET" action="regresar-Retiro" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -252,7 +252,7 @@
                 <p class="mensajeErrorDep">
                         ${descripRetiro.geteMensaje().toString()} </p> 
                     <!--Fromulario para cancelar la operacion de intenetar o salir de retiros-->
-                    <form method="GET" action="regresarRetiro" onsubmit=""  
+                    <form method="GET" action="regresar-Retiro" onsubmit=""  
                           class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" name="regresoOpcion" value="2" 

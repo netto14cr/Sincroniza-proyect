@@ -1,8 +1,15 @@
 package beans;
-
 import java.io.Serializable;
 import java.util.List;
 import model.cuenta;
+
+/**
+ * BeanTransCaja2.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean se utiliza para manejar la informacion en el servidor
+ * de busqueda de cuentas de transferencias en cajas
+ */
+
 
 public class BeanTransCaja2 implements Serializable {
 
@@ -72,7 +79,8 @@ public class BeanTransCaja2 implements Serializable {
     }
      
      
-      public BeanTransCaja2(String eCedula,String eNumCuenta,String eTipoBusqueda, boolean eExitenciaCuenta, 
+      public BeanTransCaja2(String eCedula,String eNumCuenta,String eTipoBusqueda, 
+              boolean eExitenciaCuenta, 
              boolean cuentaSeleccionada) {
         this.eCedula = eCedula;
         this.eNumCuenta = eNumCuenta;

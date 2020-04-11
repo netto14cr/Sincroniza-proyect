@@ -1,7 +1,7 @@
 <%-- 
     Document   : NuevaCuenta
     Created on : 21/03/2020, 03:06:38 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.usuario"%>

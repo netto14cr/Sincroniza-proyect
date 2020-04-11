@@ -1,7 +1,7 @@
 <%-- 
     Document   : TransferenciaClienteCuentasFavoritas
     Created on : 09/04/2020, 09:02:31 PM
-    Author     : gabri
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.favorita"%>

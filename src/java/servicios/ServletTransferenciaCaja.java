@@ -13,7 +13,7 @@ import model.movimiento;
 import modelo.dao.funcionesFrontEnd.funcionesTrasfereciasCajas;
 
 /*
- * ServletInicionSesion.java
+ * ServletTransferenciaCaja.java
  * Autores: Gabriel Barboza && Néstor Leiva
  * Descripcion: Clase java tipo servlet de Trnasferencia en cajas del usuario cajero 
  */

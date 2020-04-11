@@ -14,6 +14,13 @@ import javax.servlet.http.HttpSession;
 import modelo.dao.funcionesFrontEnd.funcionesAperturaCuenta;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
+/*
+ * ServletAperturaCuenta.java
+ * Autores: Gabriel Barboza && Néstor Leiva
+ * Descripcion: Clase java tipo servlet de apertura de nueva en un cliente existente
+ */
+
+
 @WebServlet(
         name = "ServletAperturaCuenta",
         urlPatterns = {"/ServletAperturaCuenta", "/crearCuentaPaso1", "/regresarCuentaFin-Cajero"}

@@ -1,7 +1,7 @@
 <%-- 
     Document   : Retiros
     Created on : 28/03/2020, 03:08:35 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="beans.BeanRetiro"%>

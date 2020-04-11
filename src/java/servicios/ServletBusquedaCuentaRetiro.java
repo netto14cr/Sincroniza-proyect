@@ -16,23 +16,21 @@ import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
- * ServletInicionSesion.java
+ * ServletBusquedaCuentaRetiro.java
  * Autores: Gabriel Barboza && Néstor Leiva
- * Descripcion: Clase java tipo servlet de inicio sesión de usuarios
+ * Descripcion: Clase java tipo servlet de ibusqueda de cuentas para realizar retiros - cajero
  */
 @WebServlet(
-        name = "ServletBusquedaRetiros",
-        urlPatterns = {"/ServletBusquedaRetiros", "/busquedaCuentaRetiro-cajero",
-            "/regresarRetiro"}
+        name = "ServletBusquedaCuentaRetiro",
+        urlPatterns = {"/ServletBusquedaCuentaRetiro", "/busCuentaRetiro-cajero",
+            "/regresar-Retiro"}
 )
 
-public class ServletBusquedaRetiros extends HttpServlet {
+public class ServletBusquedaCuentaRetiro extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         System.out.println("\n:::::::  SERVLET BUSQUEDA CUENTAS RETIRO    ::::::::");
-        
         // Se define de que direccion viene el usaurio
         String destino="";
         destino = "/WEB-INF/Banco/Vista/Retiros.jsp";
@@ -49,8 +47,6 @@ public class ServletBusquedaRetiros extends HttpServlet {
         request.getSession().getAttribute("bRet");
         
         verificaOpcionesFormularioRegreso( dispatcher, request,response, destino);
-
-        
         // Verifica si la identificacion no es nula o vacia y de obtener
         // para proceder seguidamente a verificar la cedula o numero de 
         // cuenta y su esta exsite en el sistema

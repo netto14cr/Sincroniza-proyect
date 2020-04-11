@@ -1,7 +1,7 @@
 <%-- 
     Document   : MovimientosCuenta
     Created on : 05/04/2020, 07:12:00 PM
-    Author     : gabri
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.movimiento"%>

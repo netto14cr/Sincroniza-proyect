@@ -17,9 +17,10 @@ import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 import modelo.dao.funcionesFrontEnd.funcionesRetiro;
 
 /*
- * ServletInicionSesion.java
+ * ServletRetiro.java
  * Autores: Gabriel Barboza && Néstor Leiva
- * Descripcion: Clase java tipo servlet de Depositvos del usuario cajero 
+ * Descripcion: Clase java tipo servlet de retiro de cuenta por parte del usuario cajero
+ * a un cliente del sistema
  */
 @WebServlet(
         name = "ServletRetiro",

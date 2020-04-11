@@ -3,8 +3,6 @@ package servicios;
 import beans.BeanDeposito;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -103,7 +101,7 @@ public class ServletDeposito extends HttpServlet {
                                 // y que tipo de pantalla debe mostrar al usuario cajero
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY");
                             } catch (Exception ex) {
-                                Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
+                               
                             }
                             
                         }
@@ -156,7 +154,7 @@ public class ServletDeposito extends HttpServlet {
                                 // y que tipo de pantalla debe mostrar al usuario cajero
                                 request.getSession().setAttribute("servletMsjDeposito2", "DEPREADY2");
                             } catch (Exception ex) {
-                                Logger.getLogger(ServletDeposito.class.getName()).log(Level.SEVERE, null, ex);
+                                
                             }
                         }
                     }

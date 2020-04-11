@@ -12,7 +12,7 @@ import modelo.dao.servicioCuenta;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesRetiro {
 

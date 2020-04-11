@@ -1,7 +1,7 @@
 <%-- 
     Document   : SolicitarCuentaVinculacion
     Created on : 06/04/2020, 10:41:09 PM
-    Author     : gabri
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

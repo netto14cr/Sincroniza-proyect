@@ -12,7 +12,7 @@ import modelo.dao.servicioCuenta;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesAcreditacionIntereses {
 
@@ -73,8 +73,16 @@ public class funcionesAcreditacionIntereses {
      */
     public static void main(String[] args) {
         funcionesAcreditacionIntereses fa = new funcionesAcreditacionIntereses();
-
-        System.out.println(fa.generarAcreditacionDeIntereses());
+        funcionesConsultaCuentasMovimientos fM=new funcionesConsultaCuentasMovimientos();
+        //System.out.println(fa.generarAcreditacionDeIntereses());
+        
+        
+        List<movimiento> list;
+        list=fM.listarMovimientosPorTipo("Retiro");
+        for (movimiento object : list) {
+                System.out.println(object.getCuenta_num_cuenta() +" "+object.getMonto());
+            }
+        
 //         la cuenta del cajero no tiene dinero por eso esta esta parte de abajo
 //          para que no genere una excepción.
 //        movimiento mov=new movimiento();

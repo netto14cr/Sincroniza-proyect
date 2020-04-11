@@ -1,7 +1,9 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * jsValidaFormularios.js
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Calse tipo javasecript que fucniona para validar mediante codigo
+ * javasecript los formularios evitando lo mayor posible sobre errores de los usuarios
+ * a la hora de realizar una accion durante el funcionamiento del proyecto
  */
 
 // Funcion que valida los campos del formulario de inicio de Sesión

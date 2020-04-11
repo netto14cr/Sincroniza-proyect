@@ -9,7 +9,7 @@ package model;
  * Clase cuenta que contiene los atributos de su tabla asociada de tipo_cuenta
  * que contiene los atributos como la descripción de ella que puede ser de ahorros o corriente
  * y los intereses esta hereda de cuenta.
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class cuentaConTasaYDescripcion extends cuenta {
 

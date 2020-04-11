@@ -103,7 +103,6 @@ public class ServletInicioSesion extends HttpServlet {
                             dispatcher = request.getRequestDispatcher(destinoCajero);
                             dispatcher.forward(request, response);
                             
-                            
                        //   FALSO SI EL USUARIO CAJERO TIENE LA CLAVE VENCIA     
                         } else if (user.getClave_vencida() == 0) {
                             
@@ -166,7 +165,6 @@ public class ServletInicioSesion extends HttpServlet {
         return r;
     }
     private final funcionesLogueo servicio = new funcionesLogueo();
-    private final funcionesDeposito fD = new funcionesDeposito();
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

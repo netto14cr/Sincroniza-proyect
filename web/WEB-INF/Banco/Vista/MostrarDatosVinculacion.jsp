@@ -1,7 +1,7 @@
 <%-- 
     Document   : MostrarDatosVinculacion
     Created on : 06/04/2020, 10:57:30 PM
-    Author     : gabri
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.cliente"%>

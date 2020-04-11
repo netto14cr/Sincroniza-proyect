@@ -1,4 +1,4 @@
-# Sincroniza-proyect
+# MANUAL DE COMPILACIÓN PROYECTO SINCRONIZADO
 
 Este es una ayuda adicional de como funciona el proyecto con el conector MSQL
 

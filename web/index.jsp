@@ -27,7 +27,7 @@
                     </div>
             <div id="contents">
           
-                <form method="GET" action="registro-usuario" class="e-deposito" 
+                <form method="POST" action="registro-usuario" class="e-deposito" 
                       onsubmit="return validarSecion()">
                     
                     <!--Campo para ingresar la identificación-->

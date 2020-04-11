@@ -54,8 +54,17 @@ public class funcionesConsultaCuentasMovimientos {
         return sd.obtenerMovimientosPorTipoBase(tipoDatoBuscado);
     }
     
+    /**
+     * Lista los movimientos de la cuenta a como esten insertados en la BD en el ultimo minuto
+     * sin ningun tipo de filtro.
+     * @param tipoDatoBuscado
+     * @return lista de movimientos.
+     */
     
-        
+    public List<movimiento> listarMovimientosTipoUltimos(String tipoDatoBuscado) {
+        return sd.obMovPorTipoUltimoBD(tipoDatoBuscado);
+    }
+    
     /**
      * Lista los movimientos de la cuenta por medio de rango de fechas
      * de la "yyyy-mm-dd" hasta la otra "yyyy-mm-dd" y 

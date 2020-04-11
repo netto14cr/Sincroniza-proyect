@@ -1,3 +1,7 @@
+  . V E R S I Ó N - P R E L I M I N A R - P R O Y E C T O .
+
+Listo ! Si ya realice esta configuración con mi proyecto.
+--------------------------------------------------------------------------------------------------------------------------------
 # MANUAL DE COMPILACIÓN PROYECTO SINCRONIZADO
 
 Este es una ayuda adicional de como funciona el proyecto con el conector MSQL

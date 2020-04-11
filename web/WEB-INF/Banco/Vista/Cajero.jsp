@@ -53,7 +53,7 @@
                             value="11" class="botonMenuOpciones"
                             >Transf. en caja </button>&nbsp;
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
-                            value="4" class="botonMenuOpciones"
+                            value="12" class="botonMenuOpciones"
                             >Acreditación interes</button>&nbsp;
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
                             value="5" class="botonMenuOpciones"

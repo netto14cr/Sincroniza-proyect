@@ -60,7 +60,7 @@
                      %><p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
                 <!--Forumlario para la busqueda de cuentas de origen-->
                 
-                <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
+                <form method="POST" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
                       onsubmit="return valiFormBusqCajCuenOrigen()">
 
                     <h2> Busqueda cuenta Origen </h2>
@@ -92,7 +92,7 @@
                     
                   <!----------------Formulario de busqueda de cuenta de destino------------------>
                   
-                <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
+                <form method="POST" action="fromBusqCuenDest" class="e-BusqCajaDest" 
                       onsubmit="return valiFormBusqCajCuenDestino()">
 
                     <h3> Busqueda cuenta Destino </h3>
@@ -130,7 +130,7 @@
                         if(msgCajas!=null  && msgCajas.equals("ERROR2")){
                      %><p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
 
-                        <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
+                        <form method="POST" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
                               onsubmit="return valiFormBusqCajCuenOrigen2()">
                             <h2> Cuenta origen</h2>     
                             
@@ -168,7 +168,7 @@
                         && msgCajas.equals("ERROR3")) {
                          if (msgCajas!=null && msgCajas.equals("ERROR3")){%>
                             <p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
-                        <form method="GET" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
+                        <form method="POST" action="fromBusqCuenOrig" class="e-BusCajaOrig" 
                               onsubmit="return valiFormBusqCajCuenOrigen3()">
                             <h2> Cuenta origen</h2>     
                             
@@ -198,7 +198,7 @@
                     } else if (msgCajas!=null && !msgCajas.isEmpty() && 
                         msgCajas.equals("SELECT_ORIGEN")) {
                         %>
-                        <form method="GET" action="" class="e-BusCajaOrig" >
+                        <form method="POST" action="" class="e-BusCajaOrig" >
                             <h2> Datos cuenta origen completa</h2>
                          <!--Campo para mostrar el numero de cuenta ingresado previamente
                                 a la cual se realizara el deposito-->
@@ -220,7 +220,7 @@
                     } if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest1")) {
                         %>
-                        <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
+                        <form method="POST" action="fromBusqCuenDest" class="e-BusqCajaDest" 
                               onsubmit="return validarForumlarioRetiro2()">
                             <h3>Cuenta destino</h3>
                         <p>
@@ -242,7 +242,7 @@
                     } else if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest2")) {
                         %>
-                        <form method="GET" action="fromBusqCuenDest" class="e-BusqCajaDest" 
+                        <form method="POST" action="fromBusqCuenDest" class="e-BusqCajaDest" 
                               onsubmit="return validarForumlarioRetiro2()">
                             <h3>Cuenta destino</h3>
                          <!--Campo para mostrar el numero de cuenta ingresado previamente
@@ -261,7 +261,7 @@
                     
 <!--                         Formulario que permite continuar con el proceso para realizar
                          la transaccion mediante el boton en pantalla-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
+                <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                        
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="4" class="botonTransacion">Continuar transaccion</button>&nbsp;
@@ -271,7 +271,7 @@
                       
                         <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                         pantalla anterior-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
+                <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCanOrigen">Cancelar acción</button>&nbsp;

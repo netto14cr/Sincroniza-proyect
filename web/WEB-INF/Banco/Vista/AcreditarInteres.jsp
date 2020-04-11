@@ -17,10 +17,7 @@
         <!--Se declara la direccion y uso de javascript para validacion de la pagina-->
         <script type="text/javascript" src="jsValidaFormularios.js"></script>
         <!--Se define el uso de la etiqueta bean con datos de deposito bancario-->
-        <jsp:useBean class="beans.BeanTransCaja" id="descTCaja" scope="session">
-        </jsp:useBean>
-        
-        <jsp:useBean class="beans.BeanTransCaja2" id="descTCaja2" scope="session">
+        <jsp:useBean class="beans.BeanInteres" id="descInteres" scope="session">
         </jsp:useBean>
         
         <title>Acreditación de Interes</title>
@@ -39,96 +36,85 @@
                 System.out.println("::::::::::   VISTA ACEDITACION INTERES    :::::::::");
                 // Se obtienen los mensajes enviados por el Servlet en una variable
                 // de tipo string la informacion enviada a la pagina de Deposito
-                String msgTransaccion ="";
-                msgTransaccion = (String) session.getAttribute("servletMsjTCaja3");
-                System.out.println("---"+msgTransaccion);
+                String msgInteres ="";
+                msgInteres = (String) session.getAttribute("servletMsjInteres");
                 
+                beans.BeanInteres bInteres = (beans.BeanInteres) session.getAttribute("descInteres");
+                request.getSession().getAttribute("bInteres");
+            
                 
-                // Si el mensaje de 
-                 if (msgTransaccion!=null && msgTransaccion.equals("FORM1") || 
-                         msgTransaccion!=null && msgTransaccion.equals("ERROR")){
+                 if (msgInteres==null || msgInteres!=null && msgInteres.equals("ERROR")){
+                
+                    if (msgInteres!=null && msgInteres.equals("ERROR")){%>
+                        <p class="mensajeErrorDep">${descInteres.geteMensaje()}</p><%}%>
+                  
+                       <!--Se muestra formulario para que el usuario cajero pueda acreditar--> 
+                       <!--los intereses a las cuentas de banco en el sistema-->
+                    <form method="POST" action="acredita-interes" class="e-deposito2">
 
-                    if (msgTransaccion!=null && msgTransaccion.equals("ERROR")){%>
-                        <p class="mensajeErrorDep">${descTCaja.geteMensaje()}</p><%}%>
-                        
-<!--                        Se muestra el formulario para que el usuario indique la
-                        cantidad de dinero e ingrese la descripcion para realizar
-                        la transaccion-->
-                    <form method="GET" action="transferencia-Caja" class="e-deposito2" 
-                          onsubmit="return validarFormTransferencia()">
-
-                        <!--Campo donde se muestra la identificacion del depositante-->
-                    <p>
-                        <label class="texto">Identificación Dep:&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" name="idOrigen" id="idOrigen" 
-                               autofocus="autofocus" class="campo2" 
-                               value="${descTCaja.geteCedula()}"  readonly="true"/>
-                    </p>
-                        
                     <!--Campo donde se muestra el numero de cuenta origen -->
-                    <p>
-                        <label class="texto">N° Cuenta Origen:&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" name="nCuentaOrigen" id="nCuentaOrigen" autofocus="autofocus"
-                               class="campo2" readonly="true" value="${descTCaja.geteNumCuenta()}"/>
-                    </p>
+                    <p> <h2> Acreditar interes a cuentas del banco </h2></p>
                     <!--Campo donde se muestra el numero de cuenta destino -->
                     <p>
-                        <label class="texto">N° Cuenta Destino:&nbsp;&nbsp;</label>
-                        <input type="text" name="nCuentaDestino" id="nCuentaDestino" autofocus="autofocus"
-                               class="campo2" readonly="true" value="${descTCaja2.geteNumCuenta()}"/>
-                    </p>
-                    
-                    <!--Se define la etique y el campo para que se ingrese el monto a transpasar-->
-                    <p>
-                        <label class="texto">Monto transferir:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="montoDeposito" name="montoDeposito" 
-                               autofocus="autofocus" placeholder=" Monto deposito " class="campo2" 
-                               />
-                    </p>
-                    
-                    <!--Se define la etiqueta y el campo para que el cajero ingrese el detalle del deposito-->
-                    <p>
-                        <label class="texto">Detalle de transf:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <input type="text" id="detalleDep" name="detalleDep" autofocus="autofocus"
-                               placeholder="Detalle de deposito" class="campo2"/>
-                    </p>
+                 
                     <p style="text-align: right;">
-                        <button type="submit" class="boton">Realizar transferencia</button>
+                        <button type="submit" class="boton"
+                                id="formAcredita" name="formAcredita" value="1"
+                                >Autorizar acredicación de interes</button>
                     </p>
                 </form> 
                         
                    <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
-                        <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
+                <form method="POST" action="regreso-interes" onsubmit=""  class="forBotonRegreso">
+                        <button type="submit" id="formAcredita" name="formAcredita" 
+                                value="2" class="botonRegreso4">Volver a menú</button>&nbsp;
                     </form> 
                    
-                   <%   }else if (msgTransaccion!=null && msgTransaccion.equals("READY")){ %>
+                   <% }  
+                       else if (msgInteres!=null && msgInteres.equals("READY")){ %>
                 
-                   <p class="mensajeCorrecto">${descTCaja.geteMensaje()} </p>
-                        <p class="mensajeDepositoR">
-                           <strong>DATOS DE TRANSFERENCIA:</strong><br>
-                            <strong>N° Céd. cuenta dep    :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteCedula()}<br>
-                            <strong>N° Cuenta deposito    :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteNumCuenta2()}<br>
-                            <strong>N° Cuenta a debitar   :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteNumCuenta()}<br>
-                            <strong>Monto transferencia   :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteMontoDeposito()}<br>
-                            <strong>Detalle transferencia :&nbsp;&nbsp;&nbsp;</strong>${descTCaja.geteDetalleDeposito()}<br>
-                        </p>
-                        
-                        
-                           <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
+                   <p class="mensajeCorrecto">${descInteres.geteMensaje()} </p>
+                            <table border="1" width="100" cellspacing="10" cellpadding="10">
+                            <thead>
+                                
+                                <tr>
+                                    <th>Id Movimiento</th>
+                                    <th>Numero cuenta</th>
+                                    <th>Nuevo Saldo</th>
+                                    <th>Detalle mov</th>
+                                    <th>Fecha mov</th>
+                                    <th>Nombre depositante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <%for(int i=0; i<bInteres.getLista().size(); i++){%>
+                                  
+                                    <tr>
+                                    <td><%=bInteres.getLista().get(i).getId_movimiento()%></td>
+                                    <td><%=bInteres.getLista().get(i).getCuenta_num_cuenta() %></td>
+                                    <td><%=bInteres.getLista().get(i).getMonto()%></td>
+                                    <td><%=bInteres.getLista().get(i).getDetalle()%></td>
+                                    <td><%=bInteres.getLista().get(i).getFecha() %></td>
+                                    <td><%=bInteres.getLista().get(i).getDepositante() %></td>
+                                </tr>
+                                    <%}%>
+                            </tbody>
+                        </table>
+
+                            
+                              <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
-                        <input type="hidden" id="regreso" name="regreso" />
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
-                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
+                <form method="POST" action="regreso-interes" onsubmit=""  class="forBotonRegreso">
+                        <button type="submit" id="formAcredita" name="formAcredita" 
+                                value="3" class="botonRegreso4">Realizar de nuevo</button>&nbsp;
+                        <button type="submit" id="formAcredita" name="formAcredita" 
+                                value="2" class="botonRegreso4">Volver a menú</button>&nbsp;
                     </form> 
+                            
+                            
+                            
                    
                    <%   } %>
             </div>

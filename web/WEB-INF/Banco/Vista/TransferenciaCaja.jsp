@@ -54,7 +54,7 @@
 <!--                        Se muestra el formulario para que el usuario indique la
                         cantidad de dinero e ingrese la descripcion para realizar
                         la transaccion-->
-                    <form method="GET" action="transferencia-Caja" class="e-deposito2" 
+                    <form method="POST" action="transferencia-Caja" class="e-deposito2" 
                           onsubmit="return validarFormTransferencia()">
 
                         <!--Campo donde se muestra la identificacion del depositante-->
@@ -99,7 +99,7 @@
                         
                    <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
+                <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
@@ -122,7 +122,7 @@
                         
                            <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
-                <form method="GET" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
+                <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="2" class="botonCuenta">Cancelar acción</button>&nbsp;

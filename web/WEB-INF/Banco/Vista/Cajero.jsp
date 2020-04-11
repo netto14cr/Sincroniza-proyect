@@ -39,7 +39,7 @@
                     if (msgLogin != null && msgLogin.equals("1")) {
                 %>
 
-                <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
+                <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu">
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
                             value="1" class="botonMenuOpciones"
                             >Apertura cuentas</button>&nbsp;
@@ -71,7 +71,7 @@
                  <p class="mensajeErrorDep">
                         ${eLogin.geteMensaje()}
                     </p>
-                    <form method="GET" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
+                    <form method="POST" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
                     <!--Campo para ingresar la nueva contraseña-->
                     
                     
@@ -97,7 +97,7 @@
                     </p>
                 </form>
 
-                    <form method="GET" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
+                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
                     </form>
                 <%}else if (msgLogin != null && msgLogin.equals("5")) {

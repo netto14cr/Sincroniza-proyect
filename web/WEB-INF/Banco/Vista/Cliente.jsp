@@ -46,7 +46,7 @@
                     <p>Bean : id = <%= bl.geteIdentificacion()%></p>
                     <p>Id: <jsp:getProperty name="eLogin" property="eIdentificacion"/></p>
                     <p>Contraseña: <jsp:getProperty name="eLogin" property="ePasword"/></p>
-                    <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
+                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
                                 >Mis cuentas</button>&nbsp;
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
@@ -72,7 +72,7 @@
                     <p class="mensajeErrorDep">
                         ${eLogin.geteMensaje()}
                     </p>
-                    <form method="GET" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
+                    <form method="POST" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
                         <!--Campo para ingresar la nueva contraseña-->
 
 
@@ -98,7 +98,7 @@
                         </p>
                     </form>
 
-                    <form method="GET" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
+                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
                     </form>
                     <%} else if (msgLogin != null && msgLogin.equals("5")) {

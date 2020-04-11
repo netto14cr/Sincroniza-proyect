@@ -47,8 +47,8 @@ public class datosMovimientoCuenta extends HttpServlet {
             cuenta c=sc.obtenerCuenta(Integer.parseInt(numCuenta)).get();
             String saldo=String.valueOf(c.getSaldo_actual());
             String tipo=c.getMoneda_nombre();
-            request.setAttribute("saldo",saldo);
-            request.setAttribute("moneda",tipo);
+            request.getSession().setAttribute("saldo",saldo);
+            request.getSession().setAttribute("moneda",tipo);
             List<movimiento> lis=(List<movimiento>)fc.listarMovimientosCuenta(Integer.parseInt(numCuenta));
             System.out.println("TAMAÑOOOOOOO"+lis.size());
             request.getSession().setAttribute("listaMovimientos",lis);

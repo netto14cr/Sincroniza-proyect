@@ -19,8 +19,8 @@
             beans.BeanLogin bl = (beans.BeanLogin) session.getAttribute("beanLogin");
             List<movimiento> lis = (List<movimiento>) request.getSession().getAttribute("listaMovimientos");
             
-            String saldo=request.getAttribute("saldo").toString();
-            String moneda=request.getAttribute("moneda").toString();
+            String saldo=request.getSession().getAttribute("saldo").toString();
+            String moneda=request.getSession().getAttribute("moneda").toString();
         %>
         <h1>Desplegamos los movimientos del cliente de la cuenta "<%= request.getParameter("numeroCuenta")%>" !</h1>
         <h1>Saldo = <%= saldo %> ,  Moneda :  <%= moneda %></h1>

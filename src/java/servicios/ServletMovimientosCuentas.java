@@ -61,7 +61,7 @@ public class ServletMovimientosCuentas extends HttpServlet {
             if(fech1.equals("")==false || fech2.equals("")==false)
             {//entonces ordenamos  la lista diferente
                 funcionesConsultaCuentasMovimientos fc=new funcionesConsultaCuentasMovimientos();
-                
+                destino= "/WEB-INF/Banco/Vista/MovimientosCuenta.jsp";
                 List<movimiento> lis=(List<movimiento>)fc.listarMovimientosCuentaPorFecha(Integer.parseInt(numCuenta), fech1, fech2);
                 
                 request.getSession().setAttribute("listaMovimientos", lis);
@@ -70,6 +70,10 @@ public class ServletMovimientosCuentas extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
             dispatcher.forward(request, response);
             }
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Error : "+ex.getMessage());
         }
     }
 

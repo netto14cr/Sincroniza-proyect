@@ -15,10 +15,10 @@ import modelo.dao.servicioCuenta;
 import modelo.dao.servicioDeposito;
 
 /**
- *Clase para las funciones necesarias para el desarrollo de la funcionalidad de las paginas
+ * Clase para las funciones necesarias para el desarrollo de la funcionalidad de las paginas
  * que utlizaran los servlets y demas clases para realizar lo requerido con
  * todo lo relacionado con los depositos(R3).
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesDeposito {
     

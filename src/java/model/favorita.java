@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class favorita {
    private String cliente_id_cliente;

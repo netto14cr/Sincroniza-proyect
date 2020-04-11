@@ -4,6 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 import model.cuenta;
 
+/**
+ * BeanRetiro.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean sirve para manejar de manera inteligente la informacion
+ * en el servlet de retiro
+ */
+
 public class BeanRetiro implements Serializable {
 
     // Declaracion de constructor por defecto

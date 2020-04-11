@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
-
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
- *
- * @author gabri
+ * Nombre pagina.clase
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: 
  */
 public class movimiento {
    private int id_movimiento;
@@ -62,7 +57,7 @@ public class movimiento {
     public String getDetalle() {
         return detalle;
     }
-
+    
     public void setDetalle(String detalle) {
         this.detalle = detalle;
     }
@@ -99,5 +94,4 @@ public class movimiento {
         this.detalle="NINGUNO";
         this.detalle="";
     }
-
 }

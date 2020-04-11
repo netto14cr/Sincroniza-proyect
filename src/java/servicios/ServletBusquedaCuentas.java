@@ -17,9 +17,9 @@ import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
- * ServletInicionSesion.java
+ * ServletBusquedaCuentas.java
  * Autores: Gabriel Barboza && Néstor Leiva
- * Descripcion: Clase java tipo servlet de inicio sesión de usuarios
+ * Descripcion: Clase java tipo servlet de busqueda de cuentas para deposito bancario
  */
 @WebServlet(
         name = "ServletBusquedaCuentas",

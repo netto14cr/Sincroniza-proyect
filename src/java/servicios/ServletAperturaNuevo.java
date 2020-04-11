@@ -16,10 +16,19 @@ import model.usuario;
 import modelo.dao.funcionesFrontEnd.funcionesAperturaCuenta;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
+/*
+ * ServletAperturaNuevo.java
+ * Autores: Gabriel Barboza && Néstor Leiva
+ * Descripcion: Clase java tipo servlet de apertura de nueva cuenta del usuario cajero 
+ */
+
+
+
 @WebServlet(
         name = "ServletAperturaNuevo",
         urlPatterns = {"/ServletAperturaNuevo", "/crearCuentaPaso2"}
 )
+
 public class ServletAperturaNuevo extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

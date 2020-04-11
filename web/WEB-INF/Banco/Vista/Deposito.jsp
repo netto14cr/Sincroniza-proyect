@@ -1,7 +1,7 @@
 <%-- 
     Document   : Deposito
     Created on : 21/03/2020, 03:07:01 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="beans.BeanDeposito"%>

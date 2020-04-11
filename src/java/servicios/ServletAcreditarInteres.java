@@ -1,39 +1,43 @@
+  /*
+ * ServletAcreditarInteres.java
+ * Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Clase java tipo servlet de acreditacion de interes del usuario cajero 
+ */
 package servicios;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @Autores: Gabriel Barboza && Néstor Leiva
- */
-public class ServletTransferenciaClienteCuentaFavo extends HttpServlet {
+ 
+@WebServlet(
+        name = "ServletAcreditarInteres",
+        urlPatterns = {"/ServletAcreditarInteres", "/acredita-interes", "/regreso-interes"}
+)
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class ServletAcreditarInteres extends HttpServlet {
+
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
-            String cuen1 = request.getParameter("cuenta1");
-            String cuen2 = request.getParameter("cuenta2");
-            String destino = "/WEB-INF/Banco/Vista/TransferenciaClienteCuentasFavoritas.jsp";
-            request.getSession().setAttribute("servletMsjMenu", null);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
-            dispatcher.forward(request, response);
+        
+        try {
+        
+            
+        
+        } catch (Exception ex) {
+            
+            switch (ex.getMessage()) {
+                case "6":
+                    break;
+            }
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

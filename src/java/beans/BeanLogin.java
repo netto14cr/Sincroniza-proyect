@@ -1,6 +1,12 @@
 package beans;
-
 import java.io.Serializable;
+
+/**
+ * BeanLogin.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean sirve para manejar de manera inteligente la informacion
+ * en el servlet de inicio de sesión
+ */
 
 public class BeanLogin implements Serializable {
 

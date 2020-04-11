@@ -17,7 +17,7 @@ import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
- * ServletInicionSesion.java
+ * ServletBusquedaCajasjava
  * Autores: Gabriel Barboza && Néstor Leiva
  * Descripcion: Clase java tipo servlet de Busqueda de cuentas en el requerimientos
  * busqueda de cajas

@@ -1,6 +1,13 @@
 package beans;
-
 import java.io.Serializable;
+
+/**
+ * BeanNuevaCuenta.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean sirve para manejar de manera inteligente la informacion
+ * en el servlet de busqueda de cuentas
+ */
+
 
 public class BeanNuevaCuenta implements Serializable {
 

@@ -150,7 +150,7 @@ public class ServletMenuSistema extends HttpServlet {
             // Si se llama el servidor se actualiza 
             observer(request, dispatcher, response, destino);
             }
-        }
+        
          catch (Exception ex) {
 
             System.out.println("Error : " + ex.getMessage());

@@ -4,7 +4,7 @@
 Debajo de esta descripción ira el enlace a manual + video de funcionamaiento de apoyo de los requerimientos
 
 -----------------------------------------------------------------------------------------------------------------------------------------
-                  https://drive.google.com/open?id=1U4AsVsNn_dMNSaY0R1ulRQqEhPgVv39o
+https://drive.google.com/open?id=1U4AsVsNn_dMNSaY0R1ulRQqEhPgVv39o
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 

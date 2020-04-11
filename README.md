@@ -1,4 +1,4 @@
-  . V E R S I Ó N - P R E L I M I N A R - P R O Y E C T O .
+  . V E R S I Ó N - P R E L I M I N A R - P R O Y E C T O  ==> Parte del cliente y cajero (cliente faltan estilos y un par de cosas sencillas , pero en requerimientos funcionales ya estarian mayormente en su totalidad).
 
 Listo ! Si ya realice esta configuración con mi proyecto.
 --------------------------------------------------------------------------------------------------------------------------------

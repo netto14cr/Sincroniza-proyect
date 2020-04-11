@@ -49,14 +49,18 @@
                     <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
                                 >Mis cuentas</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
+                       <%-- 
+                                <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
                                 >Consultar saldo</button>&nbsp;
+                               
+                                <button type="submit" id="opcionMenu" name="opcionMenu" value="9" class="botonMenuOpciones"
+                                >Movimientos</button>&nbsp;
+                       --%>
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="8" class="botonMenuOpciones"
                                 >Transferencias</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="9" class="botonMenuOpciones"
-                                >Movimientos</button>&nbsp;
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="10" class="botonMenuOpciones"
+                         <button type="submit" id="opcionMenu" name="opcionMenu" value="10" class="botonMenuOpciones"
                                 >Afiliar un cuenta</button>&nbsp;
+                       
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonMenuOpciones"
                                 >Cerrar Sesión</button>&nbsp;
                     </form>

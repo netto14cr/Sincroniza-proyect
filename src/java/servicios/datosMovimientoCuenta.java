@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.cuenta;
 import model.movimiento;
-import modelo.dao.funcionesFrontEnd.funcionesAcreditacionIntereses;
 import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 import modelo.dao.servicioCuenta;
 

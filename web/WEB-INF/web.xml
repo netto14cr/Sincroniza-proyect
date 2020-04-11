@@ -41,12 +41,21 @@
         <servlet-class>servicios.ServletMovimientosCuentas</servlet-class>
     </servlet>
     <servlet>
+
         <servlet-name>ServletVerificacionCuentas</servlet-name>
         <servlet-class>servicios.ServletVerificacionCuentas</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServletMostrarTransferencia</servlet-name>
         <servlet-class>servicios.ServletMostrarTransferencia</servlet-class>
+
+        <servlet-name>ServletAcreditarInteres</servlet-name>
+        <servlet-class>servicios.ServletAcreditarInteres</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletBusquedaRetiros1</servlet-name>
+        <servlet-class>servicios.ServletBusquedaCuentaRetiro</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>ConsultarCuenta</servlet-name>
@@ -89,12 +98,21 @@
         <url-pattern>/ServletMovimientosCuentas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
         <servlet-name>ServletVerificacionCuentas</servlet-name>
         <url-pattern>/ServletVerificacionCuentas</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletMostrarTransferencia</servlet-name>
         <url-pattern>/ServletMostrarTransferencia</url-pattern>
+
+        <servlet-name>ServletAcreditarInteres</servlet-name>
+        <url-pattern>/ServletAcreditarInteres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletBusquedaRetiros1</servlet-name>
+        <url-pattern>/ServletBusquedaRetiros1</url-pattern>
+
     </servlet-mapping>
     <session-config>
         <session-timeout>

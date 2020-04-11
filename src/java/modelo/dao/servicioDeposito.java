@@ -18,8 +18,9 @@ import model.cuenta;
 import model.movimiento;
 
 /**
- *
- * @author gabri
+ * Nombre pagina.clase
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: 
  */
 public class servicioDeposito {
 
@@ -59,6 +60,12 @@ public class servicioDeposito {
     // ver los movimientos de la misma
     private final String CMD_RECUPERAR
             = "select * from movimiento where cuenta_num_cuenta=(?);";
+    
+    private final String CMD_RECUPERA_POR_DATO
+            ="select * from eif209_2001_p01b.movimiento where detalle=(?)";
+    
+    private final String CMD_RECUPERA_POR_DATO_MIN
+            ="select * from eif209_2001_p01b.movimiento where detalle=(?) and fecha >= now() - interval 1 minute";
 
     private final String CMD_RECUPERAR_Ordenado
             ="select * from movimiento where cuenta_num_cuenta=(?) order by fecha desc;";
@@ -260,7 +267,96 @@ public class servicioDeposito {
         }
         return lis;
     }
+    
+    
+    /**
+     * Obtenemos todos los movimientos asociados a una cuenta por un tipo de busqueda de dato
+     * @param tipoDato
+     * @return null o lista de movimientos.
+     */
+    
+    public List<movimiento> obtenerMovimientosPorTipoBase(String tipoDato) {
+//        Optional<movimiento> r = Optional.empty();
+        List<movimiento> lis = new ArrayList<>();
+        movimiento r;
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERA_POR_DATO);) {
+            stm.clearParameters();
+            stm.setString(1, tipoDato);
+            ResultSet rs = stm.executeQuery();
 
+            while (rs.next()) {
+                r = new movimiento(
+                        Integer.parseInt(rs.getString("id_movimiento")),
+                        Integer.parseInt(rs.getString("cuenta_num_cuenta")),
+                        Double.parseDouble(rs.getString("monto")),
+                        rs.getString("fecha"),
+                        rs.getString("detalle"),
+                        rs.getString("depositante"),
+                        Integer.parseInt(rs.getString("aplicado"))
+                );
+                lis.add(r);
+            }
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return lis;
+    }
+    
+    
+    /**
+     * Obtenemos todos los movimientos asociados a una cuenta por un tipo de busqueda de dato
+     * @param tipoDato
+     * @return null o lista de movimientos.
+     */
+    
+    public List<movimiento> obMovPorTipoUltimoBD(String tipoDato) {
+//        Optional<movimiento> r = Optional.empty();
+        List<movimiento> lis = new ArrayList<>();
+        movimiento r;
+        try (Connection cnx = obtenerConexion();
+                PreparedStatement stm = cnx.prepareStatement(CMD_RECUPERA_POR_DATO_MIN);) {
+            stm.clearParameters();
+            stm.setString(1, tipoDato);
+            ResultSet rs = stm.executeQuery();
+
+            while (rs.next()) {
+                r = new movimiento(
+                        Integer.parseInt(rs.getString("id_movimiento")),
+                        Integer.parseInt(rs.getString("cuenta_num_cuenta")),
+                        Double.parseDouble(rs.getString("monto")),
+                        rs.getString("fecha"),
+                        rs.getString("detalle"),
+                        rs.getString("depositante"),
+                        Integer.parseInt(rs.getString("aplicado"))
+                );
+                lis.add(r);
+            }
+
+        } catch (IOException
+                | ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return lis;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      *
      * @param args

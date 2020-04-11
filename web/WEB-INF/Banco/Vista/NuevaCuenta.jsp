@@ -1,7 +1,7 @@
 <%-- 
     Document   : NuevaCuenta
     Created on : 21/03/2020, 03:06:38 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.usuario"%>
@@ -41,7 +41,7 @@
 <!--                Se muestra el formulario numero 1 - para que el usuario cajaero pueda
                 ingresar los datos de la cuenta que desea crear nueva-->
 
-                <form method="GET" action="crearCuentaPaso1" class="e-deposito" onsubmit="return validarForumlario1()">
+                <form method="POST" action="crearCuentaPaso1" class="e-deposito" onsubmit="return validarForumlario1()">
 
                     <!--Campo donde se muestra el numero de cuenta generado por el sistema-->
                     <p>
@@ -115,7 +115,7 @@
 <!--                    Se muestra un segundo formulario al mismo tiempo en pantalla
                     para que el usuario pueda elegir la opcion de cancelar la 
                     apertura de la nueva cuenta, este lo dirigira al menu principal-->
-                    <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
+                    <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
                              <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                      value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
                          </form>
@@ -145,7 +145,7 @@
                          <strong>Número de cuenta:</strong> ${descripción.geteNumeroCuenta()}<br>
                          <strong>Max. transferencia: </strong> ${descripción.geteMaxTransferencia()}<br>
                          <strong>Tipo de Moneda    : </strong> ${descripción.geteTipoMoneda()}<br>
-                         <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
+                         <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
                              <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                                      <button type="submit" id="regresoOpcion" name="regresoOpcion" value="3" class="botonRegreso"
@@ -159,7 +159,7 @@
                           // a mostrar un segundo formulario para registrar al usuario y agregarlo
                           // seguidamente en el sistema.
                           }else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("2")){%>
-                          <form method="GET" action="crearCuentaPaso2" class="e-deposito2" 
+                          <form method="POST" action="crearCuentaPaso2" class="e-deposito2" 
                                 onsubmit="return validarForumlario2()">
 
                         <!--Campo donde se muestra el numero de cuenta generado por el sistema-->
@@ -229,7 +229,7 @@
                     </p>
                 </form> 
                     <!--Se muestra el formulario para cancelar las acciones de registro-->
-                       <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  
+                       <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  
                              class="forBotonRegreso">
                              <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                      value="1" class="botonCuenta"
@@ -254,7 +254,7 @@
                          <strong>Contraseña        :  </strong> ${descripción.getePassword()}<br>
                          <strong>Tipo Usuario      :  </strong> ${descripción.geteTipoUs()}<br>
                          
-                          <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
+                          <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="forBotonRegreso">
                              <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
                                      >Volver a menú</button>&nbsp;
                                      <button type="submit" id="regresoOpcion" name="regresoOpcion" value="3" class="botonRegreso"
@@ -265,7 +265,7 @@
                     <%}else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("7")){%>
                     <p class="mensajeCorrecto">${descripción.geteMensaje()}</p>
                     
-                     <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
+                     <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
@@ -277,7 +277,7 @@
                      else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("8")){%>
                     <p class="mensajeCorrecto">${descripción.geteMensaje()}</p>
                     
-                     <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
+                     <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"
@@ -290,7 +290,7 @@
                      else if (msgNuevaCuenta!=null && msgNuevaCuenta.equals("9")){%>
                     <p class="mensajeCorrecto">${descripción.geteMensaje()}</p>
                     
-                     <form method="GET" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
+                     <form method="POST" action="regresarCuentaFin-Cajero" onsubmit=""  class="formRegresoMenu">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" name="regresoOpcion" value="2" class="botonRegreso">Intentar de nuevo</button>&nbsp;
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" value="1" class="botonRegreso"

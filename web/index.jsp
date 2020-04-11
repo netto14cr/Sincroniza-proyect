@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 19/03/2020, 03:28:42 PM
-    Author     : netto
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page import="model.usuario"%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Proyecto I Banco Versión 1.0</title>
+        <title>Proyecto I Banco Versión 1.6.0</title>
         <link href="css/estiloFormulario.css" rel="stylesheet" type="text/css"/>
         
         <!--Se declara la direccion y uso de javascript para validacion de la pagina-->
@@ -21,15 +21,14 @@
             <div id="wrapper">
                 <div id="Deposito1">
             <header>
-                    <h1>Proyecto I Banco Versión 1.0</h1>
-                    <h2>FUNCIONA PERRA!</h2>
+                    <h1>Proyecto I Banco Versión 1.6.0</h1>
+                    <h2>Inicio de Sesión!</h2>
             </header>
-                    
                     </div>
             <div id="contents">
           
-                
-                <form method="GET" action="registro-usuario" class="e-deposito" onsubmit="return validarSecion()">
+                <form method="POST" action="registro-usuario" class="e-deposito" 
+                      onsubmit="return validarSecion()">
                     
                     <!--Campo para ingresar la identificación-->
                     <p>
@@ -40,7 +39,8 @@
                     <!--Campo para que el usuario pueda ingresar la contraseña-->
                     <p>
                         <label class="texto">Contraseña   :   &nbsp;</label>
-                        <input class="campo2" type="password" id="password" value="" name="password" autofocus="autofocus"
+                        <input class="campo2" type="password" id="password" value="" 
+                               name="password" autofocus="autofocus"
                                placeholder="(digite su contraseña)" autocomplete="off"/>
                         
                     </p>
@@ -75,28 +75,15 @@
                     %>
                      <p class="mensajeError">
                         EL CLIENTE <strong><%= id%></strong> NO EXISTE EN EL SISTEMA
-                        
                     </p>
-                    <%
-                    } else if (msg.equals("3")){
-                    %>
-                    <p class="mensajeError">
-                        LA CONTRASEÑA DIGITADA ES INVALIDA
+                    <%}else if (msg.equals("3")){ %>
+                    <p class="mensajeError">LA CONTRASEÑA DIGITADA ES INVALIDA
                     </p>
-                    <% }
-                        }
-                        %>
+                    <% }}%>
 
                 </div>
-                
-                
-                
             <footer></footer>
         </div>
             
     </body>
 </html>
-
-            
-                <!---------------------------------------------------------------->   
-    

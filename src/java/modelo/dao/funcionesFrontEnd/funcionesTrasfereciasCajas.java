@@ -15,7 +15,7 @@ import modelo.dao.servicioMoneda;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesTrasfereciasCajas extends funcionesDeposito {
 

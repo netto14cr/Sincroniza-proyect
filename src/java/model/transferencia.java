@@ -6,8 +6,9 @@
 package model;
 
 /**
- *
- * @author gabri
+ * Nombre pagina.clase
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: 
  */
 public class transferencia {
     private int id_transferencia;

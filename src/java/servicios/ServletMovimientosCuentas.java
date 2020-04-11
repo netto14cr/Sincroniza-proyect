@@ -18,7 +18,7 @@ import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class ServletMovimientosCuentas extends HttpServlet {
 

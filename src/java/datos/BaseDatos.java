@@ -1,10 +1,18 @@
 package datos;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
+
+/**
+ * BaseDatos.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Esta pagina se encarga de realizar la conexión con la base de datos
+ */
+
+
 
 public class BaseDatos {
 

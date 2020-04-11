@@ -72,7 +72,6 @@ public class funcionesLogueo {
         if (scl.obtenerCliente(ced).isPresent()) {
             return true;
         } else {
-            System.out.println("FALSOOOOOOOOOOOO");
             throw new Exception("2");//No existe el numero de cedula
         }
     }

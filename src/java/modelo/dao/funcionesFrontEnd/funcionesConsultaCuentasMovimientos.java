@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo.dao.funcionesFrontEnd;
 
 import java.util.List;
@@ -13,7 +9,7 @@ import modelo.dao.servicioDeposito;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesConsultaCuentasMovimientos {
 
@@ -47,7 +43,28 @@ public class funcionesConsultaCuentasMovimientos {
     public List<movimiento> listarMovimientosCuenta(int num_cuenta) {
         return sd.obtenerMovimientos(num_cuenta);
     }
-        
+    
+    /**
+     * Lista los movimientos de la cuenta a como esten insertados en la BD
+     * sin ningun tipo de filtro.
+     * @param tipoDatoBuscado
+     * @return lista de movimientos.
+     */
+    public List<movimiento> listarMovimientosPorTipo(String tipoDatoBuscado) {
+        return sd.obtenerMovimientosPorTipoBase(tipoDatoBuscado);
+    }
+    
+    /**
+     * Lista los movimientos de la cuenta a como esten insertados en la BD en el ultimo minuto
+     * sin ningun tipo de filtro.
+     * @param tipoDatoBuscado
+     * @return lista de movimientos.
+     */
+    
+    public List<movimiento> listarMovimientosTipoUltimos(String tipoDatoBuscado) {
+        return sd.obMovPorTipoUltimoBD(tipoDatoBuscado);
+    }
+    
     /**
      * Lista los movimientos de la cuenta por medio de rango de fechas
      * de la "yyyy-mm-dd" hasta la otra "yyyy-mm-dd" y 

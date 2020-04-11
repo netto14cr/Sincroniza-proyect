@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class usuario {
     

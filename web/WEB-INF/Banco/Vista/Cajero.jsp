@@ -1,3 +1,9 @@
+<%-- 
+    Document   : Deposito
+    Created on : 03/03/2020, 03:07:01 PM
+    Author     : Gabriel Barboza && Néstor Leiva
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +39,7 @@
                     if (msgLogin != null && msgLogin.equals("1")) {
                 %>
 
-                <form method="GET" action="menu-Navegacion" onsubmit=""  class="formMenu">
+                <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu">
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
                             value="1" class="botonMenuOpciones"
                             >Apertura cuentas</button>&nbsp;
@@ -47,7 +53,7 @@
                             value="11" class="botonMenuOpciones"
                             >Transf. en caja </button>&nbsp;
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
-                            value="4" class="botonMenuOpciones"
+                            value="12" class="botonMenuOpciones"
                             >Acreditación interes</button>&nbsp;
                     <button type="submit" id="opcionMenu" name="opcionMenu" 
                             value="5" class="botonMenuOpciones"
@@ -65,7 +71,7 @@
                  <p class="mensajeErrorDep">
                         ${eLogin.geteMensaje()}
                     </p>
-                    <form method="GET" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
+                    <form method="POST" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
                     <!--Campo para ingresar la nueva contraseña-->
                     
                     
@@ -91,7 +97,7 @@
                     </p>
                 </form>
 
-                    <form method="GET" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
+                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
                         <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
                     </form>
                 <%}else if (msgLogin != null && msgLogin.equals("5")) {

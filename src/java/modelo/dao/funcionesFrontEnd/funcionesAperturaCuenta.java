@@ -17,7 +17,7 @@ import modelo.dao.servicioUsuario;
  * Clase para las funciones necesarias para el desarrollo de la funcionalidad de las paginas
  * que utlizaran los servlets y demas clases para realizar lo requerido con
  * todo lo relacionado con la apertura de cuentas (R2).
- * @author gabri
+ * @Autores: Gabriel Barboza && Néstor Leiva
  */
 public class funcionesAperturaCuenta {
 

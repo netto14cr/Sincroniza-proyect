@@ -13,9 +13,9 @@ import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
- * ServletInicionSesion.java
+ * ServletCambioPassword.java
  * Autores: Gabriel Barboza && Néstor Leiva
- * Descripcion: Clase java tipo servlet de cambio de contraseña 
+ * Descripcion: Clase java tipo servlet de cambio de contraseña para los clientes del banco 
  */
 @WebServlet(
         name = "ServletCambioPassword",

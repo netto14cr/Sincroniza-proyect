@@ -79,6 +79,10 @@ public class ServletMostrarTransferencia extends HttpServlet {
         }catch(Exception ex)
             
         {
+            if(ex.getMessage().equals("5"))
+            {
+                System.out.println("Excede el límite");
+            }
             System.out.print("error : "+ex.getMessage());
         }
     }

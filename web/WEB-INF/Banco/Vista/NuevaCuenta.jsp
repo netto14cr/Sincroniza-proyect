@@ -106,8 +106,8 @@
                     </p>
                     
                    <!--Campo del formulario donde se define el boton del formulario-->
-                   <p>
-                        <button type="submit" id="BotonComprobarCuenta"name="BotonComprobarCuenta" class="botonRegreso"
+                   <p style="text-align: right;">
+                        <button type="submit" id="BotonComprobarCuenta"name="BotonComprobarCuenta" class="boton"
                                 onclick="" >Comprobar nueva cuenta</button>
                    </p>
                 </form>
@@ -216,7 +216,7 @@
                      <!--Campo para seleccionar el tipo de usuario en el sistema 
                      cuenta cajero o cuenta cliente-->
                     <p>
-                        <label class="texto">Tipo usuario:&nbsp; </label>
+                        <label class="texto">Tipo usuario:&nbsp;&nbsp;&nbsp; </label>
                         <select id="tipoUser" name="tipoUser" class="select2">
                             <option value="0"> Cliente </option>
                             <option value="1"> Cajero </option>

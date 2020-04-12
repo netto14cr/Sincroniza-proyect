@@ -74,7 +74,7 @@
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o 
                     cedula de la cuenta-->
                     <p>
-                        <label class="texto">Cuenta a depositar:&nbsp;</label>
+                        <label class="texto">Cuenta a depositar:&nbsp;&nbsp;</label>
                         <input type="text" name="nCuentaDeposito" id="nCuentaDeposito" 
                                autofocus="autofocus"
                                placeholder="digite la cuenta " class="campo" autocomplete="off" />

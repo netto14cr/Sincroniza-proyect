@@ -24,7 +24,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="Retiro">
+            <div id="Interes">
             <header>
                 <h1>Acreditación de Interes</h1>
             </header>
@@ -78,7 +78,7 @@
                             
                    <div class="container">
                    
-                   <table border="1" width="100" cellspacing="10" cellpadding="10">
+                   <table border="1">
                             <thead>
                                 <tr>
                                     <th>Id Movimiento</th>

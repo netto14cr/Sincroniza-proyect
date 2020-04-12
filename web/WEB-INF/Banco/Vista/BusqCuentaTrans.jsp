@@ -29,7 +29,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="Retiro">
+            <div id="Transferencias">
             <header>
                 <h1>Transferencia en cajas</h1>
             </header>

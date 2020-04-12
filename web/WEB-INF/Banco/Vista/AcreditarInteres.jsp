@@ -60,7 +60,7 @@
                     <p style="text-align: right;">
                         <button type="submit" class="boton"
                                 id="formAcredita" name="formAcredita" value="1"
-                                >Autorizar acredicación de interes</button>
+                                >Autorizar interes</button>
                     </p>
                 </form> 
                         
@@ -75,9 +75,11 @@
                        else if (msgInteres!=null && msgInteres.equals("READY")){ %>
                 
                    <p class="mensajeCorrecto">${descInteres.geteMensaje()} </p>
-                            <table border="1" width="100" cellspacing="10" cellpadding="10">
+                            
+                   <div class="container">
+                   
+                   <table border="1" width="100" cellspacing="10" cellpadding="10">
                             <thead>
-                                
                                 <tr>
                                     <th>Id Movimiento</th>
                                     <th>Numero cuenta</th>
@@ -87,10 +89,9 @@
                                     <th>Nombre depositante</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                
+                            
                                     <%for(int i=0; i<bInteres.getLista().size(); i++){%>
-                                  
+                            <tbody>
                                     <tr>
                                     <td><%=bInteres.getLista().get(i).getId_movimiento()%></td>
                                     <td><%=bInteres.getLista().get(i).getCuenta_num_cuenta() %></td>
@@ -99,21 +100,21 @@
                                     <td><%=bInteres.getLista().get(i).getFecha() %></td>
                                     <td><%=bInteres.getLista().get(i).getDepositante() %></td>
                                 </tr>
-                                    <%}%>
                             </tbody>
+                            <%}%>
                         </table>
-
+                 
+                   </div>
                             
                               <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                     pantalla anterior-->
                 <form method="POST" action="regreso-interes" onsubmit=""  class="forBotonRegreso">
                         <button type="submit" id="formAcredita" name="formAcredita" 
-                                value="3" class="botonRegreso4">Realizar de nuevo</button>&nbsp;
+                                value="3" class="botonRegresoInteres2">Realizar de nuevo</button>&nbsp;
                         <button type="submit" id="formAcredita" name="formAcredita" 
-                                value="2" class="botonRegreso4">Volver a menú</button>&nbsp;
+                                value="2" class="botonRegresoInteres">Volver a menú</button>&nbsp;
                     </form> 
-                            
-                            
+                             
                             
                    
                    <%   } %>

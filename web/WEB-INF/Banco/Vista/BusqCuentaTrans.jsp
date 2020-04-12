@@ -85,9 +85,27 @@
                     </p>
                 </form>
                     
+                <%} 
+                        // condision que valida que miestras el mensaje del servidor 
+                        // sea nulo se muestre el boton de volver a menu
+                        if (msgCajas==null && msgCajas2==null){%>
+                                        <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
+                        pantalla anterior-->
+                <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonTransacion">Volver a menú</button>&nbsp;
+                    </form>
+                                        
                 
-                <%} if (msgCajas2==null || msgCajas2!=null && msgCajas2.equals("ERROR")){
-                     if(msgCajas2!=null && msgCajas2.equals("ERROR")){%>
+                <%} 
+                    // Muestra el formulario de busqueda de cuenta destino
+                    // miestras el mensaje del servidor de busqueda 2 sea nulo o
+                    // si este cambio su actualizacion a error en el formulario
+                     if (msgCajas2==null || msgCajas2!=null && msgCajas2.equals("ERROR")){
+                     
+                     // Si el msj2 del servidor de busqueda es error muestra una ventana
+                     // arriba del formulario con el error
+                    if(msgCajas2!=null && msgCajas2.equals("ERROR")){%>
                      <p class="ErrorBusqCajaDest">${descTCaja2.geteMensaje()}</p><%}%>
                     
                   <!----------------Formulario de busqueda de cuenta de destino------------------>
@@ -127,6 +145,8 @@
                         && msgCajas.equals("BusqDatosOrig1") || msgCajas!=null && 
                         msgCajas.equals("ERROR2")) {
                        
+                          // Si el msj1 del servidor de busqueda es error muestra una ventana
+                        // arriba del formulario con el error
                         if(msgCajas!=null  && msgCajas.equals("ERROR2")){
                      %><p class="ErrorBusqCajaOrig">${descTCaja.geteMensaje()}</p><%}%>
 
@@ -157,7 +177,7 @@
                         <button type="submit" class="boton">Verificar cuenta</button>
                     </p>
                 </form> 
-                        
+                      
                         <%
 //                    Muestra formulario 2 ingreso de verificacion de numero de cedula
                    // de la persona dueña de la cuenta      
@@ -193,8 +213,11 @@
                     </p>
                 </form> 
                     
+                  
                     
-                    <%
+                    <%// Se muestra la acyualizacion del formulario  al usuario 
+                        // con la cuenta de origen que el servidor acepto y 
+                        // guardo su valor 
                     } else if (msgCajas!=null && !msgCajas.isEmpty() && 
                         msgCajas.equals("SELECT_ORIGEN")) {
                         %>
@@ -212,11 +235,14 @@
                         <input type="text" name="" id="" autofocus="autofocus"
                                class="campo2" readonly="true" value="${descTCaja.geteCedula()}" />
                     </p>
-
                 </form> 
                         
                     
+                    
                          <%
+                       // Muestra forumulario 2 de destino en caso que el usuario 
+                       // ingreso la cedula en la busqueda de la cuenta y ahora
+                       // se muestra las opciones para que seleccione la cuenta
                     } if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest1")) {
                         %>
@@ -238,7 +264,8 @@
                 </form> 
                         
                         
-                 <%
+                 <%// Se muestra la informacion de la cuenta seleccionada por el usuario
+                     // de destino para realizar la transaccion
                     } else if (msgCajas2!=null && !msgCajas2.isEmpty() && 
                         msgCajas2.equals("BusqDatosDest2")) {
                         %>
@@ -253,32 +280,52 @@
                     </p>
                 </form> 
                     
-                    
-                   <% }// Si mensaje de servelet es listo significa que las cuentas 
+                    <%}
+                        // Si mensaje de servelet es listo significa que las cuentas 
 //                            de origen y destino han seleccionado sus datos y mostrara
 //                            un formulario con un boton de continuar
                         if (msgCajas3!=null && !msgCajas3.isEmpty() && msgCajas3.equals("LISTO")){%>
                     
 <!--                         Formulario que permite continuar con el proceso para realizar
                          la transaccion mediante el boton en pantalla-->
+                                        
                 <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
-                       
+                       <br><br><br><br><br>
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="2" class="botonRegresoInteres2">Cancelar acción</button>&nbsp;
+                                
+                        <button type="submit" id="regresoOpcion" name="regresoOpcion" 
+                                value="1" class="botonRegresoInteres">Volver a menú</button>&nbsp;
+                                
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="4" class="botonTransacion">Continuar transaccion</button>&nbsp;
                     </form>
-                      <%}  %>
-                      
-                      
-                        <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
+                    
+                    </div>
+                    <%// Acutlaizacion de botones mientras los mensajes del servidor sean
+                      // diferentes al estado inicial (nulo) y que mensaje 3 siga siendo nulo
+                      // entonces se muestras las opciones del formulario con los botones de
+                      // cancelar acciones realizadas y el de volver
+                    } if (msgCajas!=null && !msgCajas.isEmpty()
+                        && msgCajas3==null ||
+                        msgCajas2!=null && !msgCajas2.isEmpty()
+                        && msgCajas3==null) {
+                        %>
+                 
+                                  <!--Se muestra un formulario para que el cajero pueda cancelar la accion y volver a la 
                         pantalla anterior-->
                 <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="2" class="botonCanOrigen">Cancelar acción</button>&nbsp;
+                                value="2" class="botonRegresoInteres2">Cancelar acción</button>&nbsp;
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="1" class="botonMenuT">Volver a menú</button>&nbsp;
+                                value="1" class="botonRegresoInteres">Volver a menú</button>&nbsp;
                     </form>
-            </div>
+                    
+                   <% } %>
+                      
+                   
+            
                 
             <footer></footer>
         </div>

@@ -39,7 +39,7 @@ public class funcionesDeposito {
      */
     public boolean realizarDepositoACuentaRefact(movimiento mov) throws Exception
     {
-        mov.setDetalle(""+mov.getDetalle());//añadimos la palabra deposito...
+        mov.setDetalle("Deposito: "+mov.getDetalle());//añadimos la palabra deposito...
         if(mov.getMonto()>0)
             return this.realizarDepositoACuenta(mov);
         else

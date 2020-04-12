@@ -78,7 +78,7 @@ public class funcionesRetiro {
 //                if (this.verificarLimiteMonto(mov)) { // este no verifica si excede lo establecido.
                     mov.setMonto(-mov.getMonto());//pasamos el monto a negativo para que cuando se realice
                     //la actualización le reste a la cuenta en vez de sumarse.
-                    mov.setDetalle("Retiro" + mov.getDetalle());//se añade el retiro
+                    mov.setDetalle("Retiro: " + mov.getDetalle());//se añade el retiro
                     return fd.realizarDepositoACuenta(mov);
 //                }
             } else {

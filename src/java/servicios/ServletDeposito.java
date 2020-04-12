@@ -215,6 +215,7 @@ public class ServletDeposito extends HttpServlet {
                                 // Se pasan los datos a obtenidos a movimientos
                                 mov.setCuenta_num_cuenta(Integer.parseInt(bDep.geteNumCuenta()));
                                 mov.setMonto(Integer.parseInt(montoDep));
+                                mov.setDetalle(detalleDep);
                                 // Se reliza el deposito en la base de datos
                                 fDeposito.realizarDepositoACuentaRefact(mov);
                                 // Se actualiza el mensaje al servidor como deposito listo

@@ -69,7 +69,7 @@ public class ServletAcreditaInteres extends HttpServlet {
                             bInteres.setLista(list);
                         
                             // Se establece un mensaje a mostrar la usuario de operecion realizada
-                            bInteres.seteMensaje("La operación de acreditar de intereses "
+                            bInteres.seteMensaje("La operación de acreditar intereses "
                                 + "ha sido realizada exitosamente !");
                             bInteres.seteOperacionRealizada(true);
                         

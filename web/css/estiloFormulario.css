@@ -197,20 +197,20 @@ body {
     padding: 16px 16px 16px 16px;
     border: 2px solid ghostwhite;
     font-size: 20px;
-    left: 43%;
+    left: 43;
 }
 
 
 #wrapper #contents .botonTransacion{
-    background-color: #003366;
+    background-color: rgba(255, 89, 0, 0.39);
     color: #ffffff;
-    position: fixed;
+    position: absolute;
     margin: auto;
     margin-top: 20px;
     padding: 16px 16px 16px 16px;
     border: 2px solid ghostwhite;
     font-size: 20px;
-    top: 60%;
+    top: 470px;
     left: 43%;
 }
 #wrapper #contents .botonCanOrigen{
@@ -269,6 +269,17 @@ body {
     font-size: 20px;
     left: 35%;
 }
+#wrapper #contents .botonRegreso4{
+    background-color:  rgba(0, 255, 87, 0.22);
+    color: #ffffff;
+    position: relative;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid white;
+    font-size: 20px;
+    left: 45%;
+}
 
 
 
@@ -298,7 +309,7 @@ body {
 
 
 #wrapper #contents .botonCuenta{
-    background-color: #990000;
+    background-color: rgba(168, 0, 0, 0.57);
     color: #ffffff;
     position: relative;
     margin: auto;
@@ -406,73 +417,53 @@ body {
 
 
 #wrapper #contents .boton{
-    background-image: url('./Imagenes/fondo5.jpg');
+    background-color: rgba(56, 119, 230, 0.25);
     color: #ffffff;
     margin: 8px 8px 8px 8px;
     padding: 16px 16px 16px 16px;
-    border: 2px solid deepskyblue;
+    border: 2px solid darkgray;
     position: relative;
     right: 30%;
     font-size: 20px;
 }
 
 
-
-
-#wrapper #contents .tablaDatos {
-    border: none;
-    width: 360px;
-}
-
-.col1 {
-    padding-right: 24px;
-    text-align: right;
-}
-
-.col2 {
-    background-color: #e5e5e5;
-    font-weight: bold;
-    padding: 4px 16px 4px 16px;
-}
-
-
-
 #wrapper #contents .mensajeError {
     color: #fff;
     position: relative;
-    left: 40px;
+    left: auto;
     text-align: center;
     padding: 16px 16px 16px 16px;
     margin: auto;
     border: 2px #ffffff ridge;
-    background-color: #990000;
+    background-color: rgba(168, 0, 0, 0.57);
     width: 33%;
 }
 
 #wrapper #contents .mensajeErrorDep {
     color: #fff;
     position: relative;
-    left: 40px;
+    left: auto;
     text-align: center;
     padding: 16px 16px 16px 16px;
     margin: auto;
     margin-bottom: 2%;
     border: 2px #ffffff ridge;
-    background-color: #990000;
-    width: 33%;
+    background-color: rgba(168, 0, 0, 0.57);
+    width: 600px;
 }
 
 #wrapper #contents .mensajeErrorDep2 {
     color: #fff;
     position: relative;
-    left: 40px;
+    left: auto;
     text-align: center;
     padding: 16px 16px 16px 16px;
     margin: auto;
     margin-top: 2%;
     border: 2px #ffffff ridge;
-    background-color: #0C6EC4;
-    width: 33%;
+    background-color: rgba(168, 0, 0, 0.57);
+    width: 600px;
 }
 
 
@@ -512,8 +503,8 @@ body {
     margin: auto;
     margin-top: 2%;
     border: 2px #ffffff ridge;
-    background-color: #0C6EC4;
-    width: 20%;
+    background-color: rgba(168, 0, 0, 0.57);
+    width: 600px;
 }
 
 
@@ -522,13 +513,13 @@ body {
 #wrapper #contents .mensajeCorrecto {
     color: #fff;
     position: relative;
-    left: 40px;
+    left: auto;
     text-align: center;
     padding: 16px 16px 16px 16px;
     margin: auto;
     border: 2px #ffffff ridge;
-    background-color: #003366;
-    width: 33%;
+    background-color: rgba(0, 0, 201, 0.22);
+    width: 600px;
 }
 
 
@@ -584,20 +575,104 @@ body {
     margin: auto;
     margin-bottom: 30px;
     border: 2px #ffffff ridge;
-    background-color: #990000;
-    width: 33%;
+    background-color: rgba(168, 0, 0, 0.57);
+    width: 500px;
 }
 #wrapper #contents .ErrorBusqCajaDest {
     color: #fff;
-    position: relative;
+    position: absolute;
     right: 7%;
     float: right;
+    top: 100px;
     text-align: center;
     padding: 16px 16px 16px 16px;
     margin: auto;
     margin-bottom: 30px;
     border: 2px #ffffff ridge;
-    background-color: #990000;
-    width: 33%;
+    background-color: rgba(168, 0, 0, 0.57);
+    width: 500px;
 }
 
+#wrapper #contents .container {
+	position: absolute;
+	top: 400px;
+        height: 50%;
+	left: 50%;
+        overflow: auto;
+	transform: translate(-50%, -50%);
+}
+
+
+.botonRegresoInteres{
+    background-color: rgba(0, 0, 201, 0.22);
+    color: #ffffff;
+    position: relative;
+    margin: auto;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid ghostwhite;
+    font-size: 20px;
+    top: 480px;
+    left: 35%;
+}
+.botonRegresoInteres2{
+    background-color: rgba(168, 0, 0, 0.57);
+    color: #ffffff;
+    position: relative;
+    margin: auto;
+    padding: 16px 16px 16px 16px;
+    border: 2px solid darkgray;
+    font-size: 20px;
+    top: 480px;
+    left: 35%;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+        border-color: darkcyan;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+th,
+td {
+	padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+	background-color: rgba(255,255,255,0.2);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+thead {
+	th {
+            background-color: rgba(128, 128, 128, 0.5); 
+	}
+}
+
+tbody {
+	tr {
+		&:hover {
+			background-color: rgba(255,255,255,0.3);
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: rgba(255,255,255,0.2);
+				z-index: -1;
+			}
+		}
+	}
+}

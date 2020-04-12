@@ -180,7 +180,7 @@
                      <!--Campo para mostrar el tipo de moneda-->
                     <p>
                         <label class="texto">Tipo de moneda: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</label>
-                        <input  type="text" class="campo2" id="tipoMoneda2" disabled="true" 
+                        <input  type="text" class="campo2" id="tipoMoneda2" readonly="true" 
                                 name="tipoMoneda2" autofocus="autofocus" 
                                 value="${descripción.geteTipoMoneda()}" />
                     </p>
@@ -216,7 +216,7 @@
                      <!--Campo para seleccionar el tipo de usuario en el sistema 
                      cuenta cajero o cuenta cliente-->
                     <p>
-                        <label class="texto">Tipo usuario: </label>
+                        <label class="texto">Tipo usuario:&nbsp; </label>
                         <select id="tipoUser" name="tipoUser" class="select2">
                             <option value="0"> Cliente </option>
                             <option value="1"> Cajero </option>

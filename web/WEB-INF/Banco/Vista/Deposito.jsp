@@ -491,7 +491,7 @@
                     EL NÚMERO DE CÉDULA <strong> <%= numeroCuenta%> </strong> 
                     DIGITADO NO EXISTE EN EL SISTEMA
                 </p>
-                <p class="mensajeErrorDep2">
+                <p class="mensajeCorrecto">
                     POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
                 </p>
                 
@@ -514,7 +514,7 @@
                     EL NÚMERO DE CUENTA <strong> <%= numeroCuenta%> </strong> 
                     NO ESTA ASOCIADO A NINGUN CLIENTE
                 </p>
-                <p class="mensajeErrorDep2">
+                <p class="mensajeCorrecto">
                     POR FAVOR INTENTELO NUEVAMENTE, GRACIAS!
                 </p>
                 

@@ -62,14 +62,15 @@ public class ServletAcreditaInteres extends HttpServlet {
                             List<movimiento> list = null;
                             // Se listan la informacion de los movimientos registrados 
                             // de tipo Acreditacion de intereses
-                            list=fMovCuenta.listarMovimientosTipoUltimos("Acreditación de Intereses");
+                            list=fMovCuenta.listarMovimientosTipoUltimos(
+                                    "Deposito: Acreditación de Intereses");
                         
                             // Se pasa la informacion al bean de intereses
                             bInteres.setLista(list);
                         
                             // Se establece un mensaje a mostrar la usuario de operecion realizada
                             bInteres.seteMensaje("La operación de acreditar de intereses "
-                                + "ha sido realizada correstamente !");
+                                + "ha sido realizada exitosamente !");
                             bInteres.seteOperacionRealizada(true);
                         
                             // Se pasa los datos al bean para que la pagina conozca los datos

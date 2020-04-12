@@ -316,7 +316,6 @@ public class servicioDeposito {
      */
     
     public List<movimiento> obMovPorTipoUltimoBD(String tipoDato) {
-//        Optional<movimiento> r = Optional.empty();
         List<movimiento> lis = new ArrayList<>();
         movimiento r;
         try (Connection cnx = obtenerConexion();

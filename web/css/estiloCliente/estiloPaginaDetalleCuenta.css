@@ -17,5 +17,62 @@ body
 {
     position: relative;
     overflow: hidden;
+    float:left;
+    padding: 19px 19px 19px 19px;
+    width: 100%;
     
+}
+
+#infoCuenta
+{
+    border: 2px solid #006666;
+    float :right;
+    padding: 25px 19px 19px 19px;
+    width: 280px;
+    background-color: #00cc33
+    /*ss*/
+    
+}
+#seleccionFecha
+{
+  float :left;
+  margin-left: 8%;
+/*  background-color: #ddd;*/
+  margin-top: 15px;
+  padding: 7px 7px 7px 7px;
+  /*border: 10px solid #0C6EC4;*/
+}
+
+#muestraDatos
+{
+    margin-top: 24px;
+    float: left;
+    margin-left: 24px;
+    /*width: 623px;*/
+    /*border: 10px solid #0C6EC4;*/
+/*    background-color: #e5e5e5;*/
+}
+
+.tabla {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  background-color: #0C6EC4;
+  /*width: 100%;*/
+}
+
+.tabla td, .tabla th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabla tr:hover {background-color: #ddd;}
+
+.tabla th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
 }

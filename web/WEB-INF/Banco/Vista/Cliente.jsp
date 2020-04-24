@@ -35,7 +35,7 @@
         <title>Pagina Cliente</title>
     </head>
     <body style="background-image: url('css/estiloCliente/cliente/fondo-cliente_2.jpg') " 
-         
+
           >
         <div id="clienteFondo">
             <div id="wrapper">
@@ -87,53 +87,59 @@
                     <!--                Si el mensaje enviado por el servidor es numero 2 indica que se
                                     Se le mostrara al usuario una pantalla con un pequeño formulario
                                     para que cambie de sesion-->
-
-
-                    <p class="mensajeErrorDep">
-                        ${eLogin.geteMensaje()}
-                    </p>
-                    <form method="POST" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
-                        <!--Campo para ingresar la nueva contraseña-->
-
-
-                        <p>
-                            <label class="texto">Contraseña nueva:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <input class="campo2" id="passwNew" name="passwNew" 
-                                   autofocus="autofocus" placeholder="Nueva contraseña"
-                                   autocomplete="off" />
-                        </p>
-
-                        <!--Campo para ingresar la nueva contraseña-->
-                        <p>
-                            <label class="texto">Repita la contraseña :</label>
-                            <input class="campo2" id="passwRep" name="passwRep" 
-                                   autofocus="autofocus" placeholder="Repita su contraseña"
-                                   autocomplete="off" />
-                        </p>
-
-                        <p>
-                            <button type="submit" id="cambiaPassw" name="cambiaPassw"
-                                    value="1" class="botonRegreso" onsubmit=""
-                                    >Cambiar</button>&nbsp;
-                        </p>
-                    </form>
-
-                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
-                    </form>
-                    <%} else if (msgLogin != null && msgLogin.equals("5")) {
-                    %>
-                    <p class="mensajeErrorDep2">
-                        ${eLogin.geteMensaje()}
-                    </p>
-
-                    <%}
-                    %>
-
-                    <!---------    FIN PAGINA CAJERO USUARIO POR PRIMERA VEZ------->
-
                 </div>
             </div>
         </div>
+        <div 
+            id="errorContraseña" 
+            style="background-image:url('css/estiloCliente/cliente/fondo-cliente_2.jpg')">
+            <p class="mensajeErrorDep">
+                ${eLogin.geteMensaje()}
+            </p>
+         
+                
+            <form method="POST" action="cambio-Contra" onsubmit="return validarCambioPassw()"  class="e-deposito">
+                <!--Campo para ingresar la nueva contraseña-->
+
+
+                <p>
+                    <label class="texto">Contraseña nueva:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input class="campo2" id="passwNew" name="passwNew" 
+                           autofocus="autofocus" placeholder="Nueva contraseña"
+                           autocomplete="off" />
+                </p>
+
+                <!--Campo para ingresar la nueva contraseña-->
+                <p>
+                    <label class="texto">Repita la contraseña :</label>
+                    <input class="campo2" id="passwRep" name="passwRep" 
+                           autofocus="autofocus" placeholder="Repita su contraseña"
+                           autocomplete="off" />
+                </p>
+
+                <p>
+                    <button type="submit" id="cambiaPassw" name="cambiaPassw"
+                            value="1" class="botonRegreso" onsubmit=""
+                            >Cambiar</button>&nbsp;
+                </p>
+            </form>
+
+            <form method="POST" action="menu-Navegacion" onsubmit=""  class="formRegresoMenu">
+                <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonCuenta">cancelar</button>&nbsp;
+            </form>
+       
+            <%} else if (msgLogin != null && msgLogin.equals("5")) {
+            %>
+            <p class="mensajeErrorDep2">
+                ${eLogin.geteMensaje()}
+            </p>
+
+            <%}
+            %>
+
+            <!---------    FIN PAGINA CAJERO USUARIO POR PRIMERA VEZ------->
+        </div>
+
+
     </body>
 </html>

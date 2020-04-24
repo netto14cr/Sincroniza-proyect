@@ -4,11 +4,18 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 11/04/2020, 02:16:24 PM
+    Created on : 23/04/2020, 04:55:29 PM
     Author     : gabri
 */
 
-#wrapper
+body
 {
-    background-color:#ff9933; 
+    background-color: #00cc99;
+}
+
+#encabezado
+{
+    position: relative;
+    overflow: hidden;
+    
 }

@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/estiloCuentaCliente.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -20,6 +21,7 @@
         String cu1 = (String) request.getParameter("cuenta1"), cu2 = (String) request.getParameter("cuenta2");
     %>
     <body>
+        <div id="wrapper">
         <h1>Transferencias</h1>
         <h2>Cuentas Favoritas</h2>
         <form method="get" action="ServletTransferenciaClienteCuentaFavo">
@@ -55,5 +57,6 @@
 
 
     </form>
+    </div>
 </body>
 </html>

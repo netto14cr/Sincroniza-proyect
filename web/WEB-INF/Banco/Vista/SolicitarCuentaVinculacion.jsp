@@ -8,11 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/estiloCuentaCliente.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <div id="wrapper">
         <h1>Digite el numero de cuenta</h1>
         
         <form action="ServletVerificacionCuenta" method="get">
@@ -24,6 +25,6 @@
             <input type="hidden" name="volverMenu" value="1"/>
             <button type="submit">Volver Menu</button>
         </form>
-        
+        </div>
     </body>
 </html>

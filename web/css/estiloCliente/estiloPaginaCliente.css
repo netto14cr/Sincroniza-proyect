@@ -1,0 +1,96 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13/04/2020, 02:09:56 PM
+    Author     : gabriel
+*/
+
+body{
+    height: 100%;
+    width: 100%;
+    /*background-color: #66ccff;*/
+    text-align: center;
+    overflow: auto;
+    position: relative;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: cover;
+}
+
+#encabezado
+{
+    position: relative;
+    /*border: 5px solid tomato;*/
+    overflow: hidden;
+}
+
+#InfoCliente{
+    width: 20%;
+    border: 2px solid #ffcc66 ;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    float :left;
+    margin:  8px 8px 8px 8px;
+    background-color: #66ff66;
+}
+
+#menu
+{
+    /*margin-top:100px;*/
+    padding: 25px 25px 25px 25px;
+    /*background-color: #0C6EC4;*/
+    border-radius: 25px;
+    /*width: 35%;*/
+    position: relative ;
+}
+
+#fecha
+{
+    top:50px;
+    background-color: tomato;
+    border-radius: 60px;
+    right: 25px;
+    float:right;
+    /*overflow: hidden;*/
+    position: relative;
+}
+
+#wrapper #titulo
+{
+    text-shadow: 2px 2px 5px #66ccff;
+    text-align: center;
+    /*border: 5px solid #ffcc66;*/
+    /*background-color: #00cc99;*/
+}
+
+#opcionMenu
+{
+    /*background-color: #ff9933;*/
+    border-style: outset;
+    color: black;
+    border-radius: 25px;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 20px 10px ;
+    cursor: pointer;
+    width: 50%;
+}
+
+#contents
+{
+    float:left;
+    /*margin-top: 25px;*/
+    overflow: auto;
+    /*border: 4px solid crimson;*/
+    width: available;
+    align-content: center;
+    position: absolute;
+    left:7%;
+}

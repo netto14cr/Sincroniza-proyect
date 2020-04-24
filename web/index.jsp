@@ -34,14 +34,14 @@
                     <p>
                         <label class="texto">Identificación:&nbsp;</label>
                         <input class="campo2" type="text" id="id" name="id" autofocus="autofocus"
-                               placeholder="(digite la identificación)" value="" autocomplete="off"/>
+                           value="666666661"    placeholder="(digite la identificación)" value="" autocomplete="off"/>
                     </p>
                     <!--Campo para que el usuario pueda ingresar la contraseña-->
                     <p>
                         <label class="texto">Contraseña   :   &nbsp;</label>
-                        <input class="campo2" type="password" id="password" value="" 
+                        <input class="campo2" type="password" id="password" 
                                name="password" autofocus="autofocus"
-                               placeholder="(digite su contraseña)" autocomplete="off"/>
+                      value="11111Av$"         placeholder="(digite su contraseña)" autocomplete="off"/>
                         
                     </p>
                     <!--Boton que ejecuta y redireciona-->

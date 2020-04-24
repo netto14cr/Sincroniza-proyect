@@ -4,67 +4,83 @@
     Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
-
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
 
 
-        <link href="css/estiloFormulario.css" rel="stylesheet" type="text/css"/>
+        <%-- <link href="css/estiloFormulario.css" rel="stylesheet" type="text/css"/> --%>
+        <link href="css/estiloCliente/estiloPaginaCliente.css" rel="stylesheet" type="text/css"/> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!--Se declara la direccion y uso de javascript para validacion de la pagina-->
         <script type="text/javascript" src="jsValidaFormularios.js"></script>
         <!--Se define el uso de la etiqueta bean con datos de apertura nueva cuenta-->
         <jsp:useBean class="beans.BeanLogin" id="eLogin" scope="session">
         </jsp:useBean>
+        <%
+            String msgLogin = "";
+            msgLogin = (String) session.getAttribute("servletLogin");
+            beans.BeanLogin bl = (beans.BeanLogin) session.getAttribute("eLogin");
+            session.setAttribute("beanLogin", bl);
+            session.setAttribute("id", bl.geteIdentificacion());
+            DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy ");
+            Date date = new Date();
 
+            if (msgLogin != null && msgLogin.equals("1")) {
+        %>
         <title>Pagina Cliente</title>
     </head>
-    <body>
-
+    <body style="background-image: url('css/estiloCliente/cliente/fondo-cliente_2.jpg') " 
+         
+          >
         <div id="clienteFondo">
             <div id="wrapper">
+                <div id="encabezado" style=" background-image: url('css/estiloCliente/cliente/encabezado_1.jpg')">
 
 
-                <div id="MenuCliente">
-                    <header>
-                        <h1>Pagina Cliente</h1></header>
+                    <span id="fecha" style="font-size: 25px"><%= dateFormat.format(date)%></span>
+                    <div id="InfoCliente">
+                        <h2 style ="text-decoration: underline; ">Sección Cliente</h2>
+                        <h2>Id Usuario: <jsp:getProperty name="eLogin" property="eIdentificacion"/></h2>
+                    </div>
                 </div>
 
-
+                <div id="titulo">
+                    <h1 style="font-family: sans-serif"> Bienvenido !</h1>
+                    <h2 style="font-family: monospace"> Selecione la opcion que desea realizar </h2>
+                </div>
                 <div id="contents">
-                    
-                    <%
-                        String msgLogin = "";
-                        msgLogin = (String) session.getAttribute("servletLogin");
-                        beans.BeanLogin bl = (beans.BeanLogin) session.getAttribute("eLogin");
-                        session.setAttribute("beanLogin", bl);
-                        session.setAttribute("id",bl.geteIdentificacion());
-                        if (msgLogin != null && msgLogin.equals("1")) {
-                    %>
-                    <p>Bean : id = <%= bl.geteIdentificacion()%></p>
-                    <p>Id: <jsp:getProperty name="eLogin" property="eIdentificacion"/></p>
-                    <p>Contraseña: <jsp:getProperty name="eLogin" property="ePasword"/></p>
-                    <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu">
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
-                                >Mis cuentas</button>&nbsp;
-                       <%-- 
-                                <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
-                                >Consultar saldo</button>&nbsp;
-                               
-                                <button type="submit" id="opcionMenu" name="opcionMenu" value="9" class="botonMenuOpciones"
-                                >Movimientos</button>&nbsp;
-                       --%>
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="8" class="botonMenuOpciones"
-                                >Transferencias</button>&nbsp;
-                         <button type="submit" id="opcionMenu" name="opcionMenu" value="10" class="botonMenuOpciones"
-                                >Afiliar un cuenta</button>&nbsp;
-                       
-                        <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonMenuOpciones"
-                                >Cerrar Sesión</button>&nbsp;
-                    </form>
+                    <%--
+                     <p>Bean : id = <%= bl.geteIdentificacion()%></p>
+                     
+                     <p>Contraseña: <jsp:getProperty name="eLogin" property="ePasword"/></p>
+                    --%>
+                    <div id="menu">
 
+                        <form method="POST" action="menu-Navegacion" onsubmit=""  class="formMenu" >
+                            <button type="submit" id="opcionMenu" name="opcionMenu" value="6" class="botonMenuOpciones"
+                                    >Mis Cuentas</button>&nbsp;
+                            <%-- 
+                                     <button type="submit" id="opcionMenu" name="opcionMenu" value="7" class="botonMenuOpciones"
+                                     >Consultar saldo</button>&nbsp;
+                                    
+                                     <button type="submit" id="opcionMenu" name="opcionMenu" value="9" class="botonMenuOpciones"
+                                     >Movimientos</button>&nbsp;
+                            --%>
+                            <button type="submit" id="opcionMenu" name="opcionMenu" value="8" class="botonMenuOpciones"
+                                    >Transferencias</button>&nbsp;
+                            <button type="submit" id="opcionMenu" name="opcionMenu" value="10" class="botonMenuOpciones"
+                                    >Afiliar un cuenta</button>&nbsp;
+
+                            <button type="submit" id="opcionMenu" name="opcionMenu" value="5" class="botonMenuOpciones"
+                                    >Cerrar Sesión</button>&nbsp;
+                        </form>
+
+                    </div>
                     <%} else if (msgLogin != null && msgLogin.equals("2")) {
                     %>
 

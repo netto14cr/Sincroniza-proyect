@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/estiloCliente/estiloTransferencia1.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -20,7 +21,7 @@
     String saldo= (String) request.getSession().getAttribute("saldo");
     
     %>
-    <body>
+    <body style="background-image: url('css/estiloCliente/cliente/fondo-cliente_2.jpg') "> 
         <h1>Cuenta 1 : <%= cuenta1 %> </h1> <h1>Cuenta 2 : <%= cuenta2 %> </h1>
         <h1>Saldo Cuenta <%= saldo %></h1>
         <h1>Moneda <%= moneda %></h1>
@@ -28,12 +29,12 @@
         Monto Invalido Digite un Monto Valido y Menor al Saldo
         <form action="ServletVerificacionCuentas" method="get">
             <input type="text" placeholder="Digite el monto" name="monto">
-            <button type="submit">Realizar Transacción</button>
+            <button class="boton1"  type="submit">Realizar Transacción</button>
         </form>
         <% }else if(saldo.equals("0.0")==false){// si no hay problemas con nada entonces solicita  %>
         <form action="ServletVerificacionCuentas" method="get">
             <input type="text" placeholder="Digite el monto" name="monto">
-            <button type="submit">Realizar Transacción</button>
+            <button class="boton1"  type="submit">Realizar Transacción</button>
         </form>
         <% }else
 {%>
@@ -46,11 +47,11 @@
 
 <form action="ServletVerificacionCuentas">
     <input name="volverTransferencia" value="1" type="hidden">
-    <button type="submit">Volver Transferencias</button>
+    <button  class="boton" type="submit">Volver Transferencias</button>
 </form>
 <form action="ServletVerificacionCuentas">
     <input name="volverMenu" value="1" type="hidden">
-    <button type="submit">Volver Menu </button>
+    <button  class="boton" type="submit">Volver Menu </button>
 </form>
     </body>
 </html>

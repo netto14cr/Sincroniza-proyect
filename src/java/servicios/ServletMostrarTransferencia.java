@@ -71,7 +71,7 @@ public class ServletMostrarTransferencia extends HttpServlet {
                 dispatcher = request.getRequestDispatcher(destino);
                 dispatcher.forward(request, response);
             } else if (cancelar != null && cancelar.equals("1")) {
-                destino = "/WEB-INF/Banco/Vista/MostrarTrasnferenciaRealizada.jsp";
+                destino = "/WEB-INF/Banco/Vista/VerificacionCuenta1Cuenta2.jsp";
                 dispatcher = request.getRequestDispatcher(destino);
                 dispatcher.forward(request, response);
             }

@@ -57,7 +57,7 @@
                     <!--Campo para ingresar la identificación-->
                     <p>
                         <label class="texto">Buscar cuenta por:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                        <select id="tipoBusquedaCuenta" name="tipoBusquedaCuenta" class="select">
+                        <select id="tipoBusquedaCuenta" name="tipoBusquedaCuenta" class="select3">
                             <option value="nCedula" >Número de cédula</option>
                             <option value="nCuenta">Número de cuenta</option>
                         </select>

@@ -77,7 +77,7 @@
                     <p>
                         <label class="texto">Cuenta a depositar:&nbsp;</label>
                         <input type="text" name="busqCuentaOrigen" id="busqCuentaOrigen" autofocus="autofocus"
-                               placeholder="digite la cuenta " class="campo" autocomplete="off" />
+                               placeholder="digite la cuenta " class="campo3" autocomplete="off" />
                     </p>
                     <p style="text-align: right;">
                         <button type="submit" id="button"name="BontonBuscarCuenta" class="boton"
@@ -127,7 +127,7 @@
                         <label class="texto">Cuenta a depositar:&nbsp;</label>
                         <input type="text" name="busqCuentaDestino" id="busqCuentaDestino" 
                                autofocus="autofocus" placeholder="digite la cuenta " 
-                               class="campo" autocomplete="off" />
+                               class="campo3" autocomplete="off" />
                     </p>
                     <p style="text-align: right;">
                         <button type="submit" id="button"name="BontonBuscarCuenta" class="boton"

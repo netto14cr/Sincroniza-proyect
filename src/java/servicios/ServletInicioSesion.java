@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.usuario;
-import modelo.dao.funcionesFrontEnd.funcionesDeposito;
 import modelo.dao.funcionesFrontEnd.funcionesLogueo;
 
 /*
@@ -33,11 +32,11 @@ public class ServletInicioSesion extends HttpServlet {
         System.out.println("\n:::::::  SERVLET MENU INICIO     ::::::::");
         
         // Se define de que direccion viene el usaurio
-        String destinoCajero = "";
-        String destinoCliente = "";
-        String mensajeAux="";
+        String destinoCajero,destinoCliente,mensajeAux, destinoOrigen;
+        destinoCajero = "";destinoCliente = "";mensajeAux="";
         destinoCliente = "/WEB-INF/Banco/Vista/Cliente.jsp";
         destinoCajero = "/WEB-INF/Banco/Vista/Cajero.jsp";
+        destinoOrigen="/index.jsp";
         
         HttpSession sesionActual = request.getSession();
         sesionActual.setAttribute("ruta", request.getRequestURI());
@@ -128,27 +127,30 @@ public class ServletInicioSesion extends HttpServlet {
                 }
 
             } catch (Exception ex) {
+                String aux;
+                aux="";
                 switch (ex.getMessage()) {
+                    
                     case "1":
-                        request.getSession().setAttribute("servletMsjError", "1");
-                        dispatcher = request.getRequestDispatcher(
-                                "/index.jsp");
-                        dispatcher.forward(request, response);
+                        aux="1";
                         break;
                     case "2":
-                        request.getSession().setAttribute("servletMsjError", "2");
-                        dispatcher = request.getRequestDispatcher(
-                                "/index.jsp");
-                        dispatcher.forward(request, response);
+                        aux="2";
                         break;
                     case "3":
-                        request.getSession().setAttribute("servletMsjError", "3");
-                        dispatcher = request.getRequestDispatcher(
-                                "/index.jsp");
-                        dispatcher.forward(request, response);
+                        aux="3";
                         break;
                 }
+                request.getSession().setAttribute("servletMsjError", aux);
+                dispatcher = request.getRequestDispatcher(destinoOrigen);
+                dispatcher.forward(request, response);
             }
+        }// Se valida que se muestre un mensaje de error si la la identificacion o
+        // la contraseña vienen vacios o nulos
+        else if (id == null || id.isEmpty() || passw == null || passw.isEmpty()){
+                request.getSession().setAttribute("servletMsjError", "4");
+                dispatcher = request.getRequestDispatcher(destinoOrigen);
+                dispatcher.forward(request, response);
         }
     }
 

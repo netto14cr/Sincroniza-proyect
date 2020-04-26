@@ -65,7 +65,7 @@
                         <label class="texto">Buscar cuenta por:  &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;</label>
                         <select id="tipoBusquedaCuenta" name="tipoBusquedaCuenta" 
-                                class="select">
+                                class="select3">
                             <option value="nCedula" >Número de cédula</option>
                             <option value="nCuenta">Número de cuenta</option>
                         </select>
@@ -320,7 +320,7 @@
                     <!--Se define la etiqueta y el campo para que el cajero ingrese 
                     el monto a depositar-->
                     <p>
-                        <label class="texto">Monto a depositar :&nbsp;&nbsp;&nbsp;
+                        <label class="texto">Monto a depositar :&nbsp;&nbsp;
                             &nbsp;&nbsp;</label>
                         <input type="text" id="detalleMontoDep" name="detalleMontoDep" 
                                autofocus="autofocus"

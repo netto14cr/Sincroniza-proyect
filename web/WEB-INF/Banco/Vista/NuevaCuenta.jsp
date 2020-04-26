@@ -98,7 +98,7 @@
                     
                     <!--Campo para seleccionar el tipo de cuenta 0-> Ahorros / 1->corriente --> 
                     <p>
-                        <label class="texto">Seleccionar moneda:  &nbsp;</label>
+                        <label class="texto">Seleccion tipo cuenta:</label>
                         <select id="tipoMoneda" name="tipoCuenta" class="select">
                             <option value="0">Cuenta de ahorrros </option>
                             <option value="1">Cuenta corriente </option>

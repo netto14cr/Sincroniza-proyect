@@ -125,7 +125,7 @@
                 <form method="POST" action="regresarCaja" onsubmit=""  class="forBotonRegreso">
                         <input type="hidden" id="regreso" name="regreso" />
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
-                                value="2" class="botonCuenta">Cancelar acción</button>&nbsp;
+                                value="2" class="botonCuenta">Realizar otra trnasferencia</button>&nbsp;
                         <button type="submit" id="regresoOpcion" name="regresoOpcion" 
                                 value="1" class="botonRegreso4">Volver a menú</button>&nbsp;
                     </form> 

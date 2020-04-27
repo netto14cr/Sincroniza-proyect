@@ -28,7 +28,7 @@ public class ServletInicioSesion extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         System.out.println("\n:::::::  SERVLET MENU INICIO     ::::::::");
         
         // Se define de que direccion viene el usaurio
@@ -50,10 +50,14 @@ public class ServletInicioSesion extends HttpServlet {
 
         if (id != null && passw != null) {
             try {
+                System.out.println("USER: "+id+" ----- PASS: "+passw+"\n");
                 if (servicio.verificarLogueo(checkId(id), passw)) {
+                    System.out.println("ENTRA LOGUEO");
                     usuario user = servicio.obtenerUsuarioPorCedula(id);
 //                    Condisional que verifica el tipo de usuario que inicia sesión
 //                      Si es usuario es 0 es cliente
+
+                     System.out.println("::: "+user.toString());
                     if (servicio.obtenerRolCliente(id) == 0) {
 
                         // SI EL USUARIO CLIENTE TIENE LA CLAVE VENCIDA
@@ -129,6 +133,7 @@ public class ServletInicioSesion extends HttpServlet {
             } catch (Exception ex) {
                 String aux;
                 aux="";
+                System.out.println("EXISTE UN ERROR!");
                 switch (ex.getMessage()) {
                     
                     case "1":

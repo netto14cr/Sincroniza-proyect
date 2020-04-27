@@ -106,7 +106,7 @@
                         <p>
                             <label class="texto">Seleccion cuenta:</label>
                        
-                        <select id="seletCuenta" name="seletCuenta" class="select">
+                        <select id="seletCuenta" name="seletCuenta" class="select2">
                             <%for (cuenta lis : bDep.getLista()) {%>
                             <option value="<%=lis.getNum_cuenta()%>">
                                 <%=lis.getNum_cuenta()%></option>
@@ -117,29 +117,29 @@
                     <!--Se define la etiqueta y el campo para que el cajero ingrese 
                     el monto a depositar-->
                     <p>
-                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label class="texto">Monto a deposito:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="montoDeposito" name="montoDeposito" 
                                autofocus="autofocus"
-                               placeholder=" Monto deposito " class="campo2"/>
+                               placeholder=" Monto deposito " class="campo"/>
                     </p>
                     
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o 
                     cedula de la cuenta-->
                     <p>
-                        <label class="texto">Número identificación:</label>
+                        <label class="texto">Número identificación:&nbsp;&nbsp;</label>
                         <input type="text" name="detalleNumId" id="detalleNumId" 
                                autofocus="autofocus"
-                               placeholder="Identificación depositante " class="campo2" 
+                               placeholder="Identificación depositante " class="campo" 
                                autocomplete="off" />
                     </p>
 
                     <!--Se define la etiqueta y el campo para que el cajero ingrese el 
                     detalle del deposito-->
                     <p>
-                        <label class="texto">Detalle de deposito:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="texto">Detalle de deposito:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="detalleDep" name="detalleDep" autofocus="autofocus"
-                               placeholder="Detalle de deposito" class="campo2"/>
+                               placeholder="Detalle de deposito" class="campo"/>
                     </p>
                     <p style="text-align: right;">
                         <button type="submit" class="boton">Realizar deposito</button>

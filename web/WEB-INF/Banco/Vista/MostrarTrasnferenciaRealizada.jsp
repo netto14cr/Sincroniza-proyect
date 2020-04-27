@@ -1,7 +1,7 @@
 <%-- 
-    Document   : MostrarTrasnferenciaRealizada
-    Created on : 10/04/2020, 05:37:55 PM
-    Author     : gabri
+    Document   : TransferenciaClienteCuentasFavoritas
+    Created on : 09/04/2020, 09:02:31 PM
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

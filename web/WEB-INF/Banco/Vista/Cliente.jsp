@@ -119,7 +119,7 @@
 
                 <p>
                     <button type="submit" id="cambiaPassw" name="cambiaPassw"
-                            value="1" class="botonRegreso" onsubmit=""
+                            value="1" class="botonCuenta" onsubmit=""
                             >Cambiar</button>&nbsp;
                 </p>
             </form>

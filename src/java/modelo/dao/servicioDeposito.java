@@ -18,7 +18,7 @@ import model.cuenta;
 import model.movimiento;
 
 /**
- * Nombre pagina.clase
+ * servicioDeposito.clase
  * @Autores: Gabriel Barboza && Néstor Leiva
  * Descripción: 
  */

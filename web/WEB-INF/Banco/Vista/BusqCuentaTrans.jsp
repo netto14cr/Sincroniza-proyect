@@ -158,7 +158,7 @@
                         <p>
                             <label class="texto">Seleccion cuenta:</label>
                        
-                        <select id="seletCuentaOrigen" name="seletCuentaOrigen" class="select">
+                        <select id="seletCuentaOrigen" name="seletCuentaOrigen" class="select2">
                             <%for (cuenta lis : bTCaja.getLista()) {%>
                             <option value="<%=lis.getNum_cuenta()%>"><%=lis.getNum_cuenta()%></option>
                             <% } %>
@@ -168,7 +168,7 @@
                     
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
                     <p>
-                        <label class="texto">Número identificación:</label>
+                        <label class="texto">Número identificación:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" name="idUOrigen" id="idUOrigen" autofocus="autofocus"
                                placeholder="Identificación depositante " class="campo2" autocomplete="off" />
                     </p>

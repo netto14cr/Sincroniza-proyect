@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.dao.servicioCuenta;
 
 /**
- *
- * @author gabri
+ * ServletTransferenciaClienteCuentaFavo.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean se utiliza para manejar la informacion en el servidor
+ * de transferencia de cuenta a de un cliente a una que tenga como favorita
  */
 public class ServletTransferenciaClienteCuentaFavo extends HttpServlet {
 

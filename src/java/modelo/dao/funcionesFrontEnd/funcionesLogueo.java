@@ -103,8 +103,9 @@ public class funcionesLogueo {
     public boolean verificarContraseñaCliente(int id_usu, String contrs) throws Exception {
         servicioUsuario su = new servicioUsuario();
         Optional<usuario> u = su.obtenerUsuario(id_usu);
+        System.out.println("!!!! "+u.toString());
         if (u.isPresent())// verifica la contraseña digitada
-        {
+        {   System.out.println(";;;; "+u.get().getClave_acceso().equals(contrs));
             return u.get().getClave_acceso().equals(contrs);
         } else// no existe ese usuario
         {
@@ -158,13 +159,15 @@ public class funcionesLogueo {
         if (verificarExistenciaCedulaCliente(cedula)) {
             try {
                 id_us = obtenerIdUsuario(cedula);
+                System.out.println(">>> "+id_us);
+                System.out.println("\n<<<" +contrase);
                 if (verificarContraseñaCliente(id_us, contrase)) {
+                    System.out.println("TRUE");
                     return true;
                 } else {
                     throw new Exception("3");//Contraseña erronea
                 }
             } catch (Exception ex) {
-//                System.out.println(ex.getMessage());
                 throw new Exception(ex.getMessage());
 
             }

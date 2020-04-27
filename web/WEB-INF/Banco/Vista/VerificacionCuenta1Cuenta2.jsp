@@ -1,9 +1,8 @@
 <%-- 
-    Document   : VerificacionCuenta1Cuenta2
-    Created on : 10/04/2020, 05:15:34 PM
-    Author     : gabri
+    Document   : TransferenciaClienteCuentasFavoritas
+    Created on : 09/04/2020, 09:02:31 PM
+    Author     : Gabriel Barboza && Néstor Leiva
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -124,9 +124,10 @@ public class ServletBusquedaCajas extends HttpServlet {
                                 }else if(!bTCaja.equals(idUOrigen)){
                                     bTCaja.seteMensaje("Error el usuario "+idUOrigen+" no es dueño de la cuenta!");
                                     bTCaja.setCuentaSeleccionada(false);
+                                    sesionActual.setAttribute("descTCaja", 
                                     new BeanTransCaja(bTCaja.geteCedula(),null,bTCaja.geteTipoBusqueda(),
                                     bTCaja.getExitenciaCuenta(),bTCaja.getCuentaSeleccionada(),
-                                            bTCaja.geteMensaje());
+                                            bTCaja.geteMensaje()));
                                     request.getSession().setAttribute("servletMsjTCaja", "ERROR2");
                                 }
                             }else {
@@ -149,13 +150,14 @@ public class ServletBusquedaCajas extends HttpServlet {
                                 // vacio o nulo
                                 if (idUOrigen!=null && !idUOrigen.isEmpty()){
                                 if(servicioLogin.verificarExistenciaCedulaCliente(checkId(idUOrigen))){
+                                    
                                     // Se declara una lista de tipo de informacion de cuenta
                                     List<cuenta> listaCuentas = null;
                                 
                                 // Se cargan todas las cuentas que posea el numero de cedula
                                 // que se indico buscar
                                 listaCuentas= servicioDeposito.listarCuentasCliente(idUOrigen);
-                                
+                                    System.out.println("\n "+listaCuentas.toString()+"\n");
                                 // Se recorre la informacion encontrada del numero de cedula
                                 // indicado por el usuario y se verifica si tiene una cuenta
                                 // asociada a la indicada en el primer formulario
@@ -187,13 +189,14 @@ public class ServletBusquedaCajas extends HttpServlet {
                             // Falso si no fue encontrada ninguna cedula aosciada la usuario entonces
                             // envia el mensaje correspondiente de error y guarda los datos obtenidos 
                             // anteriormente
-                            else{
+                            else if (!existeCuentaAsociada){
                                     bTCaja.seteMensaje("Error el usuario "+idUOrigen+" no es dueño de la cuenta "+bTCaja.geteNumCuenta());
                                     bTCaja.seteExitenciaCuenta(false);
+                                    sesionActual.setAttribute("descTCaja", 
                                     new BeanTransCaja(bTCaja.geteCedula(),bTCaja.geteNumCuenta(),
                                     bTCaja.geteTipoBusqueda(),bTCaja.getExitenciaCuenta(),
-                                    bTCaja.getCuentaSeleccionada(),bTCaja.geteMensaje());
-                                    request.getSession().setAttribute("servletMsjTCaja", "ERROR2");
+                                    bTCaja.getCuentaSeleccionada(),bTCaja.geteMensaje()));
+                                    request.getSession().setAttribute("servletMsjTCaja", "ERROR3");
                                 }
                         }
                     //----------- BUSQUEDA POR TIPO NUEMERO DE CUENTA -------------------------

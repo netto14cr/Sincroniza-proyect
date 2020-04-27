@@ -21,7 +21,7 @@ error = "\n El campo de la cédula está en blanco";
 // Falso si el formato ingresado de número de cédula es incorrecto
 else if (!cedulaValida.test(numeroIden)) {
 error = "\n El numero de cédula: " + numeroIden + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000";
         datosRecibidos = false;
         } else if (document.getElementById('password').value == "") {
 error = "\n El campo de la contraseña está en blanco";
@@ -135,7 +135,7 @@ error = "\n El campo de la cédula está en blanco";
 // Falso si el formato ingresado de número de cédula es incorrecto
 else if (!cedulaValida.test(numCedula)) {
 error = "\n El numero de cédula: " + numCedula + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
         datosCorrectos = false;
         }
 
@@ -254,7 +254,7 @@ var datosCorrectos4;
                 datosCorrectos4 = false;
             } else if (!cedulaFormato.test(cd)) {
                 error4 = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-                1-0000-0000";
+                100000000 (9 digitos)";
                 datosCorrectos4 = false;
             }
         
@@ -320,7 +320,7 @@ error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error5 = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos5 = false;
         }
 
@@ -388,7 +388,7 @@ error5 = "\n El campo monto de deposito no puede ser menor o igual a 0";
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error5 = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos5 = false;
         }
 
@@ -418,7 +418,7 @@ function validarDepNumCuenta() {
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos = false;
         }
         
@@ -477,7 +477,7 @@ function validarDepNumCuenta2() {
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos = false;
         }
         
@@ -534,7 +534,7 @@ var datosCorrectos5;
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error5 = "\n El numero de cédula: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos5 = false;
         }
 
@@ -615,7 +615,7 @@ var datosCorrectos;
                 datosCorrectos = false;
             } else if (!cedulaFormato.test(cd)) {
                 error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-                1-0000-0000";
+                100000000 (9 digitos)";
                 datosCorrectos = false;
             }
         
@@ -662,7 +662,7 @@ var datosCorrectos;
                 datosCorrectos = false;
             } else if (!cedulaFormato.test(cd)) {
                 error = "\n El numero de cédula destino: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-                1-0000-0000";
+                100000000 (9 digitos)";
                 datosCorrectos = false;
             }
         
@@ -704,7 +704,7 @@ var datosCorrectos;
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos = false;
         }
 
@@ -732,7 +732,7 @@ var datosCorrectos;
         // Valida si el formato ingresado en la cedula es correcto
         else if (!cedulaFormato.test(cd)) {
             error = "\n El numero de cédula origen: " + cd + " es incorrecto!\nPor favor intente el formato\n\
-            1-0000-0000";
+            100000000 (9 digitos)";
             datosCorrectos = false;
         }
 

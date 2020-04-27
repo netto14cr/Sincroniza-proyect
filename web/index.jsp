@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Proyecto I Banco Versión 1.6.0</title>
+        <title>Proyecto I Banco Versión 1.8.0</title>
         <link href="css/estiloFormulario.css" rel="stylesheet" type="text/css"/>
         
         <!--Se declara la direccion y uso de javascript para validacion de la pagina-->
@@ -21,7 +21,7 @@
             <div id="wrapper">
                 <div id="Deposito1">
             <header>
-                    <h1>Proyecto I Banco Versión 1.6.0</h1>
+                    <h1>Proyecto I Banco Versión 1.8.0</h1>
                     <h2>Inicio de Sesión!</h2>
             </header>
                     </div>
@@ -34,14 +34,14 @@
                     <p>
                         <label class="texto">Identificación:&nbsp;</label>
                         <input class="campo2" type="text" id="id" name="id" autofocus="autofocus"
-                           value="666666661"    placeholder="(digite la identificación)" value="" autocomplete="off"/>
+                              placeholder="(digite la identificación)" value="" autocomplete="off"/>
                     </p>
                     <!--Campo para que el usuario pueda ingresar la contraseña-->
                     <p>
                         <label class="texto">Contraseña   :   &nbsp;</label>
                         <input class="campo2" type="password" id="password" 
                                name="password" autofocus="autofocus"
-                      value="11111Av$"         placeholder="(digite su contraseña)" autocomplete="off"/>
+                              placeholder="(digite su contraseña)" autocomplete="off"/>
                         
                     </p>
                     <!--Boton que ejecuta y redireciona-->
@@ -63,7 +63,7 @@
                         if ((id != null) && !id.isEmpty() &&  pass!=null && !pass.isEmpty()) {
                             String msg = (String) session.getAttribute("servletMsjError");
 //                            System.out.println("VER__:::"+msg);
-                            if(msg.equals("1")){
+                            if(msg.equals("ERROR")){
                     %>
 
                     <p class="mensajeError">
@@ -78,6 +78,11 @@
                     </p>
                     <%}else if (msg.equals("3")){ %>
                     <p class="mensajeError">LA CONTRASEÑA DIGITADA ES INVALIDA
+                    </p>
+                    <%} else if (msg.equals("4")){
+                    %>
+                     <p class="mensajeError">
+                        EXISTEN NO PUEDEN EXISTIR CAMPOS VACIOS
                     </p>
                     <% }}%>
 

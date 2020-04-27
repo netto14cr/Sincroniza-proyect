@@ -102,7 +102,7 @@
                         <p>
                             <label class="texto">Seleccion cuenta:</label>
                        
-                        <select id="seletCuenta" name="seletCuenta" class="select">
+                        <select id="seletCuenta" name="seletCuenta" class="select2">
                             <%for (cuenta lis : bRet.getLista()) {%>
                             <option value="<%=lis.getNum_cuenta()%>"><%=lis.getNum_cuenta()%></option>
                             <% } %>
@@ -110,7 +110,7 @@
                     </p>
                     <!--Campo para que el usuario pueda ingresar la cuenta el numero o cedula de la cuenta-->
                     <p>
-                        <label class="texto">Número identificación:</label>
+                        <label class="texto">Número identificación:&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" name="detalleNumId" id="detalleNumId" autofocus="autofocus"
                                placeholder="Identificación depositante " class="campo2" autocomplete="off" />
                     </p>
@@ -161,7 +161,7 @@
                     <p>
                         <label class="texto">Monto de retiro:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="montoDeposito" name="montoDeposito" 
-                               autofocus="autofocus"placeholder=" Monto deposito " class="campo2" 
+                               autofocus="autofocus"placeholder=" Monto de retiro " class="campo2" 
                                value="${descripRetiro.geteMontoDeposito()}"/>
                     </p>
                     
@@ -169,7 +169,7 @@
                     <p>
                         <label class="texto">Detalle de retiro:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <input type="text" id="detalleDep" name="detalleDep" autofocus="autofocus"
-                               placeholder="Detalle de deposito" class="campo2" 
+                               placeholder="Detalle de retiro" class="campo2" 
                                value="${descripRetiro.geteDetalleDeposito()}"/>
                     </p>
                     <p style="text-align: right;">

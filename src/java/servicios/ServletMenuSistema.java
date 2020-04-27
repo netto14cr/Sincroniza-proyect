@@ -120,7 +120,7 @@ public class ServletMenuSistema extends HttpServlet {
                         String cedus = (String) request.getSession().getAttribute("id");
                         System.out.println("CEDULA : " + cedus);
                         request.getSession().setAttribute("listaCuentas", (List<cuenta>)
-                                fcs.listarCuentasCliente(cedus));
+                        fcs.listarCuentasCliente(cedus));
                         
                         funcionesTrasfereciasCajas ftc = new funcionesTrasfereciasCajas();
                         String ceduas = (String) request.getSession().getAttribute("id");
@@ -128,7 +128,6 @@ public class ServletMenuSistema extends HttpServlet {
                         request.getSession().setAttribute("listaFavoritas", lis);
                         dispatcher = request.getRequestDispatcher(destino);
                         dispatcher.forward(request, response);
-
                         break;
 
                     // Opción 9 - El usuario cliente desea consultar sus movimientos bancarios

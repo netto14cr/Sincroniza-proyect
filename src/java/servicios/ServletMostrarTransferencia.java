@@ -16,8 +16,10 @@ import model.movimiento;
 import modelo.dao.funcionesFrontEnd.funcionesTransferenciasRemotas;
 
 /**
- *
- * @author gabri
+ * ServletMostrarTransferencia.java
+ * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean se utiliza para manejar la informacion en el servidor
+ * de realizar y mostrar trnasferencias de cliente
  */
 public class ServletMostrarTransferencia extends HttpServlet {
 

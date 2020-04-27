@@ -84,10 +84,11 @@ public class ServletCambioPassword extends HttpServlet {
                     user.setClave_acceso(newPass);
                     servicio.actualizarContraseña(user);
                     //----------------------------------------------------------
+                
                     
                     // Se guarda en el bean la nueva clave del usuario
                     sesionActual.setAttribute("eLogin",
-                    new BeanLogin(user.getId_usuario()+"", newPass));
+                    new BeanLogin(bLogin.geteIdentificacion(), newPass));
                             
                     // Server envia mensaje a la pagina principal del usuario 
                     // enviando 1 siginific que usuario puede continuar

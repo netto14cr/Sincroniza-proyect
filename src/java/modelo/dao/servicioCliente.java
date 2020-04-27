@@ -13,7 +13,7 @@ import java.util.Properties;
 import model.cliente;
 
 /**
- * Nombre pagina.clase
+ * servicioCliente.clase
  * @Autores: Gabriel Barboza && Néstor Leiva
  * Descripción: 
  */

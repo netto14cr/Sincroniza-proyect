@@ -62,7 +62,7 @@
                     
                       <!--Campo para seleccionar el tipo de moneda paral cuenta-->
                     <p>
-                        <label class="texto">Seleccionar moneda:&nbsp;</label>
+                        <label class="texto">Seleccionar moneda:&nbsp;&nbsp;</label>
                         <select id="tipoMoneda" name="tipoMoneda" class="select3">
                             <option value="CRC">₡ -- colones </option>
                             <option value="USD">$ -- Dolares </option>
@@ -80,7 +80,7 @@
                     
                       <!--Campo para seleccionar el maximo de transferencias diarias de la cuenta-->
                     <p>
-                        <label class="texto">Seleccionar moneda:&nbsp;</label>
+                        <label class="texto">Seleccionar saldo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <select  id="maximoTransferencia" name="maximoTransferencia" class="select3">
                             
                             <option value="1">1 &nbsp;a &nbsp;   100.000 </option>
@@ -98,7 +98,7 @@
                     
                     <!--Campo para seleccionar el tipo de cuenta 0-> Ahorros / 1->corriente --> 
                     <p>
-                        <label class="texto">Seleccion tipo cuenta:</label>
+                        <label class="texto">Seleccion tipo cuenta:&nbsp;</label>
                         <select id="tipoMoneda" name="tipoCuenta" class="select3">
                             <option value="0">Cuenta de ahorrros </option>
                             <option value="1">Cuenta corriente </option>

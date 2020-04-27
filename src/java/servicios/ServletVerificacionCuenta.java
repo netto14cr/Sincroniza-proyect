@@ -10,8 +10,10 @@ import model.favorita;
 import modelo.dao.funcionesFrontEnd.funcionesVinculacionCuentas;
 
 /**
- *
+ * ServletVerificacionCuenta.java
  * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean se utiliza para manejar la informacion en el servidor
+ * de  verificar las cuenta de cliente
  */
 public class ServletVerificacionCuenta extends HttpServlet {
 

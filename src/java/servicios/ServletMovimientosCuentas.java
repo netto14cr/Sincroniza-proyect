@@ -17,8 +17,10 @@ import model.movimiento;
 import modelo.dao.funcionesFrontEnd.funcionesConsultaCuentasMovimientos;
 
 /**
- *
+ * ServletMovimientosCuentas.java
  * @Autores: Gabriel Barboza && Néstor Leiva
+ * Descripción: Este bean se utiliza para manejar la informacion en el servidor
+ * de consulta de movimientos de cuenta cliente
  */
 public class ServletMovimientosCuentas extends HttpServlet {
 
